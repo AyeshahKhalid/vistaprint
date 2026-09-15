@@ -1,0 +1,231 @@
+<app-site-shell>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <span class="hero__eyebrow">Invitations Gifts and Stationery</span>
+        <h1 class="hero__title">Invitations, Gifts &amp; Stationery</h1>
+        <p class="hero__desc">
+          Celebrate every moment, big and small, with personalized gifts and stationery, expertly printed and
+          thoughtfully priced.
+        </p>
+        <div class="hero__pills">
+          @for (pill of heroPills; track pill) {
+            <button type="button" class="pill">{{ pill }}</button>
+          }
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Invitations, gifts and stationery" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Anchor nav -->
+  <nav class="anchor-nav">
+    <div class="anchor-nav__inner">
+      @for (item of anchorNav; track item; let first = $first) {
+        <span class="anchor-nav__item" [class.anchor-nav__item--active]="first">{{ item }}</span>
+      }
+    </div>
+  </nav>
+
+  <!-- Shop all categories -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Shop all categories</h2>
+      <div class="category-grid">
+        @for (cat of shopAllCategories; track cat.label) {
+          <a href="#" class="category-tile">
+            <div class="category-tile__image">
+              <img [src]="cat.image" [alt]="cat.label" loading="lazy" />
+            </div>
+            <span class="category-tile__label">{{ cat.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Bestsellers we think you'll love</h2>
+      <p class="section-subtitle">These favorites have quality and savings written all over them.</p>
+      <div class="carousel-row">
+        @for (item of bestsellers; track item.title) {
+          <a href="#" class="carousel-row__item product-card">
+            <div class="product-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+              @if (item.saleBadge) {
+                <span class="product-card__badge">Sale</span>
+              }
+            </div>
+            <h3 class="product-card__title">{{ item.title }}</h3>
+            <div class="product-card__rating">
+              <span>{{ item.rating }}</span>
+              <span class="product-card__muted">({{ item.reviewCount }})</span>
+            </div>
+            <div class="product-card__price-row">
+              <span class="product-card__price">{{ item.price }}</span>
+              @if (item.salePrice) {
+                <span class="product-card__price-strike">{{ item.salePrice }}</span>
+              }
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Celebrations -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Make it a can't-miss celebration</h2>
+      <div class="editorial-grid">
+        @for (card of celebrations; track card.title) {
+          <a href="#" class="editorial-card">
+            <img [src]="card.image" [alt]="card.title" loading="lazy" />
+            <div class="editorial-card__overlay">
+              <h3 class="editorial-card__title">{{ card.title }}</h3>
+              <p class="editorial-card__desc">{{ card.description }}</p>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Home collection -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Browse our home collection</h2>
+      <p class="section-subtitle">
+        Whether you need a wall refresh or want to display your latest snaps, our collections are here to brighten
+        spaces.
+      </p>
+      <div class="home-grid">
+        @for (item of homeCollection; track item.title) {
+          <a href="#" class="home-card">
+            <div class="home-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+            </div>
+            <span class="home-card__label">{{ item.title }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Invitations for every occasion -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Invites for every occasion</h2>
+      <div class="invite-grid">
+        @for (card of inviteOccasions; track card.title) {
+          <a href="#" class="invite-card">
+            <div class="invite-card__image">
+              <img [src]="card.image" [alt]="card.title" loading="lazy" />
+            </div>
+            <span class="invite-card__label">{{ card.title }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- New arrivals -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Our latest and greatest</h2>
+      <p class="section-subtitle">Need fresh ideas for your next gift or celebration? Check out what's new to love.</p>
+      <div class="product-grid product-grid--4">
+        @for (item of newArrivals; track item.title) {
+          <a href="#" class="product-card">
+            <div class="product-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+              <span class="product-card__badge product-card__badge--new">New</span>
+            </div>
+            <h3 class="product-card__title">{{ item.title }}</h3>
+            <div class="product-card__rating">
+              <span>{{ item.rating }}</span>
+              <span class="product-card__muted">({{ item.reviewCount }})</span>
+            </div>
+            <span class="product-card__price">{{ item.price }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Personal stationery -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Stationery that's so you</h2>
+      <p class="section-subtitle">Shop our wide range of paper goods and add personal flair to everyday notes or postage.</p>
+      <div class="stationery-grid">
+        @for (item of personalStationery; track item.title) {
+          <a href="#" class="stationery-card">
+            <div class="stationery-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+            </div>
+            <span class="stationery-card__label">{{ item.title }}</span>
+            <span class="stationery-card__cta">Shop now</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Made by you #MadeWithPrintGraphi</h2>
+      <p class="section-subtitle">
+        We love to see your custom creations. Post a photo on social media and add @PrintGraphi and
+        #MadeWithPrintGraphi for a chance to be featured here.
+      </p>
+      <div class="social-grid">
+        @for (img of socialImages; track img) {
+          <div class="social-tile">
+            <img [src]="img" alt="Customer creation" loading="lazy" />
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO content -->
+  <section class="section seo-section">
+    <div class="section__inner seo-section__inner">
+      <h2 class="seo-section__title">
+        Create fun celebrations and warm spaces with personalized invitations, stationery and decor
+      </h2>
+      @for (para of seoParagraphs; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta__inner">
+      <h2 class="final-cta__title">Make every moment worth celebrating</h2>
+      <p class="final-cta__desc">
+        Create personalized invitations, gifts, and stationery that turn everyday moments into lasting memories.
+      </p>
+      <div class="final-cta__actions">
+        <button type="button" class="btn btn--dark">Start Creating</button>
+        <button type="button" class="btn btn--outline">Browse Categories</button>
+      </div>
+    </div>
+  </section>
+</app-site-shell>

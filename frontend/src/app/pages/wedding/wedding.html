@@ -1,0 +1,237 @@
+<app-site-shell>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <h1 class="hero__title">Wedding Planning</h1>
+        <p class="hero__desc">Plan your perfect day at the perfect price with lovely stationery, welcome signs, and more.</p>
+        <ul class="hero__highlights">
+          @for (item of promoHighlights; track item) {
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              {{ item }}
+            </li>
+          }
+        </ul>
+        <div class="hero__pills">
+          @for (pill of heroPills; track pill) {
+            <button type="button" class="pill">{{ pill }}</button>
+          }
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Wedding planning" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop all wedding -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Shop all wedding</h2>
+      <div class="category-grid">
+        @for (item of shopAllWedding; track item.label) {
+          <a href="#" class="category-tile">
+            <div class="category-tile__image">
+              <img [src]="item.image" [alt]="item.label" loading="lazy" />
+            </div>
+            <span class="category-tile__label">{{ item.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Bestsellers to fall for</h2>
+      <p class="section-subtitle">Our couples are loving these products and we are confident you will too.</p>
+      <div class="carousel-row">
+        @for (item of bestsellers; track item.title) {
+          <a href="#" class="carousel-row__item product-card">
+            <div class="product-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+              @if (item.badge) {
+                <span class="product-card__badge">{{ item.badge }}</span>
+              }
+            </div>
+            <h3 class="product-card__title">{{ item.title }}</h3>
+            <div class="product-card__rating">
+              <span>{{ item.rating }}</span>
+              <span class="product-card__muted">({{ item.reviewCount }})</span>
+            </div>
+            <div class="product-card__price-row">
+              <span class="product-card__price">{{ item.price }}</span>
+              @if (item.originalPrice) {
+                <span class="product-card__price-strike">{{ item.originalPrice }}</span>
+              }
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Wedding extras -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Wedding extras on us</h2>
+      <p class="section-subtitle">
+        Explore all the helpful add-ons we offer. After all, it's the little details that make the biggest
+        difference.
+      </p>
+      <div class="extras-grid">
+        @for (item of weddingExtras; track item.title) {
+          <div class="extras-card">
+            <h3 class="extras-card__title">{{ item.title }}</h3>
+            <p class="extras-card__desc">{{ item.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Design help -->
+  <section class="design-help">
+    <div class="design-help__image">
+      <img [src]="designHelpImage" alt="Wedding design help" />
+    </div>
+    <div class="design-help__content">
+      <h2 class="design-help__title">Here to help every step of the way</h2>
+      <p class="design-help__desc">
+        Our pros will help you explore options, pull coordinating pieces, and ensure your design looks exactly as
+        you envisioned.
+      </p>
+      <button type="button" class="btn btn--dark">Get in touch with our team</button>
+    </div>
+  </section>
+
+  <!-- Themes -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Unveiling our 2026 themes</h2>
+      <div class="theme-grid">
+        @for (theme of themes; track theme.label) {
+          <a href="#" class="theme-tile">
+            <div class="theme-tile__image">
+              <img [src]="theme.image" [alt]="theme.label" loading="lazy" />
+            </div>
+            <span class="theme-tile__label">{{ theme.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Fresh arrivals -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Fresh arrivals, fabulous prices</h2>
+      <p class="section-subtitle">From stationery extras to ceremony essentials, discover our latest items to love.</p>
+      <div class="product-grid product-grid--6">
+        @for (item of newProducts; track item.title) {
+          <a href="#" class="simple-product-card">
+            <div class="simple-product-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+              <span class="simple-product-card__badge">New</span>
+            </div>
+            <h3 class="simple-product-card__title">{{ item.title }}</h3>
+            <span class="simple-product-card__price">{{ item.price }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Finishing touches -->
+  <section class="finishing-touches">
+    <div class="finishing-touches__image">
+      <img [src]="finishingTouchesImage" alt="Finishing touches" />
+    </div>
+    <div class="finishing-touches__content">
+      <h2 class="finishing-touches__title">Dreamy finishing touches</h2>
+      <p class="finishing-touches__desc">Make your suite even more you with these final flourishes.</p>
+      <div class="finishing-touches__links">
+        <a href="#" class="btn btn--outline">Shop gold foil</a>
+        <a href="#" class="btn btn--outline">Shop monogram invites</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Why PRINTGRAPHI?</h2>
+      <div class="benefit-list">
+        @for (item of benefits; track item.title) {
+          <div class="benefit-item">
+            <h3 class="benefit-item__title">{{ item.title }}</h3>
+            <p class="benefit-item__desc">{{ item.description }}</p>
+          </div>
+        }
+      </div>
+      <div class="reviews-summary">
+        <div class="reviews-summary__rating">
+          <span class="reviews-summary__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span>4.9</span>
+          <span class="reviews-summary__muted">(2000+)</span>
+        </div>
+        <p class="reviews-summary__text">Over 2000 5-star reviews for wedding stationery</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="testimonial">
+    <div class="testimonial__inner">
+      <span class="testimonial__quote-mark">&ldquo;</span>
+      <p class="testimonial__quote">
+        I ordered wedding invitations and RSVPs, I couldn't be happier! They are exactly what I wanted.
+      </p>
+      <p class="testimonial__attribution">Our verified buyers are thrilled with their wedding stationery.</p>
+      <div class="testimonial__actions">
+        <button type="button" class="btn btn--dark">Shop wedding invitations</button>
+        <button type="button" class="btn btn--outline">Shop RSVPs</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get inspired -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Get inspired to plan a magical day</h2>
+      <div class="article-grid">
+        @for (article of articles; track article.title) {
+          <a href="#" class="article-card">
+            <div class="article-card__image">
+              <img [src]="article.image" [alt]="article.title" loading="lazy" />
+            </div>
+            <span class="article-card__category">{{ article.category }}</span>
+            <h3 class="article-card__title">{{ article.title }}</h3>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO content -->
+  <section class="section seo-section">
+    <div class="section__inner seo-section__inner">
+      <h2 class="seo-section__title">Wedding stationery that tells your love story</h2>
+      @for (para of seoParagraphs; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+</app-site-shell>

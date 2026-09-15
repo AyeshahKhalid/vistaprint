@@ -7,6 +7,8 @@ import { LabelsStickers } from './pages/labels-stickers/labels-stickers';
 import { ClothingBags } from './pages/clothing-bags/clothing-bags';
 import { PromotionalProducts } from './pages/promotional-products/promotional-products';
 import { Packaging } from './pages/packaging/packaging';
+import { InvitationsGiftsStationery } from './pages/invitations-gifts-stationery/invitations-gifts-stationery';
+import { Wedding } from './pages/wedding/wedding';
 
 export const routes: Routes = [
   { path: '', component: Home },
@@ -17,4 +19,6 @@ export const routes: Routes = [
   { path: 'clothing-bags', component: ClothingBags },
   { path: 'promotional-products', component: PromotionalProducts },
   { path: 'packaging', component: Packaging },
+  { path: 'invitations-gifts-stationery', component: InvitationsGiftsStationery },
+  { path: 'wedding', component: Wedding },
 ];
