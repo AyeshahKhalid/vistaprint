@@ -1,0 +1,238 @@
+<app-site-shell>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__info">
+        <div class="hero__promo-row">
+          <span class="hero__badge">Up to 50% OFF</span>
+          <span class="hero__promo-code">Code: SAVEVP &bull; Ends Nov. 8</span>
+        </div>
+        <h1 class="hero__title">Save up to 50% off select invitations and announcements</h1>
+        <p class="hero__description">
+          Create a gorgeous suite that perfectly captures your vision, all while sticking to your wedding budget.
+          Shop invites and RSVPs along with accessories like stickers and envelopes.
+        </p>
+        <div class="hero__ctas">
+          <a href="/invitations-gifts-stationery" class="btn btn--primary">Find your dream suite</a>
+          <a href="/deals" class="hero__secondary-link">Shop all eligible products</a>
+        </div>
+      </div>
+      <div class="hero__graphic">
+        <img [src]="heroImage" alt="Wedding invitation suite" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore all categories -->
+  <section class="section categories-section">
+    <div class="section__inner">
+      <h2 class="section__title">Explore all categories</h2>
+      <div class="categories-grid">
+        @for (cat of categories; track cat.path) {
+          <a [href]="cat.path" class="category-tile">
+            <div class="category-tile__icon">
+              <img [src]="cat.image" [alt]="cat.label" />
+            </div>
+            <span class="category-tile__label">{{ cat.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by collection -->
+  <section class="section collections-section">
+    <div class="section__inner">
+      <div class="section__header-row">
+        <h2 class="section__title">Shop by collection</h2>
+        <a href="/collections" class="section__view-all">View all collections &rarr;</a>
+      </div>
+      <div class="collections-grid">
+        @for (col of collections; track col.path) {
+          <a [href]="col.path" class="collection-card">
+            <div class="collection-card__image">
+              <img [src]="col.image" [alt]="col.title" />
+            </div>
+            <h3 class="collection-card__title">{{ col.title }}</h3>
+            <p class="collection-card__desc">{{ col.description }}</p>
+            <span class="collection-card__link">Explore collection</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Ready for your next idea -->
+  <section class="section ideas-section">
+    <div class="section__inner">
+      <h2 class="section__title">Ready for your next idea</h2>
+      <div class="ideas-row">
+        @for (idea of ideas; track idea.path) {
+          <a [href]="idea.path" class="idea-card">
+            <div class="idea-card__image">
+              <img [src]="idea.image" [alt]="idea.label" />
+            </div>
+            <span class="idea-card__label">{{ idea.label }}</span>
+            <span class="idea-card__cta">Customize &rarr;</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured promo banner -->
+  <section class="promo-banner">
+    <div class="promo-banner__inner">
+      <div class="promo-banner__info">
+        <h2 class="promo-banner__title">The best gifts start early</h2>
+        <p class="promo-banner__desc">
+          Skip the holiday rush and shop personalized corporate or family gifts early for everyone on your list. Make
+          this season memorable with premium photo prints and custom keepsakes.
+        </p>
+        <a href="/deals" class="btn btn--primary">Start shopping</a>
+      </div>
+      <div class="promo-banner__image-container">
+        <img [src]="promoBannerImage" alt="Holiday gifts and keepsakes" />
+      </div>
+    </div>
+  </section>
+
+  <!-- New customer offer -->
+  <section class="signup-offer">
+    <div class="signup-offer__image">
+      <img [src]="newCustomerOfferImage" alt="Special offer" />
+    </div>
+    <div class="signup-offer__content">
+      <h2 class="signup-offer__title">Get 15% off your order when you sign up for our emails</h2>
+      <form class="signup-offer__form">
+        <label class="signup-offer__checkbox">
+          <input type="checkbox" />
+          <span
+            >Yes, I'd like to receive special offer emails from PRINTGRAPHI, as well as news about products, services
+            and my designs in progress.</span
+          >
+        </label>
+        <div class="signup-offer__field-row">
+          <input type="email" placeholder="Subscription email" class="signup-offer__input" />
+          <button type="submit" class="btn btn--primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Ambassador spotlight -->
+  <section class="section ambassador-section">
+    <div class="section__inner">
+      <div class="section__header-row">
+        <h2 class="section__title">PRINTGRAPHI Ambassador Spotlight: happy tears</h2>
+        <a href="/ambassador-program" class="section__view-all">Read More</a>
+      </div>
+      <div class="ambassador-carousel">
+        @for (card of ambassadorCards; track card.title) {
+          <div class="ambassador-card">
+            <div class="ambassador-card__image">
+              <img [src]="card.image" [alt]="card.title" />
+            </div>
+            <div class="ambassador-card__details">
+              <span class="ambassador-card__eyebrow">{{ card.eyebrow }}</span>
+              <p class="ambassador-card__title">{{ card.title }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section services-section">
+    <div class="section__inner">
+      <div class="section__header-row">
+        <h2 class="section__title">Tools, services and expert support to build your business</h2>
+        <a href="/design-services" class="section__view-all">See all services &rarr;</a>
+      </div>
+      <div class="services-grid">
+        <div class="service-card service-card--all">
+          <h3 class="service-card__title">All Services</h3>
+          <p class="service-card__desc">
+            Explore our full spectrum of professional printing, distribution, and commercial design solutions built
+            for you.
+          </p>
+        </div>
+        @for (service of services; track service.title) {
+          <div class="service-card">
+            <h3 class="service-card__title">{{ service.title }}</h3>
+            <p class="service-card__desc">{{ service.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- UGC -->
+  <section class="section ugc-section">
+    <div class="section__inner">
+      <div class="ugc-header">
+        <h2 class="section__title">Made by you, #MadeWithPrintGraphi</h2>
+        <p class="ugc-desc">
+          We love to see your custom creations. Post a photo on social media and add @Printgraphih and
+          #MadeWithVistaPrint for a chance to be featured here.
+        </p>
+      </div>
+      <div class="ugc-gallery">
+        @for (post of ugcPosts; track post.handle) {
+          <div class="ugc-tile">
+            <div class="ugc-tile__image">
+              <img [src]="post.image" [alt]="post.handle" />
+            </div>
+            <span class="ugc-tile__handle">{{ post.handle }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup feature -->
+  <section class="signup-offer signup-offer--reverse">
+    <div class="signup-offer__image">
+      <img [src]="signupFeatureImage" alt="Custom apparel" />
+    </div>
+    <div class="signup-offer__content">
+      <span class="signup-offer__eyebrow">IT'S GOOD TO BE ON THE LIST.</span>
+      <h2 class="signup-offer__title">Get 15% off your order when you sign up for our emails</h2>
+      <form class="signup-offer__form">
+        <div class="signup-offer__field-row">
+          <input type="email" placeholder="Subscription email" class="signup-offer__input" />
+          <button type="submit" class="btn btn--primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Brand story -->
+  <section class="section brand-story-section">
+    <div class="section__inner">
+      <h2 class="brand-story__title">PRINTGRAPHI: Here for small business since 1995.</h2>
+      <p class="brand-story__desc">
+        For more than 20 years, PRINTGRAPHI has helped small business owners, entrepreneurs and dreamers create
+        custom designs and professional marketing. Our online printing services are intended to help you find custom
+        products you need &ndash; business cards, promotional marketing and more &ndash; to create a look you love.
+      </p>
+      <div class="brand-story__pillars">
+        <div class="brand-story__pillar">
+          <h3>Easy Design</h3>
+          <p>
+            Our online tools make the process as simple and clear as possible, and we're working to improve your
+            experience all the time.
+          </p>
+        </div>
+        <div class="brand-story__pillar">
+          <h3>Make It Match</h3>
+          <p>
+            Our designs can be used across multiple printed products, which makes it easier for you to create
+            consistent, professional marketing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</app-site-shell>

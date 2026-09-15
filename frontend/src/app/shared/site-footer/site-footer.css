@@ -1,0 +1,163 @@
+.site-footer {
+  background: var(--color-navy);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 48px 0 20px;
+}
+
+.site-footer__inner {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.site-footer__top-brand {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 32px;
+}
+
+.site-footer__logo {
+  height: 28px;
+  width: auto;
+}
+
+.site-footer__tagline {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.site-footer__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  padding-bottom: 32px;
+}
+
+.site-footer__col-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.site-footer__link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.site-footer__link {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.site-footer__link:hover {
+  color: #ffffff;
+}
+
+.site-footer__trustpilot-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.site-footer__trustpilot-rating {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.site-footer__trustpilot-count {
+  font-size: 13px;
+  margin: 4px 0 10px;
+}
+
+.site-footer__stars {
+  display: flex;
+  gap: 4px;
+}
+
+.site-footer__divider {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin: 0;
+}
+
+.site-footer__row-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.site-footer__payment-methods {
+  display: flex;
+  gap: 12px;
+}
+
+.site-footer__payment-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.site-footer__social-links {
+  display: flex;
+  gap: 12px;
+}
+
+.site-footer__social-icon {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.site-footer__social-icon:hover {
+  color: #ffffff;
+}
+
+.site-footer__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  font-size: 13px;
+}
+
+.site-footer__meta-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-footer__meta-divider {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.site-footer__region {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 900px) {
+  .site-footer__cols {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .site-footer__row-bottom,
+  .site-footer__meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}

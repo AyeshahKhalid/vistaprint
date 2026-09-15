@@ -1,0 +1,15 @@
+<nav class="category-nav">
+  <ul class="category-nav__list">
+    @for (item of categories; track item.path) {
+      <li>
+        <a
+          [routerLink]="item.path"
+          class="category-nav__link"
+          [class.category-nav__link--highlight]="item.highlight"
+        >
+          {{ item.label }}
+        </a>
+      </li>
+    }
+  </ul>
+</nav>
