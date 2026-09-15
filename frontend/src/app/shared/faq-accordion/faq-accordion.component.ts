@@ -15,11 +15,11 @@ export interface FaqItem {
 @Component({
   selector: 'app-faq-accordion',
   imports: [],
-  templateUrl: './faq-accordion.html',
-  styleUrl: './faq-accordion.scss',
+  templateUrl: './faq-accordion.component.html',
+  styleUrl: './faq-accordion.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FaqAccordion implements OnInit {
+export class FaqAccordionComponent implements OnInit {
   @Input({ required: true }) items!: FaqItem[];
   @Input() initiallyOpenIndex = 0;
 

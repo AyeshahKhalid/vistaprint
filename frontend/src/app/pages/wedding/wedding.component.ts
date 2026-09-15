@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FaqAccordion, FaqItem } from '../../shared/faq-accordion/faq-accordion';
-import { SiteShell } from '../../shared/site-shell/site-shell';
+import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
+import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
 
 const IMG = '/images/wedding';
 
@@ -48,11 +48,11 @@ interface ArticleCard {
 
 @Component({
   selector: 'app-wedding',
-  imports: [SiteShell, FaqAccordion],
-  templateUrl: './wedding.html',
-  styleUrl: './wedding.scss',
+  imports: [SiteShellComponent, FaqAccordionComponent],
+  templateUrl: './wedding.component.html',
+  styleUrl: './wedding.component.scss',
 })
-export class Wedding {
+export class WeddingComponent {
   readonly heroImage = `${IMG}/hero-right-hero-image-22_608.png`;
   readonly promoHighlights = [
     'Up to 50% off invites, enclosure cards, and RSVPs',
@@ -65,7 +65,7 @@ export class Wedding {
     { label: 'Save the Dates', image: `${IMG}/frame-rectangle-22_614.png` },
     { label: 'Invitation Suites', image: `${IMG}/frame-rectangle-22_618.png` },
     { label: 'Ceremony & Reception Essentials', image: `${IMG}/frame-rectangle-22_622.png` },
-    { label: 'Wedding Signs', image: `${IMG}/frame-rectangle-22_626.png` },
+    { label: 'WeddingComponent Signs', image: `${IMG}/frame-rectangle-22_626.png` },
     { label: 'Parties & Showers', image: `${IMG}/frame-rectangle-22_631.png` },
     { label: 'Thank You Cards', image: `${IMG}/frame-rectangle-22_635.png` },
     { label: 'Keepsakes', image: `${IMG}/frame-rectangle-22_639.png` },
@@ -73,7 +73,7 @@ export class Wedding {
   ];
 
   readonly bestsellers: BestsellerItem[] = [
-    { title: 'Wedding Invites', rating: 4.8, reviewCount: 3420, price: '$0.48', originalPrice: '$0.96', badge: '50% off', image: `${IMG}/image-container-rectangle-22_654.png` },
+    { title: 'WeddingComponent Invites', rating: 4.8, reviewCount: 3420, price: '$0.48', originalPrice: '$0.96', badge: '50% off', image: `${IMG}/image-container-rectangle-22_654.png` },
     { title: 'Save the Date Cards', rating: 4.7, reviewCount: 1890, price: '$0.54', originalPrice: '$1.08', badge: '50% off', image: `${IMG}/image-container-rectangle-22_679.png` },
     { title: 'Foam Board Signs', rating: 4.6, reviewCount: 567, price: '$19.99', image: `${IMG}/image-container-rectangle-22_704.png` },
     { title: 'Custom Napkins', rating: 4.5, reviewCount: 890, price: '$0.42', image: `${IMG}/image-container-rectangle-22_726.png` },
@@ -98,7 +98,7 @@ export class Wedding {
 
   readonly newProducts: NewProduct[] = [
     { title: 'Custom Matches', price: 'From $24.99', image: `${IMG}/image-container-rectangle-22_888.png` },
-    { title: 'Letterpress Wedding Invitations', price: 'From $2.49', image: `${IMG}/image-container-rectangle-22_897.png` },
+    { title: 'Letterpress WeddingComponent Invitations', price: 'From $2.49', image: `${IMG}/image-container-rectangle-22_897.png` },
     { title: 'Favor Bags', price: 'From $0.89', image: `${IMG}/image-container-rectangle-22_906.png` },
     { title: 'Wax Seals', price: 'From $1.29', image: `${IMG}/image-container-rectangle-22_916.png` },
     { title: 'Guest Books', price: 'From $34.99', image: `${IMG}/image-container-rectangle-22_925.png` },
@@ -134,7 +134,7 @@ export class Wedding {
     {
       question: 'What does stationery mean for a wedding?',
       answer:
-        'Wedding stationery refers to all the printed materials you use throughout your wedding journey. This includes save the dates, invitations, RSVP cards, programs, menus, place cards, thank you notes, and more. A cohesive stationery suite helps set the tone and theme for your celebration.',
+        'WeddingComponent stationery refers to all the printed materials you use throughout your wedding journey. This includes save the dates, invitations, RSVP cards, programs, menus, place cards, thank you notes, and more. A cohesive stationery suite helps set the tone and theme for your celebration.',
     },
     { question: 'What should I put on wedding stationery?' },
     { question: 'Does wedding stationery have to match?' },

@@ -1,24 +1,26 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { BusinessCardsPage } from './pages/business-cards/business-cards';
-import { PostcardsPrintAdvertising } from './pages/postcards-print-advertising/postcards-print-advertising';
-import { SignsBannersPosters } from './pages/signs-banners-posters/signs-banners-posters';
-import { LabelsStickers } from './pages/labels-stickers/labels-stickers';
-import { ClothingBags } from './pages/clothing-bags/clothing-bags';
-import { PromotionalProducts } from './pages/promotional-products/promotional-products';
-import { Packaging } from './pages/packaging/packaging';
-import { InvitationsGiftsStationery } from './pages/invitations-gifts-stationery/invitations-gifts-stationery';
-import { Wedding } from './pages/wedding/wedding';
+import { HomeComponent } from './pages/home/home.component';
+import { BusinessCardsComponent } from './pages/business-cards/business-cards.component';
+import { PostcardsPrintAdvertisingComponent } from './pages/postcards-print-advertising/postcards-print-advertising.component';
+import { SignsBannersPostersComponent } from './pages/signs-banners-posters/signs-banners-posters.component';
+import { LabelsStickersComponent } from './pages/labels-stickers/labels-stickers.component';
+import { ClothingBagsComponent } from './pages/clothing-bags/clothing-bags.component';
+import { PromotionalProductsComponent } from './pages/promotional-products/promotional-products.component';
+import { PackagingComponent } from './pages/packaging/packaging.component';
+import { InvitationsGiftsStationeryComponent } from './pages/invitations-gifts-stationery/invitations-gifts-stationery.component';
+import { WeddingComponent } from './pages/wedding/wedding.component';
+import { DesignServicesComponent } from './pages/design-services/design-services.component';
 
 export const routes: Routes = [
-  { path: '', component: Home },
-  { path: 'business-cards', component: BusinessCardsPage },
-  { path: 'postcards-print-advertising', component: PostcardsPrintAdvertising },
-  { path: 'signs-banners-posters', component: SignsBannersPosters },
-  { path: 'labels-stickers', component: LabelsStickers },
-  { path: 'clothing-bags', component: ClothingBags },
-  { path: 'promotional-products', component: PromotionalProducts },
-  { path: 'packaging', component: Packaging },
-  { path: 'invitations-gifts-stationery', component: InvitationsGiftsStationery },
-  { path: 'wedding', component: Wedding },
+  { path: '', component: HomeComponent },
+  { path: 'business-cards', component: BusinessCardsComponent },
+  { path: 'postcards-print-advertising', component: PostcardsPrintAdvertisingComponent },
+  { path: 'signs-banners-posters', component: SignsBannersPostersComponent },
+  { path: 'labels-stickers', component: LabelsStickersComponent },
+  { path: 'clothing-bags', component: ClothingBagsComponent },
+  { path: 'promotional-products', component: PromotionalProductsComponent },
+  { path: 'packaging', component: PackagingComponent },
+  { path: 'invitations-gifts-stationery', component: InvitationsGiftsStationeryComponent },
+  { path: 'wedding', component: WeddingComponent },
+  { path: 'design-services', component: DesignServicesComponent },
 ];

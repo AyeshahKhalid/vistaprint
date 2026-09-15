@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SiteShell } from '../../shared/site-shell/site-shell';
-import { SectionHeader } from '../../shared/section-header/section-header';
-import { ProductCard } from '../../shared/product-card/product-card';
-import { FaqAccordion, FaqItem } from '../../shared/faq-accordion/faq-accordion';
+import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
+import { SectionHeaderComponent } from '../../shared/section-header/section-header.component';
+import { ProductCardComponent } from '../../shared/product-card/product-card.component';
+import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
 
 const IMG = '/images/signs-banners-posters';
 
@@ -47,11 +47,11 @@ interface ExploreTile {
 
 @Component({
   selector: 'app-signs-banners-posters',
-  imports: [SiteShell, RouterLink, SectionHeader, ProductCard, FaqAccordion],
-  templateUrl: './signs-banners-posters.html',
-  styleUrl: './signs-banners-posters.scss',
+  imports: [SiteShellComponent, RouterLink, SectionHeaderComponent, ProductCardComponent, FaqAccordionComponent],
+  templateUrl: './signs-banners-posters.component.html',
+  styleUrl: './signs-banners-posters.component.scss',
 })
-export class SignsBannersPosters {
+export class SignsBannersPostersComponent {
   readonly pageTitle = 'Custom Signs, Banners and Posters';
 
   readonly heroImage = `${IMG}/hero-right-hero-image-13_116.png`;
@@ -203,12 +203,12 @@ export class SignsBannersPosters {
       image: `${IMG}/category-tile-category-image-13_528.png`,
     },
     {
-      label: 'Invitations & Home',
+      label: 'Invitations & HomeComponent',
       path: '/invitations-gifts-stationery',
       image: `${IMG}/category-tile-category-image-13_531.png`,
     },
     { label: 'Labels & Stickers', path: '/labels-stickers', image: `${IMG}/category-tile-category-image-13_534.png` },
-    { label: 'Packaging', path: '/packaging', image: `${IMG}/category-tile-category-image-13_537.png` },
+    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/category-tile-category-image-13_537.png` },
     { label: 'Clothing & Bags', path: '/clothing-bags', image: `${IMG}/category-tile-category-image-13_540.png` },
   ];
 

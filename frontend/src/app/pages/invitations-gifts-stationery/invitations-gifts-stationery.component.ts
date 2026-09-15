@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FaqAccordion, FaqItem } from '../../shared/faq-accordion/faq-accordion';
-import { SiteShell } from '../../shared/site-shell/site-shell';
+import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
+import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
 
 const IMG = '/images/invitations-gifts-stationery';
 
@@ -38,18 +38,18 @@ interface StationeryItem {
 
 @Component({
   selector: 'app-invitations-gifts-stationery',
-  imports: [SiteShell, FaqAccordion],
-  templateUrl: './invitations-gifts-stationery.html',
-  styleUrl: './invitations-gifts-stationery.scss',
+  imports: [SiteShellComponent, FaqAccordionComponent],
+  templateUrl: './invitations-gifts-stationery.component.html',
+  styleUrl: './invitations-gifts-stationery.component.scss',
 })
-export class InvitationsGiftsStationery {
+export class InvitationsGiftsStationeryComponent {
   readonly heroImage = `${IMG}/hero-right-hero-image-18_1390.png`;
-  readonly heroPills = ['Invitations and Cards', 'Home and Gifts', 'Personal Stationery'];
+  readonly heroPills = ['Invitations and Cards', 'HomeComponent and Gifts', 'Personal Stationery'];
   readonly anchorNav = ['Bestsellers', 'Celebrations', 'Shop by Category', 'Invites and Announcements', 'New Arrivals', 'Personal Stationery'];
 
   readonly shopAllCategories: CategoryCard[] = [
     { label: 'Invitations and Announcements', image: `${IMG}/category-card-0-card-image-18_1404.png` },
-    { label: 'Home and Gifts', image: `${IMG}/category-card-1-card-image-18_1410.png` },
+    { label: 'HomeComponent and Gifts', image: `${IMG}/category-card-1-card-image-18_1410.png` },
     { label: 'Personal Stationery', image: `${IMG}/category-card-2-card-image-18_1416.png` },
     { label: 'Wall Art', image: `${IMG}/category-card-3-card-image-18_1422.png` },
     { label: 'Note Cards and Thank You Cards', image: `${IMG}/category-card-4-card-image-18_1428.png` },
@@ -59,7 +59,7 @@ export class InvitationsGiftsStationery {
   ];
 
   readonly bestsellers: ProductItem[] = [
-    { title: 'Wedding Invitations', rating: 4.8, reviewCount: 2340, price: '$0.60 each', image: `${IMG}/image-container-product-image-18_1462.png` },
+    { title: 'WeddingComponent Invitations', rating: 4.8, reviewCount: 2340, price: '$0.60 each', image: `${IMG}/image-container-product-image-18_1462.png` },
     { title: 'Wall Calendars', rating: 4.7, reviewCount: 1890, price: '$24.99', salePrice: '$34.99', saleBadge: true, image: `${IMG}/image-container-product-image-18_1483.png` },
     { title: 'Photo Books', rating: 4.9, reviewCount: 3120, price: '$19.99', image: `${IMG}/image-container-product-image-18_1507.png` },
     { title: 'Custom Mugs', rating: 4.6, reviewCount: 4521, price: '$8.99', image: `${IMG}/image-container-product-image-18_1528.png` },
@@ -67,7 +67,7 @@ export class InvitationsGiftsStationery {
 
   readonly celebrations: EditorialCard[] = [
     { title: 'Graduation', description: 'Celebrate your favorite student with invites and party decor made to honor their big moment.', image: `${IMG}/editorial-card-0-card-bg-image-18_1554.png` },
-    { title: 'Wedding', description: 'Explore gorgeous and affordable essentials for every stage of planning.', image: `${IMG}/editorial-card-1-card-bg-image-18_1559.png` },
+    { title: 'WeddingComponent', description: 'Explore gorgeous and affordable essentials for every stage of planning.', image: `${IMG}/editorial-card-1-card-bg-image-18_1559.png` },
     { title: 'Birthday', description: 'Matching banners, signs, napkins and more. Getting older just got way more fun.', image: `${IMG}/editorial-card-2-card-bg-image-18_1564.png` },
     { title: 'Baby', description: 'Celebrate the arrival of your little love with adorable shower invites and gifts.', image: `${IMG}/editorial-card-3-card-bg-image-18_1569.png` },
   ];
@@ -80,7 +80,7 @@ export class InvitationsGiftsStationery {
   ];
 
   readonly inviteOccasions: InviteCard[] = [
-    { title: 'Wedding Invites', image: `${IMG}/invite-card-0-card-image-18_1727.png` },
+    { title: 'WeddingComponent Invites', image: `${IMG}/invite-card-0-card-image-18_1727.png` },
     { title: 'Graduation Invites', image: `${IMG}/invite-card-1-card-image-18_1731.png` },
     { title: 'Save the Dates', image: `${IMG}/invite-card-2-card-image-18_1735.png` },
     { title: 'Baby Shower Invites', image: `${IMG}/invite-card-3-card-image-18_1739.png` },

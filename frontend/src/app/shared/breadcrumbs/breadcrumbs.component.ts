@@ -9,10 +9,10 @@ export interface Breadcrumb {
 @Component({
   selector: 'app-breadcrumbs',
   imports: [RouterLink],
-  templateUrl: './breadcrumbs.html',
-  styleUrl: './breadcrumbs.scss',
+  templateUrl: './breadcrumbs.component.html',
+  styleUrl: './breadcrumbs.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Breadcrumbs {
+export class BreadcrumbsComponent {
   @Input({ required: true }) items!: Breadcrumb[];
 }

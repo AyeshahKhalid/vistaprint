@@ -8,10 +8,10 @@ interface FooterLink {
 @Component({
   selector: 'app-site-footer',
   imports: [],
-  templateUrl: './site-footer.html',
-  styleUrl: './site-footer.scss',
+  templateUrl: './site-footer.component.html',
+  styleUrl: './site-footer.component.scss',
 })
-export class SiteFooter {
+export class SiteFooterComponent {
   readonly helpLinks: FooterLink[] = [
     { label: 'My Account', path: '/account' },
     { label: 'Shipping', path: '/shipping' },

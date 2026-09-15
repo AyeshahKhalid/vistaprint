@@ -1,0 +1,154 @@
+<app-site-shell>
+  <div class="breadcrumb-bar">
+    <app-breadcrumbs [items]="breadcrumbs" />
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <h1 class="hero__title">You take care of your business, we'll take care of the design</h1>
+        <p class="hero__desc">
+          Work with professional, talented designers to bring your brand to life. From handcrafted logos to custom
+          marketing materials and beyond.
+        </p>
+        <div class="hero__price-highlight">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5z"/></svg>
+          Custom design from $10.00
+        </div>
+        <div class="hero__actions">
+          <button type="button" class="btn btn--dark">Browse design services</button>
+          <button type="button" class="btn btn--outline">How it works</button>
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Design services" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Section nav -->
+  <nav class="section-nav">
+    <div class="section-nav__inner">
+      @for (item of sectionNav; track item; let first = $first) {
+        <span class="section-nav__item" [class.section-nav__item--active]="first">{{ item }}</span>
+      }
+    </div>
+  </nav>
+
+  <!-- Design services grid -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Design Services</h2>
+      <div class="category-pills">
+        @for (pill of categoryPills; track pill; let first = $first) {
+          <span class="category-pill" [class.category-pill--active]="first">{{ pill }}</span>
+        }
+      </div>
+      <div class="service-grid">
+        @for (card of serviceCards; track card.title) {
+          <a href="#" class="service-card">
+            <div class="service-card__image">
+              <img [src]="card.image" [alt]="card.title" loading="lazy" />
+            </div>
+            <div class="service-card__body">
+              <h3 class="service-card__title">{{ card.title }}</h3>
+              <span class="service-card__price">{{ card.price }}</span>
+            </div>
+          </a>
+        }
+        <div class="service-card service-card--cta">
+          <h3 class="service-card__title">Can't find the design service you are looking for?</h3>
+          <a href="#" class="service-card__link">Create a custom request &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Why choose PRINTGRAPHI?</h2>
+      <div class="why-grid">
+        @for (item of whyItems; track item.title) {
+          <div class="why-item">
+            <h3 class="why-item__title">{{ item.title }}</h3>
+            <p class="why-item__desc">{{ item.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Design process -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">The design process explained</h2>
+      <div class="process-grid">
+        @for (step of processSteps; track step.title) {
+          <div class="process-step">
+            <span class="process-step__number">{{ step.number }}</span>
+            <h3 class="process-step__title">{{ step.title }}</h3>
+            <p class="process-step__desc">{{ step.description }}</p>
+          </div>
+        }
+      </div>
+      <div class="process-cta">
+        <button type="button" class="btn btn--dark">Create a project</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Logo feature -->
+  <section class="logo-feature">
+    <div class="logo-feature__image">
+      <img [src]="logoFeatureImage" alt="Pro logo design" />
+    </div>
+    <div class="logo-feature__content">
+      <h2 class="logo-feature__title">Your dream logo designed by a pro? Yes please!</h2>
+      <p class="logo-feature__desc">
+        Complete your brief, choose your designer, share your feedback, and bring your dream logo to life.
+      </p>
+      <button type="button" class="btn btn--dark">Pro Logo Design</button>
+    </div>
+  </section>
+
+  <!-- Customer reviews -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Loved by businesses and creators</h2>
+      <div class="reviews-grid">
+        @for (review of reviews; track review.name) {
+          <div class="review-card">
+            <p class="review-card__quote">&ldquo;{{ review.quote }}&rdquo;</p>
+            <p class="review-card__name">&mdash; {{ review.name }}</p>
+            <p class="review-card__role">{{ review.role }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+
+  <!-- Support CTA -->
+  <section class="support-cta">
+    <div class="support-cta__inner">
+      <h2 class="support-cta__title">Help any time</h2>
+      <p class="support-cta__desc">
+        Browse our Help Centre or chat with one of our Customer Care Specialists who will be available anytime to
+        help you get a great design.
+      </p>
+      <div class="support-cta__actions">
+        <button type="button" class="btn btn--dark">Visit help center</button>
+        <button type="button" class="btn btn--outline">Chat with us</button>
+      </div>
+    </div>
+  </section>
+</app-site-shell>

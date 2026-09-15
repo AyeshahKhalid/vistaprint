@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SiteShell } from '../../shared/site-shell/site-shell';
+import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
 
 const IMG = '/images/home';
 
@@ -34,11 +34,11 @@ interface UgcPost {
 
 @Component({
   selector: 'app-home',
-  imports: [SiteShell],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+  imports: [SiteShellComponent],
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.scss',
 })
-export class Home {
+export class HomeComponent {
   readonly heroImage = `${IMG}/hero-graphic-hero-image-3_75.png`;
   readonly newCustomerOfferImage = `${IMG}/section-new-customer-offer-promo-image-3_278.png`;
   readonly signupFeatureImage = `${IMG}/section-signup-feature-apparel-promo-image-3_376.png`;
@@ -63,7 +63,7 @@ export class Home {
       path: '/promotional-products',
       image: `${IMG}/category-card-5-card-image-3_106.png`,
     },
-    { label: 'Packaging', path: '/packaging', image: `${IMG}/category-card-6-card-image-3_110.png` },
+    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/category-card-6-card-image-3_110.png` },
     {
       label: 'Booklets & Catalogs',
       path: '/booklets-catalogs',
@@ -97,7 +97,7 @@ export class Home {
       image: `${IMG}/collection-card-3-collection-image-3_147.png`,
     },
     {
-      title: 'Holiday Packaging',
+      title: 'Holiday PackagingComponent',
       description: 'Festive custom mailers, ribbons, and gift wrap boxes',
       path: '/collections/holiday-packaging',
       image: `${IMG}/collection-card-4-collection-image-3_155.png`,
@@ -113,7 +113,7 @@ export class Home {
   readonly ideas: Idea[] = [
     { label: 'Custom T-Shirts', path: '/clothing-bags/t-shirts', image: `${IMG}/idea-card-0-card-image-3_175.png` },
     {
-      label: 'Shipping Packaging',
+      label: 'Shipping PackagingComponent',
       path: '/packaging/shipping',
       image: `${IMG}/idea-card-1-card-image-3_180.png`,
     },
@@ -170,7 +170,7 @@ export class Home {
   readonly ambassadorCards = [
     { eyebrow: 'Ambassador Spotlight', title: 'Flour & Blooms Bakery', image: `${IMG}/carousel-card-0-card-image-3_295.png` },
     { eyebrow: 'Business Cards', title: 'Foil & Specialty Finishes', image: `${IMG}/carousel-card-1-card-image-3_300.png` },
-    { eyebrow: 'Mailer Boxes', title: 'Eco-Friendly Custom Packaging', image: `${IMG}/carousel-card-2-card-image-3_305.png` },
+    { eyebrow: 'Mailer Boxes', title: 'Eco-Friendly Custom PackagingComponent', image: `${IMG}/carousel-card-2-card-image-3_305.png` },
     { eyebrow: 'Stickers', title: 'Custom Die-Cut Sheet Stickers', image: `${IMG}/carousel-card-3-card-image-3_310.png` },
   ];
 

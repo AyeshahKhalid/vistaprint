@@ -1,10 +1,10 @@
 import { DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SiteShell } from '../../shared/site-shell/site-shell';
-import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
-import { SectionHeader } from '../../shared/section-header/section-header';
-import { FaqAccordion, FaqItem } from '../../shared/faq-accordion/faq-accordion';
+import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
+import { BreadcrumbsComponent } from '../../shared/breadcrumbs/breadcrumbs.component';
+import { SectionHeaderComponent } from '../../shared/section-header/section-header.component';
+import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
 
 const IMG = '/images/promotional-products';
 
@@ -47,12 +47,12 @@ interface ExploreTile {
 
 @Component({
   selector: 'app-promotional-products',
-  imports: [SiteShell, RouterLink, Breadcrumbs, SectionHeader, FaqAccordion, DecimalPipe],
-  templateUrl: './promotional-products.html',
-  styleUrl: './promotional-products.scss',
+  imports: [SiteShellComponent, RouterLink, BreadcrumbsComponent, SectionHeaderComponent, FaqAccordionComponent, DecimalPipe],
+  templateUrl: './promotional-products.component.html',
+  styleUrl: './promotional-products.component.scss',
 })
-export class PromotionalProducts {
-  readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Promotional Products' }];
+export class PromotionalProductsComponent {
+  readonly breadcrumbs = [{ label: 'HomeComponent', path: '/' }, { label: 'Promotional Products' }];
 
   readonly heroImage = `${IMG}/hero-right-hero-lifestyle-image-16_2184.png`;
   readonly categoryAnchors = ['Bestsellers', 'Gifts and giveaways', 'Budget-friendly picks', 'Popular brands', 'Our collections'];
@@ -120,7 +120,7 @@ export class PromotionalProducts {
     { label: 'Postcards and Print Advertising', path: '/postcards-print-advertising', image: `${IMG}/category-tile-category-image-16_2609.png` },
     { label: 'Signs Banners and Posters', path: '/signs-banners-posters', image: `${IMG}/category-tile-category-image-16_2613.png` },
     { label: 'Labels and Stickers', path: '/labels-stickers', image: `${IMG}/category-tile-category-image-16_2618.png` },
-    { label: 'Packaging', path: '/packaging', image: `${IMG}/category-tile-category-image-16_2622.png` },
+    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/category-tile-category-image-16_2622.png` },
     { label: 'Clothing and Bags', path: '/clothing-bags', image: `${IMG}/category-tile-category-image-16_2626.png` },
     { label: 'Invitations Gifts and Stationery', path: '/invitations-gifts-stationery', image: `${IMG}/category-tile-category-image-16_2630.png` },
   ];

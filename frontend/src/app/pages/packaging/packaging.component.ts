@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SiteShell } from '../../shared/site-shell/site-shell';
-import { FaqAccordion, FaqItem } from '../../shared/faq-accordion/faq-accordion';
+import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
+import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
 
 const IMG = '/images/packaging';
 
@@ -42,14 +42,14 @@ interface ExploreTile {
 
 @Component({
   selector: 'app-packaging',
-  imports: [SiteShell, RouterLink, FaqAccordion],
-  templateUrl: './packaging.html',
-  styleUrl: './packaging.scss',
+  imports: [SiteShellComponent, RouterLink, FaqAccordionComponent],
+  templateUrl: './packaging.component.html',
+  styleUrl: './packaging.component.scss',
 })
-export class Packaging {
+export class PackagingComponent {
   readonly heroImage = `${IMG}/hero-right-hero-image-18_89.png`;
-  readonly heroQuickLinks = ['New Arrivals', 'Packaging Samples', 'Reorder'];
-  readonly categoryNav = ['All Packaging', 'New Arrivals', 'Samples', 'Bestsellers', 'Accessories'];
+  readonly heroQuickLinks = ['New Arrivals', 'PackagingComponent Samples', 'Reorder'];
+  readonly categoryNav = ['All PackagingComponent', 'New Arrivals', 'Samples', 'Bestsellers', 'Accessories'];
 
   readonly lineupCards: LineupCard[] = [
     { title: 'Custom Mailer Boxes', description: 'Protect your products while putting your brand front and center', image: `${IMG}/frame-card-image-18_105.png` },
@@ -59,9 +59,9 @@ export class Packaging {
   ];
 
   readonly needCards: NeedCard[] = [
-    { title: 'Shipping Packaging', description: 'Get each order where its going safely and on brand', image: `${IMG}/frame-grid-card-18_153.png` },
-    { title: 'Retail Packaging', description: 'Give your products the retail presence they deserve', image: `${IMG}/frame-grid-card-18_158.png` },
-    { title: 'Food Packaging', description: 'Serve up any dish drink or treat with your brand on top', image: `${IMG}/frame-grid-card-18_162.png` },
+    { title: 'Shipping PackagingComponent', description: 'Get each order where its going safely and on brand', image: `${IMG}/frame-grid-card-18_153.png` },
+    { title: 'Retail PackagingComponent', description: 'Give your products the retail presence they deserve', image: `${IMG}/frame-grid-card-18_158.png` },
+    { title: 'Food PackagingComponent', description: 'Serve up any dish drink or treat with your brand on top', image: `${IMG}/frame-grid-card-18_162.png` },
     { title: 'Unboxing Essentials', description: 'Turn every delivery into a moment customers wont forget', image: `${IMG}/frame-grid-card-18_162.png` },
   ];
 

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SiteShell } from '../../shared/site-shell/site-shell';
-import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
-import { SectionHeader } from '../../shared/section-header/section-header';
-import { ProductCard } from '../../shared/product-card/product-card';
-import { FaqAccordion, FaqItem } from '../../shared/faq-accordion/faq-accordion';
+import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
+import { BreadcrumbsComponent } from '../../shared/breadcrumbs/breadcrumbs.component';
+import { SectionHeaderComponent } from '../../shared/section-header/section-header.component';
+import { ProductCardComponent } from '../../shared/product-card/product-card.component';
+import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
 
 const IMG = '/images/clothing-bags';
 
@@ -37,12 +37,12 @@ interface ExploreTile {
 
 @Component({
   selector: 'app-clothing-bags',
-  imports: [SiteShell, RouterLink, Breadcrumbs, SectionHeader, ProductCard, FaqAccordion],
-  templateUrl: './clothing-bags.html',
-  styleUrl: './clothing-bags.scss',
+  imports: [SiteShellComponent, RouterLink, BreadcrumbsComponent, SectionHeaderComponent, ProductCardComponent, FaqAccordionComponent],
+  templateUrl: './clothing-bags.component.html',
+  styleUrl: './clothing-bags.component.scss',
 })
-export class ClothingBags {
-  readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Clothing and Bags' }];
+export class ClothingBagsComponent {
+  readonly breadcrumbs = [{ label: 'HomeComponent', path: '/' }, { label: 'Clothing and Bags' }];
 
   readonly heroImage = `${IMG}/hero-right-column-hero-product-image-16_482.png`;
   readonly heroSecondaryLinks = ['Matching Team Outfits', 'Bestsellers', 'Custom Workwear'];
@@ -177,7 +177,7 @@ export class ClothingBags {
       image: `${IMG}/cat-tile-r2-0-rectangle-16_1055.png`,
     },
     { label: 'Labels & Stickers', path: '/labels-stickers', image: `${IMG}/cat-tile-r2-1-rectangle-16_1058.png` },
-    { label: 'Packaging', path: '/packaging', image: `${IMG}/cat-tile-r2-2-rectangle-16_1061.png` },
+    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/cat-tile-r2-2-rectangle-16_1061.png` },
   ];
 
   readonly ugcImages = [

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { SiteShell } from '../../shared/site-shell/site-shell';
-import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
-import { SectionHeader } from '../../shared/section-header/section-header';
-import { ProductCard } from '../../shared/product-card/product-card';
-import { FaqAccordion, FaqItem } from '../../shared/faq-accordion/faq-accordion';
+import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
+import { BreadcrumbsComponent } from '../../shared/breadcrumbs/breadcrumbs.component';
+import { SectionHeaderComponent } from '../../shared/section-header/section-header.component';
+import { ProductCardComponent } from '../../shared/product-card/product-card.component';
+import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
 
 const IMG = '/images/business-cards';
 
@@ -69,12 +69,12 @@ interface GalleryPost {
 
 @Component({
   selector: 'app-business-cards',
-  imports: [SiteShell, Breadcrumbs, SectionHeader, ProductCard, FaqAccordion],
-  templateUrl: './business-cards.html',
-  styleUrl: './business-cards.scss',
+  imports: [SiteShellComponent, BreadcrumbsComponent, SectionHeaderComponent, ProductCardComponent, FaqAccordionComponent],
+  templateUrl: './business-cards.component.html',
+  styleUrl: './business-cards.component.scss',
 })
-export class BusinessCardsPage {
-  readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Business Cards' }];
+export class BusinessCardsComponent {
+  readonly breadcrumbs = [{ label: 'HomeComponent', path: '/' }, { label: 'Business Cards' }];
 
   readonly heroImage = `${IMG}/hero-right-column-hero-product-image-8_95.png`;
 
