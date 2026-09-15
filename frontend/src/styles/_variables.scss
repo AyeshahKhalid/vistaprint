@@ -8,13 +8,42 @@ $color-success: #00b67a;
 // Text colors
 $color-text: #111827;
 $color-text-secondary: #4b5563;
+$color-text-body: #374151; // body copy in SEO/FAQ content — distinct from #4b5563 used in card meta
 $color-text-muted: #9ca3af;
+$color-text-muted-alt: #6b7280;
+$color-text-dark: #1f2937; // outline button text/border, dark CTA backgrounds
 
 // Backgrounds & borders
 $color-bg: #ffffff;
 $color-bg-subtle: #f5f7fa;
 $color-bg-accent: #e2f1fc;
+$color-bg-accent-alt: #e2f2ff; // used for shape/gallery section backgrounds on product pages
+$color-bg-soft: #f9fafb; // swatch chips, table stripe rows
+$color-bg-hero: #fafbfb; // hero section background on category pages
+$color-bg-icon-circle: #e8f4fd; // "why us" icon circle backgrounds
 $color-border: #d9e0e8;
+$color-border-card: #e5e7eb; // product/shape card borders — distinct from header/nav border
+
+// Accent
+$color-eyebrow: #0077c8; // product card eyebrow labels (e.g. "ACRYLIC HOLDER")
+$color-navy-deep: #042d7c; // dark promo banner backgrounds (e.g. fast-delivery banner)
+$color-star: #f59e0b; // filled star rating icon
+
+// Promotional Products page — distinct warm/stone palette per Figma (not shared with other pages)
+$color-promo-text: #0f172a;
+$color-promo-text-secondary: #57534e;
+$color-promo-text-muted: #78716c;
+$color-promo-dark: #1a1a2e;
+$color-promo-accent: #ea580c;
+$color-promo-bg-subtle: #f5f5f4;
+$color-promo-bg-hero: #fafaf9;
+
+// Packaging page — distinct bright-blue palette per Figma (not shared with other pages)
+$color-packaging-text: #1a1a2e;
+$color-packaging-accent: #2563eb;
+$color-packaging-badge-bg: #e6f4f3;
+$color-packaging-bestseller-bg: #fff3e5;
+$color-packaging-bestseller-text: #ff7a00;
 
 // Typography
 $font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;

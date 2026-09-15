@@ -19,4 +19,8 @@ export class ProductCard {
   @Input() priceDetail?: string;
   @Input() ctaLabel?: string;
   @Input() path?: string;
+
+  ratingRoundedDown(): number {
+    return this.rating ? Math.round(this.rating) : 0;
+  }
 }

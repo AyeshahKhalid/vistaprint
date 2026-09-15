@@ -3,32 +3,54 @@
     <img [src]="image" [alt]="title" loading="lazy" />
   </div>
   <div class="product-card__body">
-    @if (eyebrow) {
-      <span class="product-card__eyebrow">{{ eyebrow }}</span>
-    }
-    <h3 class="product-card__title">{{ title }}</h3>
-    @if (description) {
-      <p class="product-card__desc">{{ description }}</p>
-    }
+    <div class="product-card__meta">
+      @if (eyebrow) {
+        <span class="product-card__eyebrow">{{ eyebrow }}</span>
+      }
+      <h3 class="product-card__title">{{ title }}</h3>
+      @if (description) {
+        <p class="product-card__desc">{{ description }}</p>
+      }
+    </div>
+
     @if (rating) {
       <div class="product-card__rating">
+        <span class="product-card__stars">
+          @for (i of [0, 1, 2, 3, 4]; track i) {
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              [attr.fill]="i < ratingRoundedDown() ? '#f59e0b' : 'none'"
+              [attr.stroke]="i < ratingRoundedDown() ? '#f59e0b' : '#e5e7eb'"
+              stroke-width="1.5"
+            >
+              <path d="M12 2l2.9 6.6L22 9.3l-5 4.7 1.5 7L12 17.8 5.5 21l1.5-7-5-4.7 7.1-.7z" />
+            </svg>
+          }
+        </span>
         <span class="product-card__rating-value">{{ rating }}</span>
         @if (reviewCount) {
           <span class="product-card__rating-count">({{ reviewCount | number }})</span>
         }
       </div>
     }
+
     @if (startingPrice) {
+      <hr class="product-card__divider" />
       <div class="product-card__pricing">
         <span class="product-card__pricing-label">Starting from</span>
-        <span class="product-card__pricing-value">{{ startingPrice }}</span>
-        @if (priceDetail) {
-          <span class="product-card__pricing-detail">{{ priceDetail }}</span>
-        }
+        <div class="product-card__pricing-row">
+          <span class="product-card__pricing-value">{{ startingPrice }}</span>
+          @if (priceDetail) {
+            <span class="product-card__pricing-detail">{{ priceDetail }}</span>
+          }
+        </div>
       </div>
     }
+
     @if (ctaLabel) {
-      <span class="product-card__cta">{{ ctaLabel }}</span>
+      <span class="product-card__cta-button">{{ ctaLabel }}</span>
     }
   </div>
 </a>

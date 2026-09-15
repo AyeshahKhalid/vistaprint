@@ -58,7 +58,7 @@
   </section>
 
   <!-- Shop by shape -->
-  <section class="section section--subtle">
+  <section class="section shape-section">
     <div class="section__inner">
       <app-section-header
         title="Shop custom business cards by shape"
@@ -70,8 +70,14 @@
             <div class="shape-card__image">
               <img [src]="shape.image" [alt]="shape.label" loading="lazy" />
             </div>
-            <span class="shape-card__label">{{ shape.label }} {{ shape.reviewCount }}</span>
-            <span class="shape-card__price">{{ shape.price }}</span>
+            <div class="shape-card__info">
+              <span class="shape-card__name">{{ shape.label }}</span>
+              <div class="shape-card__rating">
+                <span class="shape-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <span class="shape-card__review-count">{{ shape.reviewCount }}</span>
+              </div>
+              <span class="shape-card__price">{{ shape.price }}</span>
+            </div>
           </a>
         }
       </div>
@@ -237,7 +243,31 @@
       <div class="why-grid">
         @for (item of whyUs; track item.title) {
           <div class="why-item">
-            <div class="why-item__icon"></div>
+            <div class="why-item__icon">
+              @switch (item.icon) {
+                @case ('star') {
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b3b91" stroke-width="2">
+                    <path d="M12 2l2.9 6.6L22 9.3l-5 4.7 1.5 7L12 17.8 5.5 21l1.5-7-5-4.7 7.1-.7z" />
+                  </svg>
+                }
+                @case ('users') {
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b3b91" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                }
+                @case ('truck') {
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0b3b91" stroke-width="2">
+                    <rect x="1" y="3" width="15" height="13" />
+                    <path d="M16 8h4l3 3v5h-7V8z" />
+                    <circle cx="5.5" cy="18.5" r="2.5" />
+                    <circle cx="18.5" cy="18.5" r="2.5" />
+                  </svg>
+                }
+              }
+            </div>
             <h3 class="why-item__title">{{ item.title }}</h3>
             <p class="why-item__desc">{{ item.description }}</p>
           </div>
@@ -259,7 +289,7 @@
   </section>
 
   <!-- Customer gallery -->
-  <section class="section section--subtle">
+  <section class="section gallery-section">
     <div class="section__inner">
       <app-section-header
         title="See what other customers are making"

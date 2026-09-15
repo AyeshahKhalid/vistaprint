@@ -1,0 +1,236 @@
+<app-site-shell>
+  <div class="breadcrumb-bar">
+    <app-breadcrumbs [items]="breadcrumbs" />
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <h1 class="hero__title">Labels and Stickers</h1>
+        <p class="hero__desc">
+          Turn any surface into a branding opportunity. Create vibrant, durable stickers and labels in the shapes,
+          sizes, and finishes that fit your brand perfectly.
+        </p>
+        <div class="hero__pills">
+          @for (pill of heroPills; track pill) {
+            <button type="button" class="pill">{{ pill }}</button>
+          }
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Labels and stickers" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured products -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="featured-grid">
+        @for (item of featuredProducts; track item.title) {
+          <div class="featured-card">
+            @if (item.badge) {
+              <span class="featured-card__badge">{{ item.badge }}</span>
+            }
+            <div class="featured-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+            </div>
+            <div class="featured-card__body">
+              <h3 class="featured-card__title">{{ item.title }}</h3>
+              <p class="featured-card__desc">{{ item.description }}</p>
+              <span class="featured-card__price">{{ item.price }}</span>
+              <a href="#" class="featured-card__cta">{{ item.ctaLabel }} &rarr;</a>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Roll labels promo -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <div class="promo-banner">
+        <div class="promo-banner__image">
+          <img [src]="rollLabelsPromoImage" alt="Custom roll labels" />
+        </div>
+        <div class="promo-banner__content">
+          <h2 class="promo-banner__title">Custom roll labels. Made for your business.</h2>
+          <p class="promo-banner__desc">
+            Choose from single or multi-column roll labels to create product packaging that looks stunning and
+            highly professional from every angle.
+          </p>
+          <button type="button" class="btn btn--dark">Shop roll labels</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Food & beverage -->
+  <section class="section">
+    <div class="section__inner">
+      <app-section-header
+        title="Brighten up your food and beverage brand"
+        subtitle="Catch customers' attention with vibrant, professional labels designed for specialty foods, drinks, and homemade products."
+      />
+      <div class="product-grid product-grid--4">
+        @for (item of foodBeverageItems; track item.title) {
+          <app-product-card
+            [image]="item.image"
+            [title]="item.title"
+            [rating]="item.rating"
+            [reviewCount]="item.reviewCount"
+            [startingPrice]="item.price"
+            [ctaLabel]="item.ctaLabel"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Retail & event -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Step up your retail and event space"
+        subtitle="Create a cohesive branded experience for your store, booth, event, or product display."
+      />
+      <div class="product-grid product-grid--4">
+        @for (item of retailEventItems; track item.title) {
+          <app-product-card
+            [image]="item.image"
+            [title]="item.title"
+            [eyebrow]="item.badge"
+            [rating]="item.rating"
+            [reviewCount]="item.reviewCount"
+            [startingPrice]="item.price"
+            [ctaLabel]="item.ctaLabel"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Shipping labels -->
+  <section class="section">
+    <div class="section__inner">
+      <app-section-header
+        title="Make your shipping labels go further"
+        subtitle="Turn every delivery into a branded experience with sharp, professional labels designed for packages and mail."
+      />
+      <div class="product-grid product-grid--4">
+        @for (item of shippingItems; track item.title) {
+          <app-product-card
+            [image]="item.image"
+            [title]="item.title"
+            [rating]="item.rating"
+            [reviewCount]="item.reviewCount"
+            [startingPrice]="item.price"
+            [priceDetail]="item.salePrice"
+            [ctaLabel]="item.ctaLabel"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Car signage promo -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <div class="promo-banner promo-banner--reverse promo-banner--dark">
+        <div class="promo-banner__content">
+          <h2 class="promo-banner__title">Get seen around town</h2>
+          <p class="promo-banner__desc">
+            Turn your vehicle into a moving brand ambassador with custom decals, magnets, and signage.
+          </p>
+          <button type="button" class="btn btn--outline">Shop car signage</button>
+        </div>
+        <div class="promo-banner__image">
+          <img [src]="carSignageImage" alt="Car signage" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wall & window decals promo -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="promo-banner">
+        <div class="promo-banner__image">
+          <img [src]="wallDecalsImage" alt="Wall and window decals" />
+        </div>
+        <div class="promo-banner__content">
+          <h2 class="promo-banner__title">Turn every surface into brand real estate</h2>
+          <p class="promo-banner__desc">Add your logo, messaging, and creative graphics to walls, windows, and floors.</p>
+          <button type="button" class="btn btn--link">Shop decals</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore categories -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Explore all categories</h2>
+      <div class="explore-grid">
+        @for (tile of exploreCategories; track tile.path) {
+          <a [routerLink]="tile.path" class="explore-tile">
+            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            <span class="explore-tile__label">{{ tile.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO content -->
+  <section class="section seo-section">
+    <div class="section__inner seo-section__inner">
+      <h2 class="seo-section__title">Create vibrant, long-lasting stickers and labels with PRINTGRAPHI</h2>
+      @for (para of seoParagraphs; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+    </div>
+  </section>
+
+  <!-- Social proof gallery -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Made by you #MadeWithPrintGraphi"
+        subtitle="We love seeing how businesses and creators use PRINTGRAPHI. Share your custom creations on social media for a chance to be featured."
+      />
+      <div class="social-grid">
+        @for (tile of socialTiles; track tile.handle) {
+          <div class="social-tile">
+            <div class="social-tile__image">
+              <img [src]="tile.image" [alt]="tile.handle" loading="lazy" />
+            </div>
+            <span class="social-tile__handle">{{ tile.handle }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta__inner">
+      <h2 class="final-cta__title">Ready to make your brand stick?</h2>
+      <p class="final-cta__desc">Create professional stickers and labels that make every product, package, and surface stand out.</p>
+      <div class="final-cta__actions">
+        <button type="button" class="btn btn--link">Start designing</button>
+        <button type="button" class="btn btn--outline-light">Explore all labels</button>
+      </div>
+    </div>
+  </section>
+</app-site-shell>

@@ -1,0 +1,283 @@
+<app-site-shell>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <span class="hero__eyebrow">Packaging</span>
+        <h1 class="hero__title">Custom Packaging</h1>
+        <p class="hero__desc">
+          Bring your products to life with custom packaging designed to make every order more memorable. Create
+          branded boxes bags mailers pouches and more in vivid full color.
+        </p>
+        <div class="hero__actions">
+          <button type="button" class="btn btn--primary">Shop Packaging</button>
+        </div>
+        <div class="hero__quick-links">
+          @for (link of heroQuickLinks; track link) {
+            <a href="#">{{ link }} &rsaquo;</a>
+          }
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Custom packaging" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Category nav -->
+  <nav class="category-nav">
+    <div class="category-nav__inner">
+      @for (item of categoryNav; track item; let first = $first) {
+        <span class="category-nav__item" [class.category-nav__item--active]="first">{{ item }}</span>
+      }
+    </div>
+  </nav>
+
+  <!-- Full lineup -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Shop the full packaging lineup</h2>
+      <p class="section-subtitle">Everything you need to package present and deliver your products beautifully.</p>
+      <div class="lineup-grid">
+        @for (card of lineupCards; track card.title) {
+          <a href="#" class="lineup-card">
+            <div class="lineup-card__image">
+              <img [src]="card.image" [alt]="card.title" loading="lazy" />
+            </div>
+            <div class="lineup-card__body">
+              <h3 class="lineup-card__title">{{ card.title }}</h3>
+              <p class="lineup-card__desc">{{ card.description }}</p>
+            </div>
+            <span class="lineup-card__link">Explore Options &rarr;</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Every need covered -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Every need covered</h2>
+      <p class="section-subtitle">From shipping orders to stocking shelves find custom packaging built for your business.</p>
+      <div class="need-grid">
+        @for (card of needCards; track card.title) {
+          <a href="#" class="need-card">
+            <img [src]="card.image" [alt]="card.title" loading="lazy" />
+            <div class="need-card__overlay">
+              <h3 class="need-card__title">{{ card.title }}</h3>
+              <p class="need-card__desc">{{ card.description }}</p>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- See what's new -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">See whats new</h2>
+      <p class="section-subtitle">Our latest packaging products ready to make your own.</p>
+      <div class="product-grid product-grid--4">
+        @for (item of newProducts; track item.title) {
+          <a href="#" class="product-card">
+            <div class="product-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+              @if (item.badge) {
+                <span class="product-card__badge">{{ item.badge }}</span>
+              }
+            </div>
+            <h3 class="product-card__title">{{ item.title }}</h3>
+            <div class="product-card__rating">
+              <span>{{ item.rating }}</span>
+              <span class="product-card__muted">({{ item.reviewCount }})</span>
+            </div>
+            <div class="product-card__price-row">
+              <span class="product-card__price">{{ item.priceLabel }} {{ item.price }}</span>
+              <span class="product-card__cta">{{ item.ctaLabel }}</span>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Custom samples promo -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <div class="samples-promo">
+        <div class="samples-promo__image">
+          <img [src]="samplesPromoImage" alt="Custom samples" />
+        </div>
+        <div class="samples-promo__content">
+          <h2 class="samples-promo__title">Start with a custom sample</h2>
+          <p class="samples-promo__desc">
+            Order select packaging products in a quantity of 1. See exactly how your design looks and feels before
+            you commit.
+          </p>
+          <button type="button" class="btn btn--dark">Browse Custom Samples</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pre-printed samples -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Try our pre-printed samples</h2>
+      <p class="section-subtitle">Feel the difference before placing a larger order.</p>
+      <div class="product-grid product-grid--4">
+        @for (item of preprintedSamples; track item.title) {
+          <a href="#" class="product-card">
+            <div class="product-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+            </div>
+            <h3 class="product-card__title">{{ item.title }}</h3>
+            <div class="product-card__rating">
+              <span>{{ item.rating }}</span>
+              <span class="product-card__muted">({{ item.reviewCount }})</span>
+            </div>
+            <div class="product-card__price-row">
+              <span class="product-card__price">{{ item.price }}</span>
+              <span class="product-card__cta">{{ item.ctaLabel }}</span>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Why PRINTGRAPHI?</h2>
+      <p class="section-subtitle">We make custom packaging simple, fast and seriously good-looking.</p>
+      <div class="why-grid">
+        @for (item of whyUs; track item.title) {
+          <div class="why-item">
+            <span class="why-item__number">{{ item.number }}</span>
+            <h3 class="why-item__title">{{ item.title }}</h3>
+            <p class="why-item__desc">{{ item.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Tried, tested and loved</h2>
+      <p class="section-subtitle">Discover our bestselling custom packaging popular with businesses for good reason.</p>
+      <div class="product-grid product-grid--4">
+        @for (item of bestsellers; track item.title) {
+          <a href="#" class="product-card">
+            <div class="product-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+              @if (item.badge) {
+                <span class="product-card__badge product-card__badge--bestseller">{{ item.badge }}</span>
+              }
+            </div>
+            <h3 class="product-card__title">{{ item.title }}</h3>
+            <div class="product-card__rating">
+              <span>{{ item.rating }}</span>
+              <span class="product-card__muted">({{ item.reviewCount }})</span>
+            </div>
+            <div class="product-card__price-row">
+              <span class="product-card__price">{{ item.priceLabel }} {{ item.price }}</span>
+              <span class="product-card__cta">{{ item.ctaLabel }}</span>
+            </div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Accessories -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <h2 class="section-title">Details that make the difference</h2>
+      <p class="section-subtitle">Complete your packaging with accessories and inserts worth noticing.</p>
+      <div class="accessory-grid">
+        @for (item of accessories; track item.title) {
+          <a href="#" class="accessory-card">
+            <div class="accessory-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+            </div>
+            <h3 class="accessory-card__title">{{ item.title }}</h3>
+            <p class="accessory-card__desc">{{ item.description }}</p>
+          </a>
+        }
+      </div>
+      <div class="accessory-see-all">
+        <a href="#">See all accessories &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design services -->
+  <section class="design-services">
+    <div class="design-services__image">
+      <img [src]="designServicesImage" alt="Design services" />
+    </div>
+    <div class="design-services__content">
+      <span class="design-services__eyebrow">Design Support</span>
+      <h2 class="design-services__title">Your vision, our expertise</h2>
+      <p class="design-services__desc">
+        Need help bringing your packaging to life? Get professional design support and print-ready artwork from our
+        creative experts.
+      </p>
+      <div class="design-services__actions">
+        <button type="button" class="btn btn--primary">Get Started</button>
+        <a href="#">Explore Design Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore categories -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Explore all categories</h2>
+      <p class="section-subtitle">Discover custom solutions tailored for every aspect of your brand presentation.</p>
+      <div class="explore-grid">
+        @for (tile of exploreCategories; track tile.path) {
+          <a [routerLink]="tile.path" class="explore-tile">
+            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            <span class="explore-tile__label">{{ tile.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO content -->
+  <section class="section seo-section">
+    <div class="section__inner seo-section__inner">
+      <h2 class="seo-section__title">Let your custom packaging tell your story from the outside in</h2>
+      @for (para of seoParagraphs; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta__inner">
+      <h2 class="final-cta__title">Package it like you mean it</h2>
+      <p class="final-cta__desc">Create custom packaging that turns every delivery into a branded experience worth remembering.</p>
+      <div class="final-cta__actions">
+        <button type="button" class="btn btn--primary">Start Designing</button>
+        <button type="button" class="btn btn--outline">Browse Packaging</button>
+      </div>
+    </div>
+  </section>
+</app-site-shell>

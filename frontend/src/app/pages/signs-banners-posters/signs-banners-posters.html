@@ -78,14 +78,14 @@
   <!-- Promo banners -->
   <section class="section">
     <div class="section__inner">
-      <div class="promo-banner">
+      <div class="promo-banner promo-banner--dark">
         <div class="promo-banner__content">
           <h2 class="promo-banner__title">Your best booth ever</h2>
           <p class="promo-banner__desc">
             Create a trade show or event booth that puts your business in the spotlight. Get high-impact banner
             stands, custom table covers, and matching handouts.
           </p>
-          <button type="button" class="btn btn--dark">Shop trade shows</button>
+          <button type="button" class="btn btn--outline">Shop trade shows</button>
         </div>
         <div class="promo-banner__image">
           <img [src]="boothPromoImage" alt="Trade show booth" />
@@ -96,7 +96,7 @@
 
   <section class="section">
     <div class="section__inner">
-      <div class="promo-banner promo-banner--reverse">
+      <div class="promo-banner promo-banner--reverse promo-banner--outline">
         <div class="promo-banner__image">
           <img [src]="outdoorsPromoImage" alt="Outdoor signage" />
         </div>
@@ -129,6 +129,7 @@
             <div class="fast-ship-card__body">
               <h3 class="fast-ship-card__title">{{ item.title }}</h3>
               <p class="fast-ship-card__desc">{{ item.description }}</p>
+              <hr class="fast-ship-card__divider" />
               <div class="fast-ship-card__tags">
                 <span class="fast-ship-tag">Ready in 48h</span>
                 <span class="fast-ship-tag">Fast Shipping</span>
@@ -164,7 +165,7 @@
   </section>
 
   <!-- Need help -->
-  <section class="section section--subtle">
+  <section class="section need-help-section">
     <div class="section__inner">
       <div class="need-help">
         <div class="need-help__content">

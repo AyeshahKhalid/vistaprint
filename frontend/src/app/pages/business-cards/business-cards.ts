@@ -59,6 +59,7 @@ interface HolderOption {
 interface WhyUsItem {
   title: string;
   description: string;
+  icon: 'star' | 'users' | 'truck';
 }
 
 interface GalleryPost {
@@ -251,14 +252,17 @@ export class BusinessCardsPage {
       title: '5-star quality for $15 (or less)',
       description:
         "Business cards are kinda our thing. There's nowhere else you can expect results this good for a price this low.",
+      icon: 'star',
     },
     {
       title: '75 million+ customers',
       description: 'In fact, more people come to us for business cards than any other company. Why go anywhere else?',
+      icon: 'users',
     },
     {
       title: 'Fast, express shipping options',
       description: 'Pair that with user-friendly design tools (and help on standby), and getting your new cards is a breeze.',
+      icon: 'truck',
     },
   ];
 
@@ -292,40 +296,24 @@ export class BusinessCardsPage {
   readonly faqs: FaqItem[] = [
     {
       question: 'What sizes and thicknesses are available for business cards?',
-      answer:
-        "That depends on the shape you choose. Standard, Rounded Corners, Oval, and Leaf cards are 3.5\" x 2\". Square cards are 2.5\" x 2.5\", and Circle cards are 2.5\" in diameter. Card thickness is measured in points (pt). Standard cards are 14pt, premium cards are 16pt, and premium plus cards are 18pt. All cards include a standard bleed area and are designed to fit in a standard wallet.",
+      answerIntro: "That depends on the shape you choose. Here's a rundown of our business card sizes and thicknesses by shape:",
+      table: [
+        { label: 'Standard', value: '3.5" x 2"' },
+        { label: 'Rounded Corners', value: '3.5" x 2"' },
+        { label: 'Square', value: '2.5" x 2.5"' },
+        { label: 'Circle', value: '2.5" diameter' },
+        { label: 'Oval', value: '3.5" x 2"' },
+        { label: 'Leaf', value: '3.5" x 2"' },
+      ],
+      answerOutro:
+        'Card thickness is measured in points (pt). Standard cards are 14pt, premium cards are 16pt, and premium plus cards are 18pt. All cards include a standard bleed area and are designed to fit in a standard wallet.',
     },
-    {
-      question: 'How do I design a custom business card online?',
-      answer:
-        'Choose a template or start from scratch in our online design tool, upload your logo, adjust colors and fonts, then preview and order — no design experience needed.',
-    },
-    {
-      question: 'What information should I include on my business card, and how should it be organized?',
-      answer:
-        'Typically your name, title, company, phone number, email, website, and address. Keep the most important details largest and easiest to read at a glance.',
-    },
-    {
-      question: 'Should I put anything on the back of my business card?',
-      answer:
-        'The back is great for a tagline, QR code, social handles, or a loyalty punch-card design — anything that adds value without cluttering the front.',
-    },
-    {
-      question: 'How quickly can I receive my order?',
-      answer: 'We offer standard, 2-day, and next-day delivery options depending on the product and finish you choose.',
-    },
-    {
-      question: 'Can I order sample business cards?',
-      answer: 'Yes — order our free business card sample kit to feel our papers and finishes before you commit.',
-    },
-    {
-      question: 'What material and finish should I use for my custom business card?',
-      answer:
-        'It depends on your brand: matte for a classic look, glossy for vibrant color, uncoated for a natural feel, or specialty finishes like foil and painted edge for a premium impression.',
-    },
-    {
-      question: 'Do you offer holders and cases for my business cards?',
-      answer: 'Yes — we offer acrylic, steel desk, and leather holders to keep your cards organized and presentable.',
-    },
+    { question: 'How do I design a custom business card online?' },
+    { question: 'What information should I include on my business card, and how should it be organized?' },
+    { question: 'Should I put anything on the back of my business card?' },
+    { question: 'How quickly can I receive my order?' },
+    { question: 'Can I order sample business cards?' },
+    { question: 'What material and finish should I use for my custom business card?' },
+    { question: 'Do you offer holders and cases for my business cards?' },
   ];
 }

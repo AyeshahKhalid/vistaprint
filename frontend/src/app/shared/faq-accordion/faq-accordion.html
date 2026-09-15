@@ -8,7 +8,25 @@
         </svg>
       </button>
       @if (openIndex() === i) {
-        <p class="faq-item__answer">{{ item.answer }}</p>
+        @if (item.answer) {
+          <p class="faq-item__answer">{{ item.answer }}</p>
+        }
+        @if (item.answerIntro) {
+          <p class="faq-item__answer">{{ item.answerIntro }}</p>
+        }
+        @if (item.table) {
+          <div class="faq-item__table">
+            @for (row of item.table; track row.label) {
+              <div class="faq-item__table-row">
+                <span>{{ row.label }}</span>
+                <span>{{ row.value }}</span>
+              </div>
+            }
+          </div>
+        }
+        @if (item.answerOutro) {
+          <p class="faq-item__answer">{{ item.answerOutro }}</p>
+        }
       }
     </div>
   }

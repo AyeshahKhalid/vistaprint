@@ -1,0 +1,309 @@
+<app-site-shell>
+  <div class="breadcrumb-bar">
+    <app-breadcrumbs [items]="breadcrumbs" />
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <span class="hero__eyebrow">Custom Apparel and Bags</span>
+        <h1 class="hero__title">Custom Clothing and Bags</h1>
+        <p class="hero__desc">
+          Quality custom apparel and bags at prices you'll love. Print your possible with PRINTGRAPHI, available in
+          a range of styles and quantities.
+        </p>
+        <div class="hero__offer">
+          <p class="hero__offer-text">Get $15 off apparel orders $80+, $40 off $250+, or $125 off $500+</p>
+          <div class="hero__offer-meta">
+            <span class="hero__promo-code">Code: CLOTHING</span>
+            <span class="hero__promo-expiry">Ends September 30</span>
+          </div>
+        </div>
+        <div class="hero__actions">
+          <button type="button" class="btn btn--dark">Shop Clothing</button>
+          <button type="button" class="btn btn--outline">Shop Bags</button>
+        </div>
+        <div class="hero__secondary-links">
+          @for (link of heroSecondaryLinks; track link) {
+            <a href="#">{{ link }} &rsaquo;</a>
+          }
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Custom clothing and bags" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Clothing -->
+  <section class="section category-section">
+    <div class="section__inner">
+      <h2 class="section-title">Clothing</h2>
+      <div class="icon-grid">
+        @for (item of clothingItems; track item.label) {
+          <a href="#" class="icon-tile">
+            <div class="icon-tile__image">
+              <img [src]="item.image" [alt]="item.label" loading="lazy" />
+            </div>
+            <span class="icon-tile__label">{{ item.label }}</span>
+            <span class="icon-tile__cta">Customize</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Bags -->
+  <section class="section category-section">
+    <div class="section__inner">
+      <h2 class="section-title">Bags</h2>
+      <div class="icon-grid">
+        @for (item of bagItems; track item.label) {
+          <a href="#" class="icon-tile">
+            <div class="icon-tile__image">
+              <img [src]="item.image" [alt]="item.label" loading="lazy" />
+            </div>
+            <span class="icon-tile__label">{{ item.label }}</span>
+            <span class="icon-tile__cta">Customize</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Hats -->
+  <section class="section category-section">
+    <div class="section__inner">
+      <h2 class="section-title">Hats</h2>
+      <div class="icon-grid">
+        @for (item of hatItems; track item.label) {
+          <a href="#" class="icon-tile">
+            <div class="icon-tile__image">
+              <img [src]="item.image" [alt]="item.label" loading="lazy" />
+            </div>
+            <span class="icon-tile__label">{{ item.label }}</span>
+            <span class="icon-tile__cta">Customize</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Social proof -->
+  <section class="social-proof">
+    <div class="social-proof__inner">
+      <div class="social-proof__rating">
+        <span class="social-proof__label">Over 50,000 5-star reviews</span>
+        <span class="social-proof__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      </div>
+      <p class="social-proof__quote">&ldquo;Just what I wanted! Soft and print was perfect!&rdquo;</p>
+      <div class="social-proof__buyer">
+        <span class="social-proof__badge">&#10003;</span>
+        <span>Verified Buyer</span>
+      </div>
+      <button type="button" class="btn btn--dark">Shop Hoodies</button>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="section">
+    <div class="section__inner">
+      <app-section-header
+        title="Our Bestsellers"
+        subtitle="Start things off with one or many of our fan favorites and make them yours."
+        viewAllLabel="See all"
+        viewAllPath="#"
+      />
+      <div class="product-grid product-grid--4">
+        @for (item of bestsellers; track item.title) {
+          <app-product-card
+            [image]="item.image"
+            [title]="item.title"
+            [eyebrow]="item.brand"
+            [description]="item.description"
+            [rating]="item.rating"
+            [reviewCount]="item.reviewCount"
+            [startingPrice]="item.price"
+            ctaLabel="Customize"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Why choose us -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Why choose PRINTGRAPHI for your business?"
+        subtitle="Get expert help with everything from choosing the right product to creating your design."
+      />
+      <div class="why-grid">
+        @for (item of whyChooseItems; track item.title) {
+          <div class="why-item">
+            <div class="why-item__icon">
+              @switch (item.icon) {
+                @case ('box-select') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2">
+                    <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+                    <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+                    <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+                    <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+                    <rect x="9" y="9" width="6" height="6" />
+                  </svg>
+                }
+                @case ('percent') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2">
+                    <path d="M20.59 13.41 13.41 20.59a2 2 0 0 1-2.82 0L2.59 12.59a2 2 0 0 1 0-2.82l7.18-7.18a2 2 0 0 1 2.82 0l7.18 7.18a2 2 0 0 1 0 2.82Z" />
+                    <line x1="9" y1="9" x2="9.01" y2="9" />
+                    <line x1="15" y1="15" x2="15.01" y2="15" />
+                    <line x1="9" y1="15" x2="15" y2="9" />
+                  </svg>
+                }
+                @case ('palette') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2">
+                    <circle cx="13.5" cy="6.5" r="0.5" />
+                    <circle cx="17.5" cy="10.5" r="0.5" />
+                    <circle cx="8.5" cy="7.5" r="0.5" />
+                    <circle cx="6.5" cy="12.5" r="0.5" />
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.4 0 2-1.4 2-2.5 0-.6-.2-1.1-.6-1.4-.4-.4-.6-.9-.6-1.5 0-1.1.9-2 2-2h2.4c2.1 0 3.8-1.7 3.8-3.8C21 6.3 17.1 2 12 2Z" />
+                  </svg>
+                }
+                @case ('truck') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2">
+                    <rect x="1" y="3" width="15" height="13" />
+                    <path d="M16 8h4l3 3v5h-7V8z" />
+                    <circle cx="5.5" cy="18.5" r="2.5" />
+                    <circle cx="18.5" cy="18.5" r="2.5" />
+                  </svg>
+                }
+              }
+            </div>
+            <h3 class="why-item__title">{{ item.title }}</h3>
+            <p class="why-item__desc">{{ item.description }}</p>
+          </div>
+        }
+      </div>
+      <div class="why-actions">
+        <a href="#" class="btn btn--link">Need help? Talk to a PRINTGRAPHI specialist</a>
+        <button type="button" class="btn btn--outline">Get free samples</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted brands -->
+  <section class="section">
+    <div class="section__inner">
+      <app-section-header
+        title="Brands you know and love"
+        subtitle="Choose from popular brands then make them yours — just add your logo or message."
+      />
+      <div class="brands-row">
+        @for (brand of trustedBrands; track brand) {
+          <div class="brand-tile">{{ brand }}</div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Matching team banner -->
+  <section class="matching-team">
+    <div class="matching-team__image">
+      <img [src]="matchingTeamImage" alt="Matching team outfits" />
+    </div>
+    <div class="matching-team__content">
+      <h2 class="matching-team__title">Matching Team Outfits</h2>
+      <p class="matching-team__desc">
+        Everything your team needs to look, feel, and perform at their best, designed natively around your identity.
+      </p>
+      <button type="button" class="btn btn--dark">Explore more</button>
+    </div>
+  </section>
+
+  <!-- Collections -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Can't-miss collections"
+        subtitle="Find inspiration in these thoughtfully curated product collections."
+      />
+      <div class="collections-grid">
+        @for (col of collections; track col.title) {
+          <a href="#" class="collection-card">
+            <div class="collection-card__image">
+              <img [src]="col.image" [alt]="col.title" loading="lazy" />
+            </div>
+            <h3 class="collection-card__title">{{ col.title }}</h3>
+            <p class="collection-card__desc">{{ col.description }}</p>
+            <span class="collection-card__link">Shop collection</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore categories -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Explore all categories</h2>
+      <div class="explore-grid">
+        @for (tile of exploreCategories; track tile.path) {
+          <a [routerLink]="tile.path" class="explore-tile">
+            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            <span class="explore-tile__label">{{ tile.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO content -->
+  <section class="section seo-section">
+    <div class="section__inner seo-section__inner">
+      <h2 class="seo-section__title">Branded clothing and bags you'll love? We print that.</h2>
+      @for (para of seoParagraphs; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+    </div>
+  </section>
+
+  <!-- UGC gallery -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Made by you #MadeWithPrintGraphi"
+        subtitle="We love seeing your custom creations. Share your designs on social media and tag @PrintGraphi and #MadeWithPrintGraphi for a chance to be featured."
+      />
+      <div class="ugc-asymmetric-grid">
+        @for (img of ugcImages; track img; let i = $index) {
+          <div class="ugc-asymmetric-tile" [class.ugc-asymmetric-tile--large]="i === 2">
+            <img [src]="img" alt="Customer creation" loading="lazy" />
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta">
+    <div class="final-cta__inner">
+      <h2 class="final-cta__title">Ready to make your brand wearable?</h2>
+      <p class="final-cta__desc">
+        Create high-quality custom clothing and bags that make your business, team, or event impossible to forget.
+      </p>
+      <div class="final-cta__actions">
+        <button type="button" class="btn btn--link">Start Designing</button>
+        <button type="button" class="btn btn--outline-light">Explore Products</button>
+      </div>
+    </div>
+  </section>
+</app-site-shell>

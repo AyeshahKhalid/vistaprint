@@ -2,7 +2,14 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, signal } from '@angu
 
 export interface FaqItem {
   question: string;
-  answer: string;
+  /** Omit when Figma has no authored answer for this question — renders the question with no answer content, matching the design. */
+  answer?: string;
+  /** Optional lead-in line shown above a table (e.g. "Here's a rundown of sizes by shape:"). */
+  answerIntro?: string;
+  /** Optional two-column table rendered below the intro/answer (e.g. shape -> size). */
+  table?: { label: string; value: string }[];
+  /** Optional closing line shown below the table. */
+  answerOutro?: string;
 }
 
 @Component({

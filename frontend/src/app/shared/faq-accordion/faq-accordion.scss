@@ -37,7 +37,28 @@
 
 .faq-item__answer {
   font-size: 14px;
-  color: v.$color-text-secondary;
+  color: #374151;
   line-height: 1.6;
-  padding-bottom: 20px;
+  padding-bottom: 12px;
+}
+
+.faq-item__table {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  border: 1px solid v.$color-border;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-item__table-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #374151;
+
+  &:nth-child(odd) {
+    background: #f9fafb;
+  }
 }
