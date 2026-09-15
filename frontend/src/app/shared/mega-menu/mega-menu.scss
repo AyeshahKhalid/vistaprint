@@ -1,0 +1,55 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: v.$color-bg;
+  border-bottom: 1px solid v.$color-border;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  z-index: 50;
+}
+
+.mega-menu__inner {
+  @include m.container(v.$header-container-max-width);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.mega-menu__heading {
+  font-size: 14px;
+  font-weight: 700;
+  color: v.$color-text;
+  margin-bottom: 14px;
+}
+
+.mega-menu__links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mega-menu__link {
+  font-size: 13px;
+  color: v.$color-text-secondary;
+
+  &:hover {
+    color: v.$color-primary;
+  }
+
+  &--view-all {
+    color: v.$color-link;
+    font-weight: 600;
+  }
+}
+
+@include m.tablet {
+  .mega-menu__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

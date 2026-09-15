@@ -1,0 +1,42 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.section-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.section-header__title {
+  font-size: 28px;
+  font-weight: 800;
+  color: v.$color-text;
+}
+
+.section-header__subtitle {
+  font-size: 16px;
+  color: v.$color-text-secondary;
+}
+
+.section-header__view-all {
+  font-size: 14px;
+  font-weight: 700;
+  color: v.$color-link;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+@include m.mobile {
+  .section-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+}

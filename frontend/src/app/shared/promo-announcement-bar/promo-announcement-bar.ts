@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-promo-announcement-bar',
   imports: [],
   templateUrl: './promo-announcement-bar.html',
-  styleUrl: './promo-announcement-bar.css',
+  styleUrl: './promo-announcement-bar.scss',
 })
 export class PromoAnnouncementBar {
 

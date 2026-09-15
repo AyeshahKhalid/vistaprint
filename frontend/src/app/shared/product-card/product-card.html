@@ -1,0 +1,34 @@
+<a [href]="path ?? '#'" class="product-card">
+  <div class="product-card__image">
+    <img [src]="image" [alt]="title" loading="lazy" />
+  </div>
+  <div class="product-card__body">
+    @if (eyebrow) {
+      <span class="product-card__eyebrow">{{ eyebrow }}</span>
+    }
+    <h3 class="product-card__title">{{ title }}</h3>
+    @if (description) {
+      <p class="product-card__desc">{{ description }}</p>
+    }
+    @if (rating) {
+      <div class="product-card__rating">
+        <span class="product-card__rating-value">{{ rating }}</span>
+        @if (reviewCount) {
+          <span class="product-card__rating-count">({{ reviewCount | number }})</span>
+        }
+      </div>
+    }
+    @if (startingPrice) {
+      <div class="product-card__pricing">
+        <span class="product-card__pricing-label">Starting from</span>
+        <span class="product-card__pricing-value">{{ startingPrice }}</span>
+        @if (priceDetail) {
+          <span class="product-card__pricing-detail">{{ priceDetail }}</span>
+        }
+      </div>
+    }
+    @if (ctaLabel) {
+      <span class="product-card__cta">{{ ctaLabel }}</span>
+    }
+  </div>
+</a>

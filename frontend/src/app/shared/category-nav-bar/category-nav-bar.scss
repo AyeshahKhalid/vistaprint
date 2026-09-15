@@ -1,0 +1,87 @@
+@use 'variables' as v;
+@use 'mixins' as m;
+
+.category-nav {
+  background: v.$color-bg;
+  border-bottom: 1px solid v.$color-border;
+  position: relative;
+}
+
+.category-nav__list {
+  @include m.container(v.$header-container-max-width);
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  height: 48px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.category-nav__item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.category-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: v.$color-text;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+
+  &:hover {
+    color: v.$color-primary;
+  }
+
+  &--highlight {
+    color: #d0021b;
+
+    &:hover {
+      color: #a80116;
+    }
+  }
+}
+
+.category-nav__chevron {
+  transition: transform 0.15s ease;
+}
+
+// Menu panel: hidden by default, shown via pure-CSS hover/focus-within (no JS, no change detection cost).
+// `visibility` + `opacity` (not `display`) so the transition is cheap (compositor-only) and the panel
+// stays out of the accessibility tree / click path while closed.
+.category-nav__menu-panel {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+  pointer-events: none;
+
+  &--touch-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.category-nav__item--has-menu:hover,
+.category-nav__item--has-menu:focus-within {
+  .category-nav__menu-panel {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .category-nav__chevron {
+    transform: rotate(180deg);
+  }
+}

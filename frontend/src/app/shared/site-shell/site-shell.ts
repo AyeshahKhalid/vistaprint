@@ -10,6 +10,6 @@ import { ChatButton } from '../chat-button/chat-button';
   selector: 'app-site-shell',
   imports: [TopUtilityBar, MainHeader, CategoryNavBar, PromoAnnouncementBar, SiteFooter, ChatButton],
   templateUrl: './site-shell.html',
-  styleUrl: './site-shell.css',
+  styleUrl: './site-shell.scss',
 })
 export class SiteShell {}

@@ -1,31 +1,25 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-interface CategoryLink {
-  label: string;
-  path: string;
-  highlight?: boolean;
-}
+import { MegaMenu } from '../mega-menu/mega-menu';
+import { NAV_CATEGORIES, NavCategory } from '../nav-data';
 
 @Component({
   selector: 'app-category-nav-bar',
-  imports: [RouterLink],
+  imports: [RouterLink, MegaMenu],
   templateUrl: './category-nav-bar.html',
-  styleUrl: './category-nav-bar.css',
+  styleUrl: './category-nav-bar.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryNavBar {
-  readonly categories: CategoryLink[] = [
-    { label: 'Deals', path: '/deals', highlight: true },
-    { label: 'Holiday', path: '/holiday' },
-    { label: 'Business Cards', path: '/business-cards' },
-    { label: 'Postcards & Print Advertising', path: '/postcards-print-advertising' },
-    { label: 'Signs Banners & Posters', path: '/signs-banners-posters' },
-    { label: 'Labels & Stickers', path: '/labels-stickers' },
-    { label: 'Clothing & Bags', path: '/clothing-bags' },
-    { label: 'Promotional Products', path: '/promotional-products' },
-    { label: 'Packaging', path: '/packaging' },
-    { label: 'Invitation', path: '/invitations-gifts-stationery' },
-    { label: 'Wedding', path: '/wedding' },
-    { label: 'Design Services', path: '/design-services' },
-  ];
+  readonly categories: NavCategory[] = NAV_CATEGORIES;
+
+  /** Touch/keyboard fallback only — desktop hover is handled entirely in CSS via :hover/:focus-within. */
+  readonly touchOpenCategory = signal<string | null>(null);
+
+  toggleOnTouch(category: NavCategory, event: Event): void {
+    if (!category.megaMenu) return;
+    if (window.matchMedia('(hover: hover)').matches) return;
+    event.preventDefault();
+    this.touchOpenCategory.update((current) => (current === category.path ? null : category.path));
+  }
 }

@@ -1,0 +1,11 @@
+<div class="section-header">
+  <div class="section-header__text">
+    <h2 class="section-header__title">{{ title }}</h2>
+    @if (subtitle) {
+      <p class="section-header__subtitle">{{ subtitle }}</p>
+    }
+  </div>
+  @if (viewAllLabel && viewAllPath) {
+    <a [href]="viewAllPath" class="section-header__view-all">{{ viewAllLabel }} &rarr;</a>
+  }
+</div>

@@ -1,0 +1,288 @@
+<app-site-shell>
+  <div class="breadcrumb-bar">
+    <app-breadcrumbs [items]="breadcrumbs" />
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <div class="hero__rating">
+          <span class="hero__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span>Over 190,000 business card reviews</span>
+        </div>
+        <h1 class="hero__title">Business Cards</h1>
+        <p class="hero__desc">
+          Time-saving, budget-thanking, easy-to-customize business cards? Must be PRINTGRAPHI.
+        </p>
+        <div class="hero__value-banner">Try 50 standard business cards for just $10.</div>
+        <div class="hero__actions">
+          <button type="button" class="btn btn--dark">Upload design</button>
+          <button type="button" class="btn btn--outline">Browse templates</button>
+          <a href="#" class="hero__reorder">Reorder &rsaquo;</a>
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Business cards" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing options -->
+  <section class="section">
+    <div class="section__inner">
+      <app-section-header
+        title="Explore all your business card printing options"
+        subtitle="From standard to standout papers, get a look that pairs perfectly with your design."
+      />
+      <div class="pricing-grid">
+        @for (opt of pricingOptions; track opt.tier) {
+          <div class="pricing-card">
+            <div class="pricing-card__image">
+              <img [src]="opt.image" [alt]="opt.tier" loading="lazy" />
+            </div>
+            <div class="pricing-card__body">
+              <span class="pricing-card__tier">{{ opt.tier }}</span>
+              <p class="pricing-card__desc">{{ opt.description }}</p>
+              <div class="pricing-card__price-row">
+                <span class="pricing-card__price-label">Starting from</span>
+                <span class="pricing-card__price">{{ opt.price }}</span>
+                <span class="pricing-card__price-detail">{{ opt.priceDetail }}</span>
+              </div>
+              <button type="button" class="btn btn--outline btn--full">{{ opt.ctaLabel }}</button>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by shape -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Shop custom business cards by shape"
+        subtitle="Go for standard cards or try an interesting, unexpected shape."
+      />
+      <div class="shape-grid">
+        @for (shape of shapes; track shape.label) {
+          <a href="#" class="shape-card">
+            <div class="shape-card__image">
+              <img [src]="shape.image" [alt]="shape.label" loading="lazy" />
+            </div>
+            <span class="shape-card__label">{{ shape.label }} {{ shape.reviewCount }}</span>
+            <span class="shape-card__price">{{ shape.price }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Papers & finishes -->
+  <section class="section">
+    <div class="section__inner">
+      <app-section-header title="Compare papers & finishes" subtitle="Find your business's unique style in just a few clicks." />
+      <div class="swatch-row">
+        @for (swatch of swatches; track swatch.label; let i = $index) {
+          <button type="button" class="swatch-thumb" [class.swatch-thumb--active]="i === 0">
+            <span class="swatch-thumb__dot" [style.background]="swatch.color"></span>
+            {{ swatch.label }}
+          </button>
+        }
+      </div>
+      <div class="finish-detail">
+        <div class="finish-detail__image">
+          <img [src]="matteFinishImage" alt="Matte finish business cards" />
+        </div>
+        <div class="finish-detail__content">
+          <div class="finish-detail__title-row">
+            <h3 class="finish-detail__title">Matte Finish</h3>
+            <span class="finish-detail__rating">&#9733;&#9733;&#9733;&#9733;&#9733; (18,354)</span>
+          </div>
+          <ul class="finish-detail__highlights">
+            @for (highlight of matteHighlights; track highlight) {
+              <li>{{ highlight }}</li>
+            }
+          </ul>
+          <a href="#" class="finish-detail__link">View full details &rsaquo;</a>
+          <div class="finish-detail__bottom">
+            <div class="finish-detail__pricing">
+              <span class="finish-detail__price-label">Starting from</span>
+              <span class="finish-detail__price">$14.99</span>
+              <span class="finish-detail__price-detail">$0.15 each / 100 units</span>
+            </div>
+            <div class="finish-detail__actions">
+              <button type="button" class="btn btn--outline">Browse designs</button>
+              <button type="button" class="btn btn--dark">Upload your design</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular templates -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Popular templates"
+        subtitle="Check out bestselling design templates for your type of business. Simply plug in your info to use them as a starting point for creating your card."
+      />
+      <div class="template-filters">
+        @for (filter of templateFilters; track filter; let i = $index) {
+          <button type="button" class="template-filter" [class.template-filter--active]="i === 0">{{ filter }}</button>
+        }
+      </div>
+      <div class="template-grid">
+        @for (tpl of templates; track tpl.category) {
+          <a href="#" class="template-card">
+            <div class="template-card__image">
+              <img [src]="tpl.image" [alt]="tpl.category" loading="lazy" />
+            </div>
+            <span class="template-card__label">{{ tpl.category }}</span>
+            <span class="template-card__cta">Customize</span>
+          </a>
+        }
+      </div>
+      <div class="template-browse-all">
+        <a href="#" class="hero__reorder">Browse all templates &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fast delivery -->
+  <section class="fast-delivery">
+    <div class="fast-delivery__inner">
+      <div class="fast-delivery__left">
+        <h2 class="fast-delivery__title">Next-Day &amp; 2-Day Business Cards</h2>
+        <p class="fast-delivery__desc">No time? No problem. Get high-quality business cards on the fly.</p>
+        <div class="fast-delivery__actions">
+          <button type="button" class="btn btn--dark">Shop next-day delivery</button>
+          <button type="button" class="btn btn--outline">Shop 2-day delivery</button>
+          <a href="#" class="hero__reorder">Shop all</a>
+        </div>
+      </div>
+      <div class="fast-delivery__right">
+        <img [src]="fastDeliveryImage" alt="Fast delivery business cards" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by use -->
+  <section class="section">
+    <div class="section__inner">
+      <app-section-header
+        title="Shop custom cards by business use"
+        subtitle="Check out creative ways you can use business cards to connect with customers."
+      />
+      <div class="product-grid product-grid--4">
+        @for (use of useCases; track use.title) {
+          <app-product-card
+            [image]="use.image"
+            [title]="use.title"
+            [eyebrow]="use.eyebrow"
+            [description]="use.description"
+            [rating]="use.rating"
+            [reviewCount]="use.reviewCount"
+            [startingPrice]="use.price"
+            [priceDetail]="use.priceDetail"
+            [ctaLabel]="use.ctaLabel"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Card holders -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header title="Shop card holders" subtitle="Keep cards handy with pocket-sized holders and displays." />
+      <div class="product-grid product-grid--4">
+        @for (holder of holders; track holder.title) {
+          <app-product-card
+            [image]="holder.image"
+            [title]="holder.title"
+            [eyebrow]="holder.eyebrow"
+            [description]="holder.description"
+            [rating]="holder.rating"
+            [reviewCount]="holder.reviewCount"
+            [startingPrice]="holder.price"
+            [ctaLabel]="holder.ctaLabel"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample kit -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="sample-kit">
+        <div class="sample-kit__image">
+          <img [src]="sampleKitImage" alt="Free business card sample kit" />
+        </div>
+        <div class="sample-kit__content">
+          <h2 class="sample-kit__title">Free Business Card Sample Kit</h2>
+          <p class="sample-kit__desc">Touch, test and be inspired before you buy &ndash; no commitment, just confidence.</p>
+          <button type="button" class="btn btn--dark">Order a free sample kit</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why us -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header title="Why PRINTGRAPHI?" subtitle="Look, we're not the only place you can go for business cards&hellip; but we're the best place!" />
+      <div class="why-grid">
+        @for (item of whyUs; track item.title) {
+          <div class="why-item">
+            <div class="why-item__icon"></div>
+            <h3 class="why-item__title">{{ item.title }}</h3>
+            <p class="why-item__desc">{{ item.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO long-form -->
+  <section class="section seo-section">
+    <div class="section__inner seo-section__inner">
+      <h2 class="seo-section__title">
+        Make your introductions sharper, brighter and more impactful with custom business cards by PRINTGRAPHI.
+      </h2>
+      @for (para of seoParagraphs; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+    </div>
+  </section>
+
+  <!-- Customer gallery -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="See what other customers are making"
+        subtitle="Upload a photo with your new product. Tag @Printgraphi for a chance to be featured."
+      />
+      <div class="gallery-row">
+        @for (post of galleryPosts; track post.handle) {
+          <div class="gallery-tile">
+            <div class="gallery-tile__image">
+              <img [src]="post.image" [alt]="post.handle" loading="lazy" />
+            </div>
+            <span class="gallery-tile__handle">{{ post.handle }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+</app-site-shell>

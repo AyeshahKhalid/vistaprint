@@ -1,0 +1,22 @@
+<div class="mega-menu">
+  <div class="mega-menu__inner">
+    @for (column of columns; track column.heading) {
+      <div class="mega-menu__column">
+        <h3 class="mega-menu__heading">{{ column.heading }}</h3>
+        <ul class="mega-menu__links">
+          @for (link of column.links; track link.path + link.label) {
+            <li>
+              <a
+                [routerLink]="link.path"
+                class="mega-menu__link"
+                [class.mega-menu__link--view-all]="link.isViewAll"
+              >
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+  </div>
+</div>

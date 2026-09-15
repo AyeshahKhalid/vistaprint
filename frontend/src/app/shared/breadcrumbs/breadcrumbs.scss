@@ -1,0 +1,26 @@
+@use 'variables' as v;
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: v.$color-text-secondary;
+}
+
+.breadcrumbs__link {
+  color: v.$color-text-secondary;
+
+  &:hover {
+    color: v.$color-primary;
+  }
+}
+
+.breadcrumbs__current {
+  color: v.$color-text;
+  font-weight: 600;
+}
+
+.breadcrumbs__separator {
+  color: v.$color-text-muted;
+}

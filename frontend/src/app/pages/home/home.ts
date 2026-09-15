@@ -36,7 +36,7 @@ interface UgcPost {
   selector: 'app-home',
   imports: [SiteShell],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrl: './home.scss',
 })
 export class Home {
   readonly heroImage = `${IMG}/hero-graphic-hero-image-3_75.png`;

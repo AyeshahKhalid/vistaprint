@@ -1,14 +1,28 @@
 <nav class="category-nav">
   <ul class="category-nav__list">
     @for (item of categories; track item.path) {
-      <li>
+      <li class="category-nav__item" [class.category-nav__item--has-menu]="item.megaMenu">
         <a
           [routerLink]="item.path"
           class="category-nav__link"
           [class.category-nav__link--highlight]="item.highlight"
+          [attr.aria-haspopup]="item.megaMenu ? 'true' : null"
+          [attr.aria-expanded]="item.megaMenu ? touchOpenCategory() === item.path : null"
+          (click)="toggleOnTouch(item, $event)"
         >
           {{ item.label }}
+          @if (item.megaMenu) {
+            <svg class="category-nav__chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          }
         </a>
+
+        @if (item.megaMenu) {
+          <div class="category-nav__menu-panel" [class.category-nav__menu-panel--touch-open]="touchOpenCategory() === item.path">
+            <app-mega-menu [columns]="item.megaMenu" />
+          </div>
+        }
       </li>
     }
   </ul>

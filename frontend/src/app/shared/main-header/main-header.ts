@@ -5,6 +5,6 @@ import { RouterLink } from '@angular/router';
   selector: 'app-main-header',
   imports: [RouterLink],
   templateUrl: './main-header.html',
-  styleUrl: './main-header.css',
+  styleUrl: './main-header.scss',
 })
 export class MainHeader {}

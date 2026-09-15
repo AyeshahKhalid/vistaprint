@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-top-utility-bar',
   imports: [],
   templateUrl: './top-utility-bar.html',
-  styleUrl: './top-utility-bar.css',
+  styleUrl: './top-utility-bar.scss',
 })
 export class TopUtilityBar {
 

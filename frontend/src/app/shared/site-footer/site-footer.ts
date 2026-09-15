@@ -9,7 +9,7 @@ interface FooterLink {
   selector: 'app-site-footer',
   imports: [],
   templateUrl: './site-footer.html',
-  styleUrl: './site-footer.css',
+  styleUrl: './site-footer.scss',
 })
 export class SiteFooter {
   readonly helpLinks: FooterLink[] = [
