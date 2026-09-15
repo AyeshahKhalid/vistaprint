@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SiteShell } from '../../shared/site-shell/site-shell';
 import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
 import { SectionHeader } from '../../shared/section-header/section-header';
@@ -40,7 +41,7 @@ interface ExploreCategoryTile {
 
 @Component({
   selector: 'app-postcards-print-advertising',
-  imports: [SiteShell, Breadcrumbs, SectionHeader, ProductCard, FaqAccordion],
+  imports: [SiteShell, RouterLink, Breadcrumbs, SectionHeader, ProductCard, FaqAccordion],
   templateUrl: './postcards-print-advertising.html',
   styleUrl: './postcards-print-advertising.scss',
 })

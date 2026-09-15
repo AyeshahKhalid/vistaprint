@@ -1,0 +1,246 @@
+<app-site-shell>
+  <div class="page-title-bar">
+    <h1 class="page-title">{{ pageTitle }}</h1>
+  </div>
+
+  <!-- In-page category browse (mirrors the mega nav for this category) -->
+  <section class="browse-nav">
+    <div class="browse-nav__inner">
+      @for (col of megaNav; track col.heading) {
+        <div class="browse-nav__col">
+          <h3 class="browse-nav__heading">{{ col.heading }}</h3>
+          <ul class="browse-nav__links">
+            @for (link of col.links; track link) {
+              <li><a href="#">{{ link }}</a></li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <h2 class="hero__title">Custom Signs, Banners and Posters</h2>
+        <p class="hero__desc">Create business signs they can't miss at prices that won't break your budget.</p>
+        <div class="hero__actions">
+          @for (link of heroLinks; track link; let first = $first) {
+            <button type="button" class="btn" [class.btn--dark]="first" [class.btn--outline]="!first">{{ link }}</button>
+          }
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Custom signs and banners" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Icon category carousel -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="icon-category-row">
+        @for (cat of iconCategories; track cat.label) {
+          <a href="#" class="icon-category">
+            <div class="icon-category__image">
+              <img [src]="cat.image" [alt]="cat.label" loading="lazy" />
+            </div>
+            <span class="icon-category__label">{{ cat.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header title="Bestsellers" subtitle="Check out the custom signs flying off our virtual shelves." />
+      <div class="carousel-row">
+        @for (item of bestsellers; track item.title) {
+          <app-product-card
+            class="carousel-row__item"
+            [image]="item.image"
+            [title]="item.title"
+            [eyebrow]="item.badge"
+            [description]="item.description"
+            [rating]="item.rating"
+            [reviewCount]="item.reviewCount"
+            [startingPrice]="item.price"
+            [ctaLabel]="item.ctaLabel"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo banners -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="promo-banner">
+        <div class="promo-banner__content">
+          <h2 class="promo-banner__title">Your best booth ever</h2>
+          <p class="promo-banner__desc">
+            Create a trade show or event booth that puts your business in the spotlight. Get high-impact banner
+            stands, custom table covers, and matching handouts.
+          </p>
+          <button type="button" class="btn btn--dark">Shop trade shows</button>
+        </div>
+        <div class="promo-banner__image">
+          <img [src]="boothPromoImage" alt="Trade show booth" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section__inner">
+      <div class="promo-banner promo-banner--reverse">
+        <div class="promo-banner__image">
+          <img [src]="outdoorsPromoImage" alt="Outdoor signage" />
+        </div>
+        <div class="promo-banner__content">
+          <h2 class="promo-banner__title">Own the outdoors</h2>
+          <p class="promo-banner__desc">
+            Get the word out with exterior signs plus marketing materials and swag. Build local awareness with
+            weather-resistant flags, signs, and durable car magnets.
+          </p>
+          <button type="button" class="btn btn--dark">Shop outdoor signs</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2-day shipping -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <div class="fast-ship-header">
+        <span class="fast-ship-badge">Fast turnaround</span>
+        <h2 class="section-title">2-day shipping signage</h2>
+        <p class="section-subtitle">Order by 6 PM ET and get your signage in just 48 hours.</p>
+      </div>
+      <div class="fast-ship-grid">
+        @for (item of fastShipItems; track item.title) {
+          <div class="fast-ship-card">
+            <div class="fast-ship-card__image">
+              <img [src]="item.image" [alt]="item.title" loading="lazy" />
+            </div>
+            <div class="fast-ship-card__body">
+              <h3 class="fast-ship-card__title">{{ item.title }}</h3>
+              <p class="fast-ship-card__desc">{{ item.description }}</p>
+              <div class="fast-ship-card__tags">
+                <span class="fast-ship-tag">Ready in 48h</span>
+                <span class="fast-ship-tag">Fast Shipping</span>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- New products -->
+  <section class="section">
+    <div class="section__inner">
+      <app-section-header
+        title="New products"
+        subtitle="Discover our most recent sign assortment for small businesses like yours."
+      />
+      <div class="product-grid product-grid--4">
+        @for (item of newProducts; track item.title) {
+          <app-product-card
+            [image]="item.image"
+            [title]="item.title"
+            [eyebrow]="item.badge"
+            [description]="item.description"
+            [rating]="item.rating"
+            [reviewCount]="item.reviewCount"
+            [ctaLabel]="item.ctaLabel"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Need help -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <div class="need-help">
+        <div class="need-help__content">
+          <h2 class="need-help__title">Need help finding the right products?</h2>
+          <p class="need-help__desc">
+            Chat with our AI assistant or connect with a specialist anytime during the conversation. Prefer to call?
+            Reach us via live chat or call us at 1.866.207.4955.
+          </p>
+          <div class="need-help__hours">
+            <span>Monday to Friday: 7 AM to 3 AM EST</span>
+            <span>Saturday to Sunday: 8 AM to 8 PM EST</span>
+          </div>
+          <button type="button" class="btn btn--dark">Start chat</button>
+        </div>
+        <div class="need-help__image">
+          <img [src]="needHelpImage" alt="Customer support" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore categories -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Explore all categories</h2>
+      <div class="explore-grid">
+        @for (tile of exploreCategories; track tile.path) {
+          <a [routerLink]="tile.path" class="explore-tile">
+            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            <span class="explore-tile__label">{{ tile.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO content -->
+  <section class="section seo-section">
+    <div class="section__inner seo-section__inner">
+      <h2 class="seo-section__title">Create business signs that customers can't miss (or resist)</h2>
+      @for (para of seoParagraphs; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+      <ul class="seo-section__bullets">
+        @for (bullet of seoBullets; track bullet) {
+          <li>{{ bullet }}</li>
+        }
+      </ul>
+      @for (para of seoParagraphsAfter; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+    </div>
+  </section>
+
+  <!-- UGC -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Made by you #MadeWithPrintGraphi"
+        subtitle="We love to see your custom creations. Post a photo on social media and add @Printgraphi and #MadeWithPrintGraphi for a chance to be featured here."
+      />
+      <div class="ugc-grid">
+        @for (img of ugcImages; track img) {
+          <div class="ugc-tile">
+            <img [src]="img" alt="Customer creation" loading="lazy" />
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+</app-site-shell>

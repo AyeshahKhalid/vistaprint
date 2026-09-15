@@ -1,1 +1,178 @@
-<p>postcards-print-advertising works!</p>
+<app-site-shell>
+  <div class="breadcrumb-bar">
+    <app-breadcrumbs [items]="breadcrumbs" />
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <h1 class="hero__title">Postcards &amp; Print Advertising</h1>
+        <p class="hero__desc">Spread the word, stock the shelves and run your business like a pro.</p>
+        <div class="hero__actions">
+          @for (link of heroLinks; track link; let first = $first) {
+            <button type="button" class="btn" [class.btn--dark]="first" [class.btn--outline]="!first">{{ link }}</button>
+          }
+        </div>
+      </div>
+      <div class="hero__right">
+        <img [src]="heroImage" alt="Postcards and print advertising" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Category cards -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="category-cards-grid">
+        @for (card of categoryCards; track card.title) {
+          <div class="category-card">
+            <div class="category-card__image">
+              <img [src]="card.image" [alt]="card.title" loading="lazy" />
+            </div>
+            <div class="category-card__body">
+              <h3 class="category-card__title">{{ card.title }}</h3>
+              <p class="category-card__desc">{{ card.description }}</p>
+              <a href="#" class="category-card__cta">{{ card.ctaLabel }}</a>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="Bestsellers"
+        subtitle="Check out the advertising and office products flying off our virtual shelves."
+      />
+      <div class="carousel-row">
+        @for (item of bestsellers; track item.title) {
+          <app-product-card
+            [image]="item.image"
+            [title]="item.title"
+            [eyebrow]="item.badge"
+            [description]="item.description"
+            [rating]="item.rating"
+            [reviewCount]="item.reviewCount"
+            class="carousel-row__item"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- EDDM promo banner -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="promo-banner">
+        <div class="promo-banner__image">
+          <img [src]="eddmImage" alt="EDDM postcards" />
+        </div>
+        <div class="promo-banner__content">
+          <h2 class="promo-banner__title">EDDM&reg; Postcards</h2>
+          <p class="promo-banner__desc">
+            Printed, prepped and ready to drop off at your local USPS. Maximize your neighborhood outreach easily.
+          </p>
+          <button type="button" class="btn btn--dark">Shop now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mailing services banner -->
+  <section class="section">
+    <div class="section__inner">
+      <div class="promo-banner promo-banner--reverse">
+        <div class="promo-banner__content">
+          <h2 class="promo-banner__title">Postcard Mailing Services</h2>
+          <p class="promo-banner__desc">
+            Designed by you, delivered by us! Upload your address list, select your preferred postage strategy, and
+            let us handle all the logistics.
+          </p>
+          <button type="button" class="btn btn--dark">Shop now</button>
+        </div>
+        <div class="promo-banner__image">
+          <img [src]="mailingImage" alt="Postcard mailing services" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- New products -->
+  <section class="section section--subtle">
+    <div class="section__inner">
+      <app-section-header
+        title="New Products"
+        subtitle="Discover our most recent assortment of print advertising and office supplies for small businesses like yours."
+      />
+      <div class="product-grid product-grid--3">
+        @for (item of newProducts; track item.title) {
+          <app-product-card
+            [image]="item.image"
+            [title]="item.title"
+            [eyebrow]="item.badge"
+            [description]="item.description"
+            [rating]="item.rating"
+            [reviewCount]="item.reviewCount"
+          />
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore all categories -->
+  <section class="section">
+    <div class="section__inner">
+      <h2 class="section-title">Explore all categories</h2>
+      <div class="explore-grid">
+        @for (tile of exploreCategories; track tile.path) {
+          <a [routerLink]="tile.path" class="explore-tile">
+            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            <span class="explore-tile__label">{{ tile.label }}</span>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- SEO content -->
+  <section class="section seo-section">
+    <div class="section__inner seo-section__inner">
+      <h2 class="seo-section__title">
+        Save time, build interest and get a professional look with all things print advertising and office.
+      </h2>
+      @for (para of seoParagraphs; track para) {
+        <p class="seo-section__paragraph">{{ para }}</p>
+      }
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section">
+    <div class="section__inner faq-section__inner">
+      <h2 class="faq-section__title">Frequently asked questions</h2>
+      <app-faq-accordion [items]="faqs" />
+    </div>
+  </section>
+
+  <!-- Help CTA -->
+  <section class="help-cta">
+    <div class="help-cta__inner">
+      <h2 class="help-cta__title">PRINTGRAPHI is here to help</h2>
+      <div class="help-cta__links">
+        <span class="help-cta__label">Let Us Help</span>
+        <nav class="help-cta__nav">
+          @for (link of helpLinks; track link; let last = $last) {
+            <a href="#">{{ link }}</a>
+            @if (!last) {
+              <span class="help-cta__dot">&bull;</span>
+            }
+          }
+        </nav>
+      </div>
+    </div>
+  </section>
+</app-site-shell>
