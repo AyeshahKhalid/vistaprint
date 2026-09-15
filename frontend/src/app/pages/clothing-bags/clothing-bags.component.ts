@@ -42,7 +42,7 @@ interface ExploreTile {
   styleUrl: './clothing-bags.component.scss',
 })
 export class ClothingBagsComponent {
-  readonly breadcrumbs = [{ label: 'HomeComponent', path: '/' }, { label: 'Clothing and Bags' }];
+  readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Clothing and Bags' }];
 
   readonly heroImage = `${IMG}/hero-right-column-hero-product-image-16_482.png`;
   readonly heroSecondaryLinks = ['Matching Team Outfits', 'Bestsellers', 'Custom Workwear'];
@@ -177,7 +177,7 @@ export class ClothingBagsComponent {
       image: `${IMG}/cat-tile-r2-0-rectangle-16_1055.png`,
     },
     { label: 'Labels & Stickers', path: '/labels-stickers', image: `${IMG}/cat-tile-r2-1-rectangle-16_1058.png` },
-    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/cat-tile-r2-2-rectangle-16_1061.png` },
+    { label: 'Packaging', path: '/packaging', image: `${IMG}/cat-tile-r2-2-rectangle-16_1061.png` },
   ];
 
   readonly ugcImages = [

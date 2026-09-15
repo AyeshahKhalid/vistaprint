@@ -22,6 +22,7 @@ interface BestsellerItem {
 interface ExtraItem {
   title: string;
   description: string;
+  icon: 'package' | 'mail' | 'qr-code';
 }
 
 interface ThemeTile {
@@ -65,7 +66,7 @@ export class WeddingComponent {
     { label: 'Save the Dates', image: `${IMG}/frame-rectangle-22_614.png` },
     { label: 'Invitation Suites', image: `${IMG}/frame-rectangle-22_618.png` },
     { label: 'Ceremony & Reception Essentials', image: `${IMG}/frame-rectangle-22_622.png` },
-    { label: 'WeddingComponent Signs', image: `${IMG}/frame-rectangle-22_626.png` },
+    { label: 'Wedding Signs', image: `${IMG}/frame-rectangle-22_626.png` },
     { label: 'Parties & Showers', image: `${IMG}/frame-rectangle-22_631.png` },
     { label: 'Thank You Cards', image: `${IMG}/frame-rectangle-22_635.png` },
     { label: 'Keepsakes', image: `${IMG}/frame-rectangle-22_639.png` },
@@ -73,16 +74,16 @@ export class WeddingComponent {
   ];
 
   readonly bestsellers: BestsellerItem[] = [
-    { title: 'WeddingComponent Invites', rating: 4.8, reviewCount: 3420, price: '$0.48', originalPrice: '$0.96', badge: '50% off', image: `${IMG}/image-container-rectangle-22_654.png` },
+    { title: 'Wedding Invites', rating: 4.8, reviewCount: 3420, price: '$0.48', originalPrice: '$0.96', badge: '50% off', image: `${IMG}/image-container-rectangle-22_654.png` },
     { title: 'Save the Date Cards', rating: 4.7, reviewCount: 1890, price: '$0.54', originalPrice: '$1.08', badge: '50% off', image: `${IMG}/image-container-rectangle-22_679.png` },
     { title: 'Foam Board Signs', rating: 4.6, reviewCount: 567, price: '$19.99', image: `${IMG}/image-container-rectangle-22_704.png` },
     { title: 'Custom Napkins', rating: 4.5, reviewCount: 890, price: '$0.42', image: `${IMG}/image-container-rectangle-22_726.png` },
   ];
 
   readonly weddingExtras: ExtraItem[] = [
-    { title: 'Free Sample Kit', description: 'A 10-piece set of our most popular wedding stationery in a variety of papers, shapes, and more.' },
-    { title: 'Free Addressing', description: "Tackle addressing with ease. Simply upload your addresses and we'll print them right on your envelopes." },
-    { title: 'Free QR Code Generator', description: 'From RSVPs to registries, give guests instant access to all your wedding details with custom codes.' },
+    { title: 'Free Sample Kit', description: 'A 10-piece set of our most popular wedding stationery in a variety of papers, shapes, and more.', icon: 'package' },
+    { title: 'Free Addressing', description: "Tackle addressing with ease. Simply upload your addresses and we'll print them right on your envelopes.", icon: 'mail' },
+    { title: 'Free QR Code Generator', description: 'From RSVPs to registries, give guests instant access to all your wedding details with custom codes.', icon: 'qr-code' },
   ];
 
   readonly designHelpImage = `${IMG}/frame-rectangle-22_773.png`;
@@ -98,7 +99,7 @@ export class WeddingComponent {
 
   readonly newProducts: NewProduct[] = [
     { title: 'Custom Matches', price: 'From $24.99', image: `${IMG}/image-container-rectangle-22_888.png` },
-    { title: 'Letterpress WeddingComponent Invitations', price: 'From $2.49', image: `${IMG}/image-container-rectangle-22_897.png` },
+    { title: 'Letterpress Wedding Invitations', price: 'From $2.49', image: `${IMG}/image-container-rectangle-22_897.png` },
     { title: 'Favor Bags', price: 'From $0.89', image: `${IMG}/image-container-rectangle-22_906.png` },
     { title: 'Wax Seals', price: 'From $1.29', image: `${IMG}/image-container-rectangle-22_916.png` },
     { title: 'Guest Books', price: 'From $34.99', image: `${IMG}/image-container-rectangle-22_925.png` },
@@ -111,7 +112,7 @@ export class WeddingComponent {
     { title: 'Quality that fits your budget', description: 'All of our wedding products are made and priced with you in mind. That means the best for your dream day without breaking the bank.' },
     { title: 'Designs for everyone', description: 'Explore designs that complement any theme or style, then tailor every detail to make it yours.' },
     { title: 'Here when you need us', description: 'From product questions to professional design help and more, our team of experts is here every step of the way.' },
-    { title: 'Trusted printing experience', description: 'PRINTGRAPHI brings years of professional printing experience to help bring your custom wedding products to life.' },
+    { title: 'Trusted printing experience', description: 'PrintGraphi brings years of professional printing experience to help bring your custom wedding products to life.' },
   ];
 
   readonly articles: ArticleCard[] = [
@@ -124,7 +125,7 @@ export class WeddingComponent {
   ];
 
   readonly seoParagraphs = [
-    'Your wedding stationery is the first glimpse guests get of your special day. From save the dates that build anticipation to invitations that set the tone, PRINTGRAPHI helps you create a cohesive suite that reflects your unique love story.',
+    'Your wedding stationery is the first glimpse guests get of your special day. From save the dates that build anticipation to invitations that set the tone, PrintGraphi helps you create a cohesive suite that reflects your unique love story.',
     'Choose from thousands of professionally designed templates or start fresh with your own vision. Our easy-to-use design tools let you customize every detail, from paper stock and color palette to fonts and finishing touches like foil and letterpress.',
     'Whether you are planning an intimate garden ceremony or a grand ballroom celebration, we have stationery for every style and budget. Explore matching suites that carry your design across save the dates, invitations, RSVPs, programs, menus, place cards, and thank you notes.',
     'Not sure where to start? Our wedding planning guides and design experts are here to help you every step of the way, from choosing your paper to addressing your envelopes.',
@@ -134,7 +135,7 @@ export class WeddingComponent {
     {
       question: 'What does stationery mean for a wedding?',
       answer:
-        'WeddingComponent stationery refers to all the printed materials you use throughout your wedding journey. This includes save the dates, invitations, RSVP cards, programs, menus, place cards, thank you notes, and more. A cohesive stationery suite helps set the tone and theme for your celebration.',
+        'Wedding stationery refers to all the printed materials you use throughout your wedding journey. This includes save the dates, invitations, RSVP cards, programs, menus, place cards, thank you notes, and more. A cohesive stationery suite helps set the tone and theme for your celebration.',
     },
     { question: 'What should I put on wedding stationery?' },
     { question: 'Does wedding stationery have to match?' },

@@ -52,7 +52,7 @@ interface ExploreTile {
   styleUrl: './promotional-products.component.scss',
 })
 export class PromotionalProductsComponent {
-  readonly breadcrumbs = [{ label: 'HomeComponent', path: '/' }, { label: 'Promotional Products' }];
+  readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Promotional Products' }];
 
   readonly heroImage = `${IMG}/hero-right-hero-lifestyle-image-16_2184.png`;
   readonly categoryAnchors = ['Bestsellers', 'Gifts and giveaways', 'Budget-friendly picks', 'Popular brands', 'Our collections'];
@@ -97,10 +97,10 @@ export class PromotionalProductsComponent {
   ];
 
   readonly whyItems = [
-    { title: 'Product selection made easy', description: "Not sure what works best? We'll help guide you to the perfect branded choice." },
-    { title: 'Free bag samples availability', description: 'See it, feel it, love it. Try our physical promotional products before you commit.' },
-    { title: 'Design help', description: 'Need a second set of eyes? Our expert design team is just a single click away.' },
-    { title: 'Shipping assistance', description: 'Everything you need to know from order placement to doorstep arrival.' },
+    { title: 'Product selection made easy', description: "Not sure what works best? We'll help guide you to the perfect branded choice.", icon: 'box' },
+    { title: 'Free bag samples availability', description: 'See it, feel it, love it. Try our physical promotional products before you commit.', icon: 'shopping-bag' },
+    { title: 'Design help', description: 'Need a second set of eyes? Our expert design team is just a single click away.', icon: 'edit' },
+    { title: 'Shipping assistance', description: 'Everything you need to know from order placement to doorstep arrival.', icon: 'truck' },
   ];
 
   readonly popularBrands = ['YETI', 'Moleskine', 'PopSockets', 'Owala', 'Cuisinart', 'Stanley'];
@@ -120,7 +120,7 @@ export class PromotionalProductsComponent {
     { label: 'Postcards and Print Advertising', path: '/postcards-print-advertising', image: `${IMG}/category-tile-category-image-16_2609.png` },
     { label: 'Signs Banners and Posters', path: '/signs-banners-posters', image: `${IMG}/category-tile-category-image-16_2613.png` },
     { label: 'Labels and Stickers', path: '/labels-stickers', image: `${IMG}/category-tile-category-image-16_2618.png` },
-    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/category-tile-category-image-16_2622.png` },
+    { label: 'Packaging', path: '/packaging', image: `${IMG}/category-tile-category-image-16_2622.png` },
     { label: 'Clothing and Bags', path: '/clothing-bags', image: `${IMG}/category-tile-category-image-16_2626.png` },
     { label: 'Invitations Gifts and Stationery', path: '/invitations-gifts-stationery', image: `${IMG}/category-tile-category-image-16_2630.png` },
   ];

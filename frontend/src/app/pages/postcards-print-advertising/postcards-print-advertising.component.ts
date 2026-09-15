@@ -47,7 +47,7 @@ interface ExploreCategoryTile {
 })
 export class PostcardsPrintAdvertisingComponent {
   readonly breadcrumbs = [
-    { label: 'HomeComponent', path: '/' },
+    { label: 'Home', path: '/' },
     { label: 'Print Advertising & Office' },
     { label: 'Postcards & Print Advertising' },
   ];
@@ -189,7 +189,7 @@ export class PostcardsPrintAdvertisingComponent {
       image: `${IMG}/category-tile-rectangle-9_1617.png`,
     },
     { label: 'Labels & Stickers', path: '/labels-stickers', image: `${IMG}/category-tile-rectangle-9_1621.png` },
-    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/category-tile-rectangle-9_1624.png` },
+    { label: 'Packaging', path: '/packaging', image: `${IMG}/category-tile-rectangle-9_1624.png` },
     {
       label: 'Invitations Gifts & Stationery',
       path: '/invitations-gifts-stationery',
@@ -207,7 +207,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       question: 'Can print advertisements be used with direct mail?',
       answer:
-        'That depends on the product. Postcards can be sent via direct mail, and PRINTGRAPHI offers a few services to help you get it done. Every Door Direct Mail®: Create EDDM® postcards using our USPS-compliant templates. We send them to you with the necessary postage — all you have to do is drop them off at the post office. PRINTGRAPHI Mailing Services: Skip the trip and let us mail your postcards for you. Choose from multiple postcard styles and mailing list options to get a unique style that works for you.',
+        'That depends on the product. Postcards can be sent via direct mail, and PRINTGRAPHI offers a few services to help you get it done. Every Door Direct Mail®: Create EDDM® postcards using our USPS-compliant templates. We send them to you with the necessary postage. All you have to do is drop them off at the post office. PRINTGRAPHI Mailing Services: Skip the trip and let us mail your postcards for you. Choose from multiple postcard styles and mailing list options to get a unique style that works for you.',
     },
     {
       question: 'Can I order custom amounts of print advertising?',

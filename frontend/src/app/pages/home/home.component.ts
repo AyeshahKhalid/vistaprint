@@ -23,6 +23,7 @@ interface Idea {
 }
 
 interface ServiceItem {
+  icon: 'palette' | 'box' | 'user' | 'cpu' | 'globe';
   title: string;
   description: string;
 }
@@ -63,7 +64,7 @@ export class HomeComponent {
       path: '/promotional-products',
       image: `${IMG}/category-card-5-card-image-3_106.png`,
     },
-    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/category-card-6-card-image-3_110.png` },
+    { label: 'Packaging', path: '/packaging', image: `${IMG}/category-card-6-card-image-3_110.png` },
     {
       label: 'Booklets & Catalogs',
       path: '/booklets-catalogs',
@@ -97,7 +98,7 @@ export class HomeComponent {
       image: `${IMG}/collection-card-3-collection-image-3_147.png`,
     },
     {
-      title: 'Holiday PackagingComponent',
+      title: 'Holiday Packaging',
       description: 'Festive custom mailers, ribbons, and gift wrap boxes',
       path: '/collections/holiday-packaging',
       image: `${IMG}/collection-card-4-collection-image-3_155.png`,
@@ -113,7 +114,7 @@ export class HomeComponent {
   readonly ideas: Idea[] = [
     { label: 'Custom T-Shirts', path: '/clothing-bags/t-shirts', image: `${IMG}/idea-card-0-card-image-3_175.png` },
     {
-      label: 'Shipping PackagingComponent',
+      label: 'Shipping Packaging',
       path: '/packaging/shipping',
       image: `${IMG}/idea-card-1-card-image-3_180.png`,
     },
@@ -141,26 +142,31 @@ export class HomeComponent {
 
   readonly services: ServiceItem[] = [
     {
+      icon: 'palette',
       title: 'Brand Kit',
       description:
         'Maintain absolute brand consistency with pre-saved layouts, logos, color palettes, and fonts for all print items.',
     },
     {
+      icon: 'box',
       title: 'Sampling Hub',
       description:
         'Get hands-on experience by ordering physically printed sample packs to test paper thickness, finishes, and textures.',
     },
     {
+      icon: 'user',
       title: 'Design Services',
       description:
         'Work closely with real graphic design professionals who will draw up custom visual assets specifically for your products.',
     },
     {
+      icon: 'cpu',
       title: 'AI Logomaker',
       description:
         'Draft premium smart logos in minutes with our algorithmic designer tool, instantly ready for web and high-resolution print.',
     },
     {
+      icon: 'globe',
       title: 'PRINTGRAPHI x Wix Websites',
       description:
         'Build a stunning, fully customizable digital storefront integrated with your printed collateral for full multichannel success.',
@@ -170,7 +176,7 @@ export class HomeComponent {
   readonly ambassadorCards = [
     { eyebrow: 'Ambassador Spotlight', title: 'Flour & Blooms Bakery', image: `${IMG}/carousel-card-0-card-image-3_295.png` },
     { eyebrow: 'Business Cards', title: 'Foil & Specialty Finishes', image: `${IMG}/carousel-card-1-card-image-3_300.png` },
-    { eyebrow: 'Mailer Boxes', title: 'Eco-Friendly Custom PackagingComponent', image: `${IMG}/carousel-card-2-card-image-3_305.png` },
+    { eyebrow: 'Mailer Boxes', title: 'Eco-Friendly Custom Packaging', image: `${IMG}/carousel-card-2-card-image-3_305.png` },
     { eyebrow: 'Stickers', title: 'Custom Die-Cut Sheet Stickers', image: `${IMG}/carousel-card-3-card-image-3_310.png` },
   ];
 

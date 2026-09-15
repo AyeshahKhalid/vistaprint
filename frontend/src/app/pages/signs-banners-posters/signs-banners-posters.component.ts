@@ -203,12 +203,12 @@ export class SignsBannersPostersComponent {
       image: `${IMG}/category-tile-category-image-13_528.png`,
     },
     {
-      label: 'Invitations & HomeComponent',
+      label: 'Invitations & Home',
       path: '/invitations-gifts-stationery',
       image: `${IMG}/category-tile-category-image-13_531.png`,
     },
     { label: 'Labels & Stickers', path: '/labels-stickers', image: `${IMG}/category-tile-category-image-13_534.png` },
-    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/category-tile-category-image-13_537.png` },
+    { label: 'Packaging', path: '/packaging', image: `${IMG}/category-tile-category-image-13_537.png` },
     { label: 'Clothing & Bags', path: '/clothing-bags', image: `${IMG}/category-tile-category-image-13_540.png` },
   ];
 

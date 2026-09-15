@@ -47,8 +47,14 @@
 
   &--outline {
     background: #ffffff;
-    color: v.$color-modern-text;
-    border-color: v.$color-border;
+    color: v.$color-text-body;
+    border-color: v.$color-border-card;
+  }
+
+  &--outline-accent {
+    background: #ffffff;
+    color: v.$color-modern-accent;
+    border-color: v.$color-modern-accent;
   }
 }
 
@@ -136,7 +142,7 @@
 .section-nav__item {
   font-size: 14px;
   font-weight: 600;
-  color: v.$color-text-secondary;
+  color: v.$color-text-muted-alt;
   white-space: nowrap;
 
   &--active {
@@ -176,7 +182,7 @@
   background: #ffffff;
   font-size: 13px;
   font-weight: 600;
-  color: v.$color-text-secondary;
+  color: v.$color-text-body;
   white-space: nowrap;
 
   &--active {
@@ -211,6 +217,22 @@
     background: v.$color-bg-subtle;
     border-style: dashed;
   }
+}
+
+.service-card__cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: v.$color-modern-accent;
+}
+
+.service-card--cta .service-card__title {
+  color: v.$color-text-body;
+  font-size: 15px;
 }
 
 .service-card__image {
@@ -255,6 +277,18 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
+}
+
+.why-item__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: v.$color-modern-accent;
+  margin-bottom: 14px;
 }
 
 .why-item__title {
@@ -359,6 +393,13 @@
   padding: 24px;
 }
 
+.review-card__stars {
+  display: flex;
+  gap: 2px;
+  color: v.$color-pdp-star;
+  margin-bottom: 12px;
+}
+
 .review-card__quote {
   font-size: 15px;
   color: v.$color-modern-text;
@@ -374,7 +415,7 @@
 
 .review-card__role {
   font-size: 13px;
-  color: v.$color-text-muted;
+  color: v.$color-text-secondary;
 }
 
 /* FAQ */

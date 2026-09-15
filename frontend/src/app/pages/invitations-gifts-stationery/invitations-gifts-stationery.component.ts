@@ -67,7 +67,7 @@ export class InvitationsGiftsStationeryComponent {
 
   readonly celebrations: EditorialCard[] = [
     { title: 'Graduation', description: 'Celebrate your favorite student with invites and party decor made to honor their big moment.', image: `${IMG}/editorial-card-0-card-bg-image-18_1554.png` },
-    { title: 'WeddingComponent', description: 'Explore gorgeous and affordable essentials for every stage of planning.', image: `${IMG}/editorial-card-1-card-bg-image-18_1559.png` },
+    { title: 'Wedding', description: 'Explore gorgeous and affordable essentials for every stage of planning.', image: `${IMG}/editorial-card-1-card-bg-image-18_1559.png` },
     { title: 'Birthday', description: 'Matching banners, signs, napkins and more. Getting older just got way more fun.', image: `${IMG}/editorial-card-2-card-bg-image-18_1564.png` },
     { title: 'Baby', description: 'Celebrate the arrival of your little love with adorable shower invites and gifts.', image: `${IMG}/editorial-card-3-card-bg-image-18_1569.png` },
   ];

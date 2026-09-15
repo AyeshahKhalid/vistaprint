@@ -26,7 +26,7 @@
 
 .section-subtitle {
   font-size: 15px;
-  color: v.$color-wedding-text-secondary;
+  color: v.$color-wedding-text-muted;
   margin-bottom: 24px;
 }
 
@@ -50,6 +50,17 @@
     background: #ffffff;
     color: v.$color-wedding-text;
     border-color: v.$color-border;
+  }
+
+  &--accent {
+    background: v.$color-modern-accent;
+    color: #ffffff;
+  }
+
+  &--accent-outline {
+    background: #ffffff;
+    color: v.$color-modern-accent;
+    border-color: v.$color-modern-accent;
   }
 }
 
@@ -83,7 +94,7 @@
 
 .hero__desc {
   font-size: 16px;
-  color: v.$color-wedding-text-secondary;
+  color: v.$color-wedding-text-body;
 }
 
 .hero__highlights {
@@ -103,8 +114,16 @@
   }
 
   svg {
-    color: v.$color-modern-accent;
+    color: v.$color-wedding-text-body;
     flex-shrink: 0;
+  }
+
+  &-item--accent {
+    color: v.$color-modern-accent;
+
+    svg {
+      color: v.$color-modern-accent;
+    }
   }
 }
 
@@ -116,7 +135,7 @@
 }
 
 .pill {
-  border: 1px solid v.$color-border;
+  border: 1px solid v.$color-wedding-border;
   border-radius: 24px;
   padding: 9px 18px;
   background: #ffffff;
@@ -149,6 +168,9 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 12px;
+  border: 1px solid v.$color-wedding-border;
+  border-radius: 12px;
 }
 
 .category-tile__image {
@@ -189,6 +211,9 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 12px;
+  border: 1px solid v.$color-wedding-border;
+  border-radius: 12px;
 }
 
 .product-card__image {
@@ -227,7 +252,15 @@
   align-items: center;
   gap: 4px;
   font-size: 13px;
-  color: v.$color-wedding-text;
+  color: v.$color-modern-accent;
+  font-weight: 600;
+}
+
+.product-card__stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  color: v.$color-modern-accent;
 }
 
 .product-card__muted {
@@ -243,7 +276,7 @@
 .product-card__price {
   font-size: 15px;
   font-weight: 700;
-  color: v.$color-wedding-text;
+  color: v.$color-modern-accent;
 }
 
 .product-card__price-strike {
@@ -260,9 +293,22 @@
 }
 
 .extras-card {
-  background: v.$color-wedding-bg-pink;
+  background: #ffffff;
+  border: 1px solid v.$color-wedding-border;
   border-radius: 12px;
   padding: 24px;
+}
+
+.extras-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: v.$color-wedding-bg-pink;
+  color: v.$color-modern-accent;
+  margin-bottom: 16px;
 }
 
 .extras-card__title {
@@ -274,7 +320,7 @@
 
 .extras-card__desc {
   font-size: 14px;
-  color: v.$color-wedding-text-secondary;
+  color: v.$color-wedding-text-body;
   line-height: 1.5;
 }
 
@@ -300,18 +346,18 @@
   justify-content: center;
   gap: 16px;
   padding: 48px;
-  background: v.$color-wedding-bg-subtle;
+  background: #042d7c;
 }
 
 .design-help__title {
   font-size: 30px;
   font-weight: 800;
-  color: v.$color-wedding-text;
+  color: #ffffff;
 }
 
 .design-help__desc {
   font-size: 16px;
-  color: v.$color-wedding-text-secondary;
+  color: #ffffff;
   max-width: 480px;
 }
 
@@ -320,6 +366,13 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+}
+
+.theme-tile {
+  display: block;
+  padding: 12px;
+  border: 1px solid v.$color-wedding-border;
+  border-radius: 12px;
 }
 
 .theme-tile__image {
@@ -354,6 +407,9 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  padding: 12px;
+  border: 1px solid v.$color-wedding-border;
+  border-radius: 12px;
 }
 
 .simple-product-card__image {
@@ -388,7 +444,8 @@
 
 .simple-product-card__price {
   font-size: 13px;
-  color: v.$color-wedding-text-secondary;
+  font-weight: 600;
+  color: v.$color-wedding-text;
 }
 
 /* Finishing touches (full bleed) */
@@ -423,7 +480,7 @@
 
 .finishing-touches__desc {
   font-size: 15px;
-  color: v.$color-wedding-text-secondary;
+  color: v.$color-wedding-text-body;
 }
 
 .finishing-touches__links {
@@ -442,7 +499,7 @@
 
 .benefit-item {
   padding-bottom: 20px;
-  border-bottom: 1px solid v.$color-border;
+  border-bottom: 1px solid v.$color-wedding-border;
 
   &:last-child {
     border-bottom: none;
@@ -458,7 +515,7 @@
 
 .benefit-item__desc {
   font-size: 14px;
-  color: v.$color-wedding-text-secondary;
+  color: v.$color-wedding-text-body;
   line-height: 1.5;
 }
 
@@ -474,12 +531,14 @@
   gap: 6px;
   font-size: 14px;
   font-weight: 600;
-  color: v.$color-wedding-text;
+  color: v.$color-modern-accent;
 }
 
 .reviews-summary__stars {
-  color: v.$color-star;
-  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  color: #d97706;
 }
 
 .reviews-summary__muted {
@@ -489,7 +548,7 @@
 
 .reviews-summary__text {
   font-size: 13px;
-  color: v.$color-wedding-text-secondary;
+  color: v.$color-wedding-text-muted;
 }
 
 /* Testimonial */
@@ -522,7 +581,7 @@
 
 .testimonial__attribution {
   font-size: 14px;
-  color: v.$color-wedding-text-secondary;
+  color: v.$color-wedding-text-muted;
   margin-bottom: 8px;
 }
 
@@ -540,6 +599,13 @@
   gap: 24px;
 }
 
+.article-card {
+  display: block;
+  padding: 12px;
+  border: 1px solid v.$color-wedding-border;
+  border-radius: 12px;
+}
+
 .article-card__image {
   aspect-ratio: 4 / 3;
   background: v.$color-wedding-bg-subtle;
@@ -555,7 +621,7 @@
 .article-card__category {
   font-size: 12px;
   font-weight: 700;
-  color: v.$color-modern-accent;
+  color: v.$color-wedding-text-muted;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }

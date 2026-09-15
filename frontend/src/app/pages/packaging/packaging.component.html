@@ -90,6 +90,7 @@
             </div>
             <h3 class="product-card__title">{{ item.title }}</h3>
             <div class="product-card__rating">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <span>{{ item.rating }}</span>
               <span class="product-card__muted">({{ item.reviewCount }})</span>
             </div>
@@ -116,7 +117,7 @@
             Order select packaging products in a quantity of 1. See exactly how your design looks and feels before
             you commit.
           </p>
-          <button type="button" class="btn btn--dark">Browse Custom Samples</button>
+          <button type="button" class="btn btn--white">Browse Custom Samples</button>
         </div>
       </div>
     </div>
@@ -135,6 +136,7 @@
             </div>
             <h3 class="product-card__title">{{ item.title }}</h3>
             <div class="product-card__rating">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <span>{{ item.rating }}</span>
               <span class="product-card__muted">({{ item.reviewCount }})</span>
             </div>
@@ -180,7 +182,11 @@
               }
             </div>
             <h3 class="product-card__title">{{ item.title }}</h3>
+            @if (item.description) {
+              <p class="product-card__desc">{{ item.description }}</p>
+            }
             <div class="product-card__rating">
+              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <span>{{ item.rating }}</span>
               <span class="product-card__muted">({{ item.reviewCount }})</span>
             </div>

@@ -10,7 +10,7 @@
   padding: 48px 0;
 
   &--subtle {
-    background: v.$color-bg-subtle;
+    background: v.$color-bg-soft;
   }
 }
 
@@ -27,7 +27,7 @@
 
 .section-subtitle {
   font-size: 15px;
-  color: v.$color-text-secondary;
+  color: v.$color-text-muted-alt;
   margin-bottom: 24px;
 }
 
@@ -60,6 +60,11 @@
     background: #ffffff;
     color: v.$color-packaging-text;
     border-color: v.$color-border;
+  }
+
+  &--white {
+    background: #ffffff;
+    color: v.$color-packaging-text;
   }
 }
 
@@ -212,7 +217,7 @@
 
 .lineup-card__desc {
   font-size: 13px;
-  color: v.$color-text-secondary;
+  color: v.$color-text-muted-alt;
   line-height: 1.5;
 }
 
@@ -314,12 +319,24 @@
   color: v.$color-packaging-text;
 }
 
+.product-card__desc {
+  font-size: 13px;
+  color: v.$color-text-muted-alt;
+  line-height: 1.4;
+}
+
 .product-card__rating {
   display: flex;
   align-items: center;
   gap: 4px;
   font-size: 13px;
   color: v.$color-packaging-text;
+}
+
+.product-card__stars {
+  color: v.$color-packaging-accent;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
 .product-card__muted {
@@ -349,7 +366,7 @@
 .samples-promo {
   display: flex;
   align-items: stretch;
-  background: #ffffff;
+  background: v.$color-navy-deep;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -374,12 +391,12 @@
 .samples-promo__title {
   font-size: 26px;
   font-weight: 800;
-  color: v.$color-packaging-text;
+  color: #ffffff;
 }
 
 .samples-promo__desc {
   font-size: 15px;
-  color: v.$color-text-secondary;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* Why us (numbered badges) */
@@ -412,7 +429,7 @@
 
 .why-item__desc {
   font-size: 14px;
-  color: v.$color-text-secondary;
+  color: v.$color-text-muted-alt;
   line-height: 1.5;
 }
 
@@ -444,7 +461,7 @@
 
 .accessory-card__desc {
   font-size: 13px;
-  color: v.$color-text-secondary;
+  color: v.$color-text-muted-alt;
   line-height: 1.4;
 }
 
@@ -560,7 +577,7 @@
 
 .seo-section__paragraph {
   font-size: 14px;
-  color: v.$color-text-secondary;
+  color: v.$color-text-body;
   line-height: 1.7;
   margin-bottom: 16px;
 }

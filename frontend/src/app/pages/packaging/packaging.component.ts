@@ -20,6 +20,7 @@ interface NeedCard {
 interface ProductItem {
   badge?: string;
   title: string;
+  description?: string;
   rating: number;
   reviewCount: number;
   price: string;
@@ -48,8 +49,8 @@ interface ExploreTile {
 })
 export class PackagingComponent {
   readonly heroImage = `${IMG}/hero-right-hero-image-18_89.png`;
-  readonly heroQuickLinks = ['New Arrivals', 'PackagingComponent Samples', 'Reorder'];
-  readonly categoryNav = ['All PackagingComponent', 'New Arrivals', 'Samples', 'Bestsellers', 'Accessories'];
+  readonly heroQuickLinks = ['New Arrivals', 'Packaging Samples', 'Reorder'];
+  readonly categoryNav = ['All Packaging', 'New Arrivals', 'Samples', 'Bestsellers', 'Accessories'];
 
   readonly lineupCards: LineupCard[] = [
     { title: 'Custom Mailer Boxes', description: 'Protect your products while putting your brand front and center', image: `${IMG}/frame-card-image-18_105.png` },
@@ -59,9 +60,9 @@ export class PackagingComponent {
   ];
 
   readonly needCards: NeedCard[] = [
-    { title: 'Shipping PackagingComponent', description: 'Get each order where its going safely and on brand', image: `${IMG}/frame-grid-card-18_153.png` },
-    { title: 'Retail PackagingComponent', description: 'Give your products the retail presence they deserve', image: `${IMG}/frame-grid-card-18_158.png` },
-    { title: 'Food PackagingComponent', description: 'Serve up any dish drink or treat with your brand on top', image: `${IMG}/frame-grid-card-18_162.png` },
+    { title: 'Shipping Packaging', description: 'Get each order where its going safely and on brand', image: `${IMG}/frame-grid-card-18_153.png` },
+    { title: 'Retail Packaging', description: 'Give your products the retail presence they deserve', image: `${IMG}/frame-grid-card-18_158.png` },
+    { title: 'Food Packaging', description: 'Serve up any dish drink or treat with your brand on top', image: `${IMG}/frame-grid-card-18_162.png` },
     { title: 'Unboxing Essentials', description: 'Turn every delivery into a moment customers wont forget', image: `${IMG}/frame-grid-card-18_162.png` },
   ];
 
@@ -88,10 +89,10 @@ export class PackagingComponent {
   ];
 
   readonly bestsellers: ProductItem[] = [
-    { badge: 'Bestseller', title: 'Hang Tags', rating: 4.6, reviewCount: 342, price: '$29.99', priceLabel: 'From', ctaLabel: 'Customize', image: `${IMG}/image-container-product-image-18_599.png` },
-    { badge: 'Bestseller', title: 'Custom Mailer Boxes', rating: 4.8, reviewCount: 1204, price: '$3.49 each', priceLabel: 'From', ctaLabel: 'Customize', image: `${IMG}/image-container-product-image-18_624.png` },
-    { badge: 'Bestseller', title: 'Stand-Up Pouches', rating: 4.5, reviewCount: 267, price: '$149.99', priceLabel: 'From', ctaLabel: 'Customize', image: `${IMG}/image-container-product-image-18_649.png` },
-    { badge: 'Bestseller', title: 'Die-Cut Handle Bags', rating: 4.7, reviewCount: 189, price: '$89.99', priceLabel: 'From', ctaLabel: 'Customize', image: `${IMG}/image-container-product-image-18_674.png` },
+    { badge: 'Bestseller', title: 'Hang Tags', description: 'Perfect for retail apparel and branding', rating: 4.6, reviewCount: 342, price: '$29.99', priceLabel: 'From', ctaLabel: 'Customize', image: `${IMG}/image-container-product-image-18_599.png` },
+    { badge: 'Bestseller', title: 'Custom Mailer Boxes', description: 'E-commerce ready shipping & unboxing experience', rating: 4.8, reviewCount: 1204, price: '$3.49 each', priceLabel: 'From', ctaLabel: 'Customize', image: `${IMG}/image-container-product-image-18_624.png` },
+    { badge: 'Bestseller', title: 'Stand-Up Pouches', description: 'Resealable barrier bags for coffee and snacks', rating: 4.5, reviewCount: 267, price: '$149.99', priceLabel: 'From', ctaLabel: 'Customize', image: `${IMG}/image-container-product-image-18_649.png` },
+    { badge: 'Bestseller', title: 'Die-Cut Handle Bags', description: 'Durable retail carrying bags with sleek look', rating: 4.7, reviewCount: 189, price: '$89.99', priceLabel: 'From', ctaLabel: 'Customize', image: `${IMG}/image-container-product-image-18_674.png` },
   ];
 
   readonly accessories: AccessoryItem[] = [

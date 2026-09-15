@@ -10,10 +10,12 @@ import { PackagingComponent } from './pages/packaging/packaging.component';
 import { InvitationsGiftsStationeryComponent } from './pages/invitations-gifts-stationery/invitations-gifts-stationery.component';
 import { WeddingComponent } from './pages/wedding/wedding.component';
 import { DesignServicesComponent } from './pages/design-services/design-services.component';
+import { MatteBusinessCardsComponent } from './pages/business-cards/variants/matte-business-cards.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'business-cards', component: BusinessCardsComponent },
+  { path: 'business-cards/matte', component: MatteBusinessCardsComponent },
   { path: 'postcards-print-advertising', component: PostcardsPrintAdvertisingComponent },
   { path: 'signs-banners-posters', component: SignsBannersPostersComponent },
   { path: 'labels-stickers', component: LabelsStickersComponent },

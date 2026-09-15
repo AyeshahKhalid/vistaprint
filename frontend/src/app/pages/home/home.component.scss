@@ -450,6 +450,17 @@
   border: none;
 }
 
+.service-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+.service-card--all .service-card__icon {
+  color: #ffffff;
+}
+
 .service-card__title {
   font-size: 16px;
   font-weight: 700;

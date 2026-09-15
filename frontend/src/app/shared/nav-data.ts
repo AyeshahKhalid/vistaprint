@@ -180,8 +180,8 @@ export const NAV_CATEGORIES: NavCategory[] = [
   { label: 'Labels & Stickers', path: '/labels-stickers' },
   { label: 'Clothing & Bags', path: '/clothing-bags' },
   { label: 'Promotional Products', path: '/promotional-products' },
-  { label: 'PackagingComponent', path: '/packaging' },
+  { label: 'Packaging', path: '/packaging' },
   { label: 'Invitation', path: '/invitations-gifts-stationery' },
-  { label: 'WeddingComponent', path: '/wedding' },
+  { label: 'Wedding', path: '/wedding' },
   { label: 'Design Services', path: '/design-services' },
 ];

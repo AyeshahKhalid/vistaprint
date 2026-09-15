@@ -1,0 +1,327 @@
+<div class="breadcrumb-bar">
+  <app-breadcrumbs [items]="breadcrumbItems" />
+</div>
+
+<!-- Hero: gallery + configurator -->
+<section class="hero">
+  <div class="hero__inner">
+    <div class="gallery">
+      <div class="gallery__main">
+        <img [src]="data.thumbnails[activeImageIndex()]" [alt]="data.productTitle" />
+        <span class="gallery__zoom">Hover to Zoom</span>
+      </div>
+      <div class="gallery__thumbs">
+        @for (thumb of data.thumbnails; track thumb; let i = $index) {
+          <button
+            type="button"
+            class="gallery__thumb"
+            [class.gallery__thumb--active]="activeImageIndex() === i"
+            (click)="setActiveImage(i)"
+          >
+            <img [src]="thumb" [alt]="data.productTitle + ' view ' + (i + 1)" />
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="config">
+      <div class="config__badges">
+        <span class="badge badge--samples">Samples Available</span>
+        <span class="badge badge--better">Better by Design</span>
+      </div>
+      <h1 class="config__title">{{ data.productTitle }}</h1>
+      <div class="config__rating">
+        <span class="config__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="config__rating-value">{{ data.rating }}</span>
+        <span class="config__dot">&middot;</span>
+        <a href="#reviews" class="config__reviews-link">{{ data.reviewCount | number }} reviews</a>
+      </div>
+      <p class="config__brief">{{ data.briefDescription }}</p>
+
+      <hr class="config__divider" />
+
+      <div class="config__pricing">
+        <span class="config__price">{{ data.price }}</span>
+        <span class="config__price-detail">{{ data.priceDetail }}</span>
+      </div>
+      <div class="config__delivery-meta">
+        <span>Delivery to {{ data.zipCode }}</span>
+        <a href="#">Edit zip</a>
+      </div>
+      <div class="config__delivery-grid">
+        <div class="delivery-card delivery-card--fast">
+          <span class="delivery-card__label">Fastest Delivery &middot; {{ data.fastDelivery.price }}</span>
+          <span class="delivery-card__date">{{ data.fastDelivery.date }}</span>
+        </div>
+        <div class="delivery-card">
+          <span class="delivery-card__label">Free over $100 &middot; {{ data.standardDelivery.price }}</span>
+          <span class="delivery-card__date">{{ data.standardDelivery.date }}</span>
+        </div>
+      </div>
+
+      <div class="config__dropdowns">
+        @for (dd of data.dropdowns; track dd.label) {
+          <div class="dropdown-field">
+            <label class="dropdown-field__label">{{ dd.label }}</label>
+            <select class="dropdown-field__select">
+              <option>Select&hellip;</option>
+              @for (opt of dd.options; track opt) {
+                <option>{{ opt }}</option>
+              }
+            </select>
+          </div>
+        }
+      </div>
+
+      <div class="config__quantity">
+        <div class="config__quantity-header">
+          <span>Quantity</span>
+          <a href="#">See more quantities</a>
+        </div>
+        <div class="quantity-list">
+          @for (qty of data.quantityOptions; track qty.quantity; let first = $first) {
+            <label class="quantity-row" [class.quantity-row--active]="first">
+              <input type="radio" name="quantity" [checked]="first" />
+              <span class="quantity-row__qty">{{ qty.quantity }}</span>
+              <span class="quantity-row__price">{{ qty.price }}</span>
+              <span class="quantity-row__per-unit">{{ qty.perUnit }}</span>
+            </label>
+          }
+        </div>
+      </div>
+
+      <div class="config__actions">
+        <button type="button" class="btn btn--outline">Browse our templates</button>
+        <button type="button" class="btn btn--dark">Upload your design</button>
+      </div>
+
+      <div class="design-upsell">
+        <span>Let us design it for you &mdash; professional custom designs starting from just {{ data.designServicePrice }}</span>
+        <a href="#">Get started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Product tabs -->
+<nav class="product-tabs">
+  <div class="product-tabs__inner">
+    @for (tab of data.tabs; track tab; let i = $index) {
+      <button
+        type="button"
+        class="product-tabs__tab"
+        [class.product-tabs__tab--active]="activeTabIndex() === i"
+        (click)="setActiveTab(i)"
+      >
+        {{ tab }}
+      </button>
+    }
+  </div>
+</nav>
+
+<!-- Templates carousel -->
+<section class="section">
+  <div class="section__inner">
+    <div class="section__header-row">
+      <h2 class="section-title">{{ data.templatesSectionTitle }}</h2>
+      <a href="#" class="section__view-all">Browse all</a>
+    </div>
+    <div class="template-row">
+      @for (tpl of data.templates; track tpl.brand) {
+        <a href="#" class="template-card">
+          <div class="template-card__image">
+            <img [src]="tpl.image" [alt]="tpl.brand" loading="lazy" />
+            <span class="template-card__tag">{{ tpl.tag }}</span>
+          </div>
+          <span class="template-card__category">{{ tpl.category }}</span>
+          <h3 class="template-card__brand">{{ tpl.brand }}</h3>
+          <p class="template-card__desc">{{ tpl.description }}</p>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Feature highlights -->
+<section class="section section--subtle">
+  <div class="section__inner">
+    <h2 class="promo-headline">{{ data.promoHeadline }}</h2>
+    <div class="feature-grid">
+      @for (feature of data.featureHighlights; track feature.title) {
+        <div class="feature-item">
+          <h3 class="feature-item__title">{{ feature.title }}</h3>
+          <p class="feature-item__desc">{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Coated classic (image + text) -->
+<section class="section">
+  <div class="section__inner">
+    <div class="split-block">
+      <div class="split-block__text">
+        <h2 class="split-block__title">{{ data.coatedSectionTitle }}</h2>
+        <p class="split-block__body">{{ data.coatedSectionBody }}</p>
+      </div>
+      <div class="split-block__image">
+        <img [src]="data.coatedSectionImage" [alt]="data.coatedSectionTitle" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Personal touch -->
+<section class="section section--subtle">
+  <div class="section__inner">
+    <h2 class="section-title">{{ data.personalTouchTitle }}</h2>
+    <p class="section-subtitle">{{ data.personalTouchBody }}</p>
+    <div class="option-columns">
+      <div class="option-column">
+        @for (opt of data.thicknessOptions; track opt.title) {
+          <div class="option-row">
+            <h4 class="option-row__title">{{ opt.title }}</h4>
+            <p class="option-row__desc">{{ opt.description }}</p>
+          </div>
+        }
+      </div>
+      <div class="option-column">
+        @for (opt of data.finishOptions; track opt.title) {
+          <div class="option-row">
+            <h4 class="option-row__title">{{ opt.title }}</h4>
+            <p class="option-row__desc">{{ opt.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Start designing -->
+<section class="section">
+  <div class="section__inner">
+    <div class="split-block split-block--reverse">
+      <div class="split-block__text">
+        <h2 class="split-block__title">{{ data.startDesigningTitle }}</h2>
+        <p class="split-block__body">{{ data.startDesigningBody }}</p>
+        <div class="split-block__actions">
+          <button type="button" class="btn btn--dark">Start designing</button>
+          <button type="button" class="btn btn--outline">Upload your design</button>
+        </div>
+      </div>
+      <div class="split-block__image">
+        <img [src]="data.startDesigningImage" [alt]="data.startDesigningTitle" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Better by design / sustainability -->
+<section class="section section--subtle">
+  <div class="section__inner">
+    <div class="split-block">
+      <div class="split-block__image split-block__image--contain">
+        <img [src]="data.sustainabilityImage" alt="Better by Design" loading="lazy" />
+      </div>
+      <div class="split-block__text">
+        <span class="eyebrow">Sustainably Crafted</span>
+        <h2 class="split-block__title">Better by Design</h2>
+        <p class="split-block__body">{{ data.sustainabilityBody }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related products -->
+<section class="section">
+  <div class="section__inner">
+    <h2 class="section-title">Related products</h2>
+    <div class="product-row">
+      @for (item of data.relatedProducts; track item.title) {
+        <a href="#" class="mini-product-card">
+          <div class="mini-product-card__image">
+            <img [src]="item.image" [alt]="item.title" loading="lazy" />
+          </div>
+          <span class="mini-product-card__title">{{ item.title }}</span>
+          <span class="mini-product-card__price">{{ item.price }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Frequently bought together -->
+<section class="section section--subtle">
+  <div class="section__inner">
+    <h2 class="section-title">Frequently bought together with this product</h2>
+    <div class="product-row">
+      @for (item of data.frequentlyBought; track item.title) {
+        <a href="#" class="mini-product-card">
+          <div class="mini-product-card__image">
+            <img [src]="item.image" [alt]="item.title" loading="lazy" />
+          </div>
+          <span class="mini-product-card__title">{{ item.title }}</span>
+          <span class="mini-product-card__price">{{ item.price }}</span>
+        </a>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Reviews -->
+<section class="section" id="reviews">
+  <div class="section__inner">
+    <h2 class="section-title">Customer Reviews</h2>
+    <div class="reviews-summary-row">
+      <div class="reviews-summary-row__score">
+        <span class="reviews-summary-row__value">{{ data.ratingSummary }}/5</span>
+        <span class="reviews-summary-row__count">Based on {{ data.ratingCount | number }} reviews</span>
+      </div>
+      <div class="rating-breakdown">
+        @for (row of data.ratingBreakdown; track row.stars) {
+          <div class="rating-breakdown__row">
+            <span class="rating-breakdown__stars">{{ row.stars }}</span>
+            <div class="rating-breakdown__bar">
+              <div class="rating-breakdown__fill" [style.width]="row.percent"></div>
+            </div>
+            <span class="rating-breakdown__percent">{{ row.percent }}</span>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="review-grid">
+      @for (review of data.reviews; track review.author) {
+        <div class="review-card">
+          <span class="review-card__verified">Verified Buyer</span>
+          <h3 class="review-card__title">{{ review.title }}</h3>
+          <p class="review-card__body">{{ review.body }}</p>
+          <div class="review-card__meta">
+            <span class="review-card__author">{{ review.author }}</span>
+            <span class="review-card__date">{{ review.date }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<!-- Design banner -->
+<section class="design-banner">
+  <div class="design-banner__text">
+    <h2 class="design-banner__title">Let us design it for you</h2>
+    <p class="design-banner__body">{{ data.designBannerBody }}</p>
+    <a href="#" class="btn btn--dark">Find out more</a>
+  </div>
+  <div class="design-banner__image">
+    <img [src]="data.designBannerImage" alt="Design services" loading="lazy" />
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-section">
+  <div class="section__inner faq-section__inner">
+    <h2 class="faq-section__title">Frequently asked questions</h2>
+    <app-faq-accordion [items]="data.faqs" />
+  </div>
+</section>

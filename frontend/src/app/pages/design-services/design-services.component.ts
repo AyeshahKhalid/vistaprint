@@ -12,6 +12,7 @@ interface ServiceCard {
 }
 
 interface WhyItem {
+  icon: 'badge-check' | 'dollar-sign' | 'message-circle' | 'archive';
   title: string;
   description: string;
 }
@@ -35,14 +36,14 @@ interface Review {
   styleUrl: './design-services.component.scss',
 })
 export class DesignServicesComponent {
-  readonly breadcrumbs = [{ label: 'HomeComponent', path: '/' }, { label: 'Design Services' }];
+  readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Design Services' }];
 
   readonly heroImage = `${IMG}/hero-right-hero-image-22_100.png`;
   readonly sectionNav = ['Design services', 'Why PRINTGRAPHI?', 'How it works', 'FAQs'];
 
   readonly categoryPills = [
-    'Popular', 'Business Cards', 'PackagingComponent', 'Marketing Materials', 'Signs and Posters',
-    'Stationery', 'Banners', 'Labels and Stickers', 'Clothing and Bags', 'WeddingComponent',
+    'Popular', 'Business Cards', 'Packaging', 'Marketing Materials', 'Signs and Posters',
+    'Stationery', 'Banners', 'Labels and Stickers', 'Clothing and Bags', 'Wedding',
   ];
 
   readonly serviceCards: ServiceCard[] = [
@@ -57,10 +58,10 @@ export class DesignServicesComponent {
   ];
 
   readonly whyItems: WhyItem[] = [
-    { title: 'Leave it to the professionals', description: 'Our global community of vetted professional designers will create and deliver every pixel-perfect file and format you need.' },
-    { title: 'Stick to your budget', description: 'From minor tweaks to complete redesigns, we offer a range of services to grow your brand without breaking the bank.' },
-    { title: '24/7 customer support', description: 'Our Customer Care Team are here to support you with your design or print journey whenever you need it.' },
-    { title: 'Design, print, store, deliver — all in one place', description: 'All your designs are stored within your PRINTGRAPHI account, ready to print onto marketing materials, merch, packaging and more.' },
+    { icon: 'badge-check', title: 'Leave it to the professionals', description: 'Our global community of vetted professional designers will create and deliver every pixel-perfect file and format you need.' },
+    { icon: 'dollar-sign', title: 'Stick to your budget', description: 'From minor tweaks to complete redesigns, we offer a range of services to grow your brand without breaking the bank.' },
+    { icon: 'message-circle', title: '24/7 customer support', description: 'Our Customer Care Team are here to support you with your design or print journey whenever you need it.' },
+    { icon: 'archive', title: 'Design, print, store, deliver — all in one place', description: 'All your designs are stored within your PRINTGRAPHI account, ready to print onto marketing materials, merch, packaging and more.' },
   ];
 
   readonly processSteps: ProcessStep[] = [

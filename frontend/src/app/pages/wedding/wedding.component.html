@@ -6,8 +6,8 @@
         <h1 class="hero__title">Wedding Planning</h1>
         <p class="hero__desc">Plan your perfect day at the perfect price with lovely stationery, welcome signs, and more.</p>
         <ul class="hero__highlights">
-          @for (item of promoHighlights; track item) {
-            <li>
+          @for (item of promoHighlights; track item; let i = $index) {
+            <li [class.hero__highlights-item--accent]="i === 0">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
@@ -60,6 +60,13 @@
             </div>
             <h3 class="product-card__title">{{ item.title }}</h3>
             <div class="product-card__rating">
+              <span class="product-card__stars">
+                @for (star of [1, 2, 3, 4, 5]; track star) {
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                }
+              </span>
               <span>{{ item.rating }}</span>
               <span class="product-card__muted">({{ item.reviewCount }})</span>
             </div>
@@ -86,6 +93,35 @@
       <div class="extras-grid">
         @for (item of weddingExtras; track item.title) {
           <div class="extras-card">
+            <span class="extras-card__icon">
+              @switch (item.icon) {
+                @case ('package') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                }
+                @case ('mail') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                    <path d="m22 6-10 7L2 6"></path>
+                  </svg>
+                }
+                @case ('qr-code') {
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                    <line x1="14" y1="14" x2="14" y2="14.01"></line>
+                    <line x1="14" y1="18" x2="17" y2="18"></line>
+                    <line x1="17" y1="14" x2="21" y2="14"></line>
+                    <line x1="21" y1="18" x2="21" y2="21"></line>
+                    <line x1="17" y1="21" x2="14" y2="21"></line>
+                  </svg>
+                }
+              }
+            </span>
             <h3 class="extras-card__title">{{ item.title }}</h3>
             <p class="extras-card__desc">{{ item.description }}</p>
           </div>
@@ -105,7 +141,7 @@
         Our pros will help you explore options, pull coordinating pieces, and ensure your design looks exactly as
         you envisioned.
       </p>
-      <button type="button" class="btn btn--dark">Get in touch with our team</button>
+      <button type="button" class="btn btn--outline">Get in touch with our team</button>
     </div>
   </section>
 
@@ -155,8 +191,8 @@
       <h2 class="finishing-touches__title">Dreamy finishing touches</h2>
       <p class="finishing-touches__desc">Make your suite even more you with these final flourishes.</p>
       <div class="finishing-touches__links">
-        <a href="#" class="btn btn--outline">Shop gold foil</a>
-        <a href="#" class="btn btn--outline">Shop monogram invites</a>
+        <a href="#" class="btn btn--accent">Shop gold foil</a>
+        <a href="#" class="btn btn--accent-outline">Shop monogram invites</a>
       </div>
     </div>
   </section>
@@ -164,7 +200,7 @@
   <!-- Why us -->
   <section class="section section--subtle">
     <div class="section__inner">
-      <h2 class="section-title">Why PRINTGRAPHI?</h2>
+      <h2 class="section-title">Why PrintGraphi?</h2>
       <div class="benefit-list">
         @for (item of benefits; track item.title) {
           <div class="benefit-item">
@@ -175,7 +211,13 @@
       </div>
       <div class="reviews-summary">
         <div class="reviews-summary__rating">
-          <span class="reviews-summary__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="reviews-summary__stars">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+              </svg>
+            }
+          </span>
           <span>4.9</span>
           <span class="reviews-summary__muted">(2000+)</span>
         </div>
@@ -193,8 +235,8 @@
       </p>
       <p class="testimonial__attribution">Our verified buyers are thrilled with their wedding stationery.</p>
       <div class="testimonial__actions">
-        <button type="button" class="btn btn--dark">Shop wedding invitations</button>
-        <button type="button" class="btn btn--outline">Shop RSVPs</button>
+        <button type="button" class="btn btn--accent">Shop wedding invitations</button>
+        <button type="button" class="btn btn--accent-outline">Shop RSVPs</button>
       </div>
     </div>
   </section>

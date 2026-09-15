@@ -74,7 +74,7 @@ interface GalleryPost {
   styleUrl: './business-cards.component.scss',
 })
 export class BusinessCardsComponent {
-  readonly breadcrumbs = [{ label: 'HomeComponent', path: '/' }, { label: 'Business Cards' }];
+  readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Business Cards' }];
 
   readonly heroImage = `${IMG}/hero-right-column-hero-product-image-8_95.png`;
 

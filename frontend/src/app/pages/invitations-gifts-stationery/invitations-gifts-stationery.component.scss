@@ -42,20 +42,20 @@
   font-family: inherit;
 
   &--dark {
-    background: v.$color-modern-text;
+    background: v.$color-modern-accent;
     color: #ffffff;
   }
 
   &--outline {
-    background: #ffffff;
-    color: v.$color-modern-text;
-    border-color: v.$color-border;
+    background: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
   }
 }
 
 /* Hero */
 .hero {
-  background: #fffbf7;
+  background: #ffffff;
 }
 
 .hero__inner {
@@ -468,6 +468,7 @@
 .final-cta {
   padding: 64px 0;
   text-align: center;
+  background: v.$color-navy-deep;
 }
 
 .final-cta__inner {
@@ -481,12 +482,12 @@
 .final-cta__title {
   font-size: 32px;
   font-weight: 800;
-  color: v.$color-modern-text;
+  color: #ffffff;
 }
 
 .final-cta__desc {
   font-size: 16px;
-  color: v.$color-text-secondary;
+  color: #ffffff;
   max-width: 520px;
 }
 

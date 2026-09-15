@@ -46,7 +46,7 @@ interface SocialTile {
   styleUrl: './labels-stickers.component.scss',
 })
 export class LabelsStickersComponent {
-  readonly breadcrumbs = [{ label: 'HomeComponent', path: '/' }, { label: 'Labels and Stickers' }];
+  readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Labels and Stickers' }];
 
   readonly heroImage = `${IMG}/hero-right-hero-lifestyle-image-16_1294.png`;
   readonly heroPills = ['Sticker Singles', 'Sticker Sheets', 'Roll Labels'];
@@ -79,14 +79,14 @@ export class LabelsStickersComponent {
   readonly rollLabelsPromoImage = `${IMG}/promo-left-promo-image-16_1334.png`;
 
   readonly foodBeverageItems: RatedProduct[] = [
-    { title: 'Food PackagingComponent Labels', rating: 4.5, reviewCount: 312, price: '$99.99', ctaLabel: 'Shop', image: `${IMG}/grid-item-1-item-image-16_1347.png` },
+    { title: 'Food Packaging Labels', rating: 4.5, reviewCount: 312, price: '$99.99', ctaLabel: 'Shop', image: `${IMG}/grid-item-1-item-image-16_1347.png` },
     { title: 'Wine Labels', rating: 4.4, reviewCount: 189, price: '$121.99', ctaLabel: 'Shop', image: `${IMG}/grid-item-2-item-image-16_1372.png` },
     { title: 'Beer Labels', rating: 4.6, reviewCount: 97, price: '$189.00', ctaLabel: 'Shop', image: `${IMG}/grid-item-3-item-image-16_1397.png` },
     { title: 'Waterproof Labels', rating: 4.7, reviewCount: 428, price: '$104.99', ctaLabel: 'Shop', image: `${IMG}/grid-item-4-item-image-16_1422.png` },
   ];
 
   readonly retailEventItems: RatedProduct[] = [
-    { title: 'PackagingComponent Labels', rating: 4.5, reviewCount: 267, price: '$99.99', ctaLabel: 'Shop', image: `${IMG}/retail-item-1-item-image-16_1452.png` },
+    { title: 'Packaging Labels', rating: 4.5, reviewCount: 267, price: '$99.99', ctaLabel: 'Shop', image: `${IMG}/retail-item-1-item-image-16_1452.png` },
     { title: 'Product Labels on Sheets', rating: 4.3, reviewCount: 156, price: '$24.99', ctaLabel: 'Shop', image: `${IMG}/retail-item-2-item-image-16_1477.png` },
     { title: 'Custom Tags', rating: 4.6, reviewCount: 89, price: '$34.99', ctaLabel: 'Shop', image: `${IMG}/retail-item-3-item-image-16_1502.png` },
     { title: 'QR Code Stickers', rating: 4.8, reviewCount: 203, price: '$15.99', badge: 'Popular', ctaLabel: 'Shop', image: `${IMG}/retail-item-4-item-image-16_1529.png` },
@@ -106,7 +106,7 @@ export class LabelsStickersComponent {
     { label: 'Business Cards', path: '/business-cards', image: `${IMG}/category-tile-tile-image-16_1925.png` },
     { label: 'Postcards and Print Advertising', path: '/postcards-print-advertising', image: `${IMG}/category-tile-tile-image-16_1929.png` },
     { label: 'Signs Banners and Posters', path: '/signs-banners-posters', image: `${IMG}/category-tile-tile-image-16_1933.png` },
-    { label: 'PackagingComponent', path: '/packaging', image: `${IMG}/category-tile-tile-image-16_1938.png` },
+    { label: 'Packaging', path: '/packaging', image: `${IMG}/category-tile-tile-image-16_1938.png` },
     { label: 'Invitations Gifts and Stationery', path: '/invitations-gifts-stationery', image: `${IMG}/category-tile-tile-image-16_1942.png` },
     { label: 'Clothing and Bags', path: '/clothing-bags', image: `${IMG}/category-tile-tile-image-16_1946.png` },
   ];
