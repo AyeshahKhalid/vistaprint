@@ -4,6 +4,8 @@
       <li class="category-nav__item" [class.category-nav__item--has-menu]="item.megaMenu">
         <a
           [routerLink]="item.path"
+          routerLinkActive="category-nav__link--active"
+          [routerLinkActiveOptions]="{ exact: item.path === '/' }"
           class="category-nav__link"
           [class.category-nav__link--highlight]="item.highlight"
           [attr.aria-haspopup]="item.megaMenu ? 'true' : null"

@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MegaMenuComponent } from '../mega-menu/mega-menu.component';
 import { NAV_CATEGORIES, NavCategory } from '../nav-data';
 
 @Component({
   selector: 'app-category-nav-bar',
-  imports: [RouterLink, MegaMenuComponent],
+  imports: [RouterLink, RouterLinkActive, MegaMenuComponent],
   templateUrl: './category-nav-bar.component.html',
   styleUrl: './category-nav-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

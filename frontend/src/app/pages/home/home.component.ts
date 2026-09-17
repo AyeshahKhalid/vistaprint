@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
 
 const IMG = '/images/home';
@@ -40,6 +40,15 @@ interface UgcPost {
   styleUrl: './home.component.scss',
 })
 export class HomeComponent {
+  @ViewChild('categoriesTrack') categoriesTrack?: ElementRef<HTMLElement>;
+
+  scrollCategories(direction: 'left' | 'right'): void {
+    const track = this.categoriesTrack?.nativeElement;
+    if (!track) return;
+    const amount = track.clientWidth * 0.8;
+    track.scrollBy({ left: direction === 'left' ? -amount : amount, behavior: 'smooth' });
+  }
+
   readonly heroImage = `${IMG}/hero-graphic-hero-image-3_75.png`;
   readonly newCustomerOfferImage = `${IMG}/section-new-customer-offer-promo-image-3_278.png`;
   readonly signupFeatureImage = `${IMG}/section-signup-feature-apparel-promo-image-3_376.png`;

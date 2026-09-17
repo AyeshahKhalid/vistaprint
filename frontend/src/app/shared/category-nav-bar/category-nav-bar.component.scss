@@ -45,11 +45,15 @@
   }
 
   &--highlight {
-    color: #d0021b;
+    color: v.$color-primary;
 
     &:hover {
-      color: #a80116;
+      color: v.$color-primary-dark;
     }
+  }
+
+  &--active {
+    color: v.$color-primary;
   }
 }
 

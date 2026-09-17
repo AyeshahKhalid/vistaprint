@@ -14,6 +14,7 @@ import { MatteBusinessCardsComponent } from './pages/business-cards/variants/mat
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'deals', component: HomeComponent },
   { path: 'business-cards', component: BusinessCardsComponent },
   { path: 'business-cards/matte', component: MatteBusinessCardsComponent },
   { path: 'postcards-print-advertising', component: PostcardsPrintAdvertisingComponent },

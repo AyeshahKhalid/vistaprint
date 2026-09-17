@@ -26,14 +26,30 @@
   <!-- Explore all categories -->
   <section class="section categories-section">
     <div class="section__inner">
-      <h2 class="section__title">Explore all categories</h2>
-      <div class="categories-grid">
+      <div class="section__header-row">
+        <h2 class="section__title">Explore all categories</h2>
+        <div class="categories-arrows">
+          <button type="button" class="categories-arrow" aria-label="Scroll categories left" (click)="scrollCategories('left')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <button type="button" class="categories-arrow" aria-label="Scroll categories right" (click)="scrollCategories('right')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="categories-track" #categoriesTrack>
         @for (cat of categories; track cat.path) {
           <a [href]="cat.path" class="category-tile">
             <div class="category-tile__icon">
               <img [src]="cat.image" [alt]="cat.label" />
             </div>
-            <span class="category-tile__label">{{ cat.label }}</span>
+            <div class="category-tile__title-container">
+              <span class="category-tile__label">{{ cat.label }}</span>
+            </div>
           </a>
         }
       </div>
@@ -53,9 +69,11 @@
             <div class="collection-card__image">
               <img [src]="col.image" [alt]="col.title" />
             </div>
-            <h3 class="collection-card__title">{{ col.title }}</h3>
-            <p class="collection-card__desc">{{ col.description }}</p>
-            <span class="collection-card__link">Explore collection</span>
+            <div class="collection-card__content">
+              <h3 class="collection-card__title">{{ col.title }}</h3>
+              <p class="collection-card__desc">{{ col.description }}</p>
+              <span class="collection-card__link">Explore collection</span>
+            </div>
           </a>
         }
       </div>
@@ -72,8 +90,10 @@
             <div class="idea-card__image">
               <img [src]="idea.image" [alt]="idea.label" />
             </div>
-            <span class="idea-card__label">{{ idea.label }}</span>
-            <span class="idea-card__cta">Customize &rarr;</span>
+            <div class="idea-card__footer">
+              <span class="idea-card__label">{{ idea.label }}</span>
+              <span class="idea-card__cta">Customize &rarr;</span>
+            </div>
           </a>
         }
       </div>
@@ -113,7 +133,7 @@
           >
         </label>
         <div class="signup-offer__field-row">
-          <input type="email" placeholder="Subscription email" class="signup-offer__input" />
+          <input type="email" placeholder="Subscription email" class="signup-offer__input signup-offer__input--filled" />
           <button type="submit" class="btn btn--primary">Submit</button>
         </div>
       </form>
