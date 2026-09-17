@@ -7,7 +7,20 @@
 
 .breadcrumb-bar {
   @include m.container(v.$header-container-max-width);
-  padding: 16px 40px;
+  padding: 16px 40px 0;
+}
+
+.title-wrapper {
+  padding-top: 12px;
+  padding-bottom: 16px;
+  margin-top: 12px;
+  border-bottom: 1px solid v.$color-border-card;
+}
+
+.title-wrapper__title {
+  font-size: 32px;
+  font-weight: 800;
+  color: v.$color-text;
 }
 
 .section {
@@ -156,9 +169,52 @@
 }
 
 .category-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 13px;
   font-weight: 700;
   color: v.$color-link;
+}
+
+.category-card__chevron {
+  flex-shrink: 0;
+}
+
+/* Carousel controls (bestsellers) */
+.carousel-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+
+  app-section-header {
+    flex: 1;
+  }
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.carousel-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid v.$color-border-card;
+  color: v.$color-text;
+  cursor: pointer;
+
+  &:hover {
+    border-color: v.$color-text-dark;
+  }
 }
 
 /* Carousel row (bestsellers) */
@@ -192,26 +248,17 @@
 .promo-banner {
   display: flex;
   align-items: stretch;
-  background: v.$color-bg-accent-pale;
-  border-radius: 16px;
-  overflow: hidden;
+  gap: 32px;
 
   &--reverse {
     flex-direction: row-reverse;
-  }
-
-  &--dark {
-    background: v.$color-navy-deep;
-
-    .promo-banner__title,
-    .promo-banner__desc {
-      color: #ffffff;
-    }
   }
 }
 
 .promo-banner__image {
   flex: 0 0 45%;
+  border-radius: 12px;
+  overflow: hidden;
 
   img {
     @include m.cover-image;
@@ -225,12 +272,26 @@
   justify-content: center;
   gap: 16px;
   padding: 40px;
+  border-radius: 12px;
+
+  &--dark {
+    background: v.$color-navy-deep;
+
+    .promo-banner__title,
+    .promo-banner__desc {
+      color: #ffffff;
+    }
+  }
+
+  &--pale {
+    background: v.$color-bg-accent-pale;
+  }
 }
 
 .promo-banner__title {
   font-size: 28px;
   font-weight: 800;
-  color: v.$color-primary-dark;
+  color: v.$color-text-dark;
 }
 
 .promo-banner__desc {
@@ -246,9 +307,14 @@
 }
 
 .explore-tile {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.explore-tile__image {
   display: block;
-  aspect-ratio: 411 / 287;
+  aspect-ratio: 411 / 257;
   border-radius: 12px;
   overflow: hidden;
 
@@ -258,13 +324,13 @@
 }
 
 .explore-tile__label {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  color: #ffffff;
-  font-size: 18px;
+  color: v.$color-text-dark;
+  font-size: 15px;
   font-weight: 700;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+
+  &--active {
+    color: v.$color-link;
+  }
 }
 
 /* SEO section */

@@ -226,8 +226,12 @@
       <div class="explore-grid">
         @for (tile of exploreCategories; track tile.path) {
           <a [routerLink]="tile.path" class="explore-tile">
-            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
-            <span class="explore-tile__label">{{ tile.label }}</span>
+            <div class="explore-tile__image">
+              <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            </div>
+            <div class="explore-tile__title-area">
+              <span class="explore-tile__label">{{ tile.label }}</span>
+            </div>
           </a>
         }
       </div>

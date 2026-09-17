@@ -61,18 +61,22 @@ export class SignsBannersPostersComponent {
     {
       heading: 'Banners',
       links: ['Hanging Banners', 'Standing Banners'],
+      shopAllLabel: 'Shop all banners',
     },
     {
       heading: 'Flags & Posters',
       links: ['Feather Flags', 'Teardrop Flags', 'Custom Posters', 'Poster Accessories', 'Car Signage'],
+      shopAllLabel: 'Shop all posters',
     },
     {
       heading: 'Signs',
       links: ['Yard Signs', 'Rigid Signs', 'A-Frame Signs', 'Tabletop Signs', 'Door and Desk Signs', 'Canvas Prints and Wall Art'],
+      shopAllLabel: 'Shop all signs',
     },
     {
       heading: 'Decals, Displays & Accessories',
       links: ['Car Decals and Magnets', 'Wall and Window Decals', 'Table Covers', 'Displays and Tents', 'Portable Counters', 'Signage Accessories'],
+      shopAllLabel: 'Shop all signage accessories',
     },
   ];
 

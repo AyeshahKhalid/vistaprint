@@ -40,7 +40,14 @@
             <div class="category-tile__image">
               <img [src]="cat.image" [alt]="cat.label" loading="lazy" />
             </div>
-            <span class="category-tile__label">{{ cat.label }}</span>
+            <div class="category-tile__content">
+              <span class="category-tile__label">{{ cat.label }}</span>
+              <span class="category-tile__arrow">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
           </a>
         }
       </div>
@@ -52,28 +59,49 @@
     <div class="section__inner">
       <h2 class="section-title">Bestsellers we think you'll love</h2>
       <p class="section-subtitle">These favorites have quality and savings written all over them.</p>
-      <div class="carousel-row">
-        @for (item of bestsellers; track item.title) {
-          <a href="#" class="carousel-row__item product-card">
-            <div class="product-card__image">
-              <img [src]="item.image" [alt]="item.title" loading="lazy" />
-              @if (item.saleBadge) {
-                <span class="product-card__badge">Sale</span>
-              }
-            </div>
-            <h3 class="product-card__title">{{ item.title }}</h3>
-            <div class="product-card__rating">
-              <span>{{ item.rating }}</span>
-              <span class="product-card__muted">({{ item.reviewCount }})</span>
-            </div>
-            <div class="product-card__price-row">
-              <span class="product-card__price">{{ item.price }}</span>
-              @if (item.salePrice) {
-                <span class="product-card__price-strike">{{ item.salePrice }}</span>
-              }
-            </div>
-          </a>
-        }
+      <div class="carousel-wrapper">
+        <button type="button" class="carousel-nav carousel-nav--left" aria-label="Previous">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <div class="carousel-row">
+          @for (item of bestsellers; track item.title) {
+            <a href="#" class="carousel-row__item product-card">
+              <div class="product-card__image">
+                <img [src]="item.image" [alt]="item.title" loading="lazy" />
+                @if (item.saleBadge) {
+                  <span class="product-card__badge">Sale</span>
+                }
+              </div>
+              <div class="product-card__body">
+                <h3 class="product-card__title">{{ item.title }}</h3>
+                <div class="product-card__rating">
+                  <span class="product-card__stars">
+                    @for (i of [0, 1, 2, 3, 4]; track i) {
+                      <svg width="12" height="12" viewBox="0 0 24 24" [attr.fill]="i < ratingRoundedDown(item.rating) ? '#f59e0b' : 'none'" [attr.stroke]="i < ratingRoundedDown(item.rating) ? '#f59e0b' : '#e5e7eb'" stroke-width="1.5">
+                        <path d="M12 2l2.9 6.6L22 9.3l-5 4.7 1.5 7L12 17.8 5.5 21l1.5-7-5-4.7 7.1-.7z" />
+                      </svg>
+                    }
+                  </span>
+                  <span>{{ item.rating }}</span>
+                  <span class="product-card__muted">({{ item.reviewCount }})</span>
+                </div>
+                <div class="product-card__price-row">
+                  <span class="product-card__price">{{ item.price }}</span>
+                  @if (item.salePrice) {
+                    <span class="product-card__price-strike">{{ item.salePrice }}</span>
+                  }
+                </div>
+              </div>
+            </a>
+          }
+        </div>
+        <button type="button" class="carousel-nav carousel-nav--right" aria-label="Next">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -110,7 +138,14 @@
             <div class="home-card__image">
               <img [src]="item.image" [alt]="item.title" loading="lazy" />
             </div>
-            <span class="home-card__label">{{ item.title }}</span>
+            <div class="home-card__content">
+              <span class="home-card__label">{{ item.title }}</span>
+              <span class="home-card__arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
           </a>
         }
       </div>
@@ -127,7 +162,9 @@
             <div class="invite-card__image">
               <img [src]="card.image" [alt]="card.title" loading="lazy" />
             </div>
-            <span class="invite-card__label">{{ card.title }}</span>
+            <div class="invite-card__footer">
+              <span class="invite-card__label">{{ card.title }}</span>
+            </div>
           </a>
         }
       </div>
@@ -146,12 +183,21 @@
               <img [src]="item.image" [alt]="item.title" loading="lazy" />
               <span class="product-card__badge product-card__badge--new">New</span>
             </div>
-            <h3 class="product-card__title">{{ item.title }}</h3>
-            <div class="product-card__rating">
-              <span>{{ item.rating }}</span>
-              <span class="product-card__muted">({{ item.reviewCount }})</span>
+            <div class="product-card__body">
+              <h3 class="product-card__title">{{ item.title }}</h3>
+              <div class="product-card__rating">
+                <span class="product-card__stars">
+                  @for (i of [0, 1, 2, 3, 4]; track i) {
+                    <svg width="12" height="12" viewBox="0 0 24 24" [attr.fill]="i < ratingRoundedDown(item.rating) ? '#f59e0b' : 'none'" [attr.stroke]="i < ratingRoundedDown(item.rating) ? '#f59e0b' : '#e5e7eb'" stroke-width="1.5">
+                      <path d="M12 2l2.9 6.6L22 9.3l-5 4.7 1.5 7L12 17.8 5.5 21l1.5-7-5-4.7 7.1-.7z" />
+                    </svg>
+                  }
+                </span>
+                <span>{{ item.rating }}</span>
+                <span class="product-card__muted">({{ item.reviewCount }})</span>
+              </div>
+              <span class="product-card__price">{{ item.price }}</span>
             </div>
-            <span class="product-card__price">{{ item.price }}</span>
           </a>
         }
       </div>
@@ -169,8 +215,15 @@
             <div class="stationery-card__image">
               <img [src]="item.image" [alt]="item.title" loading="lazy" />
             </div>
-            <span class="stationery-card__label">{{ item.title }}</span>
-            <span class="stationery-card__cta">Shop now</span>
+            <div class="stationery-card__content">
+              <span class="stationery-card__label">{{ item.title }}</span>
+              <span class="stationery-card__cta">
+                Shop now
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </span>
+            </div>
           </a>
         }
       </div>
@@ -178,7 +231,7 @@
   </section>
 
   <!-- Social proof -->
-  <section class="section section--subtle">
+  <section class="section social-proof-section">
     <div class="section__inner">
       <h2 class="section-title">Made by you #MadeWithPrintGraphi</h2>
       <p class="section-subtitle">
@@ -208,7 +261,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section faq-section">
+  <section class="section section--subtle faq-section">
     <div class="section__inner faq-section__inner">
       <h2 class="faq-section__title">Frequently asked questions</h2>
       <app-faq-accordion [items]="faqs" />

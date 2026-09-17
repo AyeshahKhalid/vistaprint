@@ -88,15 +88,17 @@
                 <span class="product-card__badge">{{ item.badge }}</span>
               }
             </div>
-            <h3 class="product-card__title">{{ item.title }}</h3>
-            <div class="product-card__rating">
-              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span>{{ item.rating }}</span>
-              <span class="product-card__muted">({{ item.reviewCount }})</span>
-            </div>
-            <div class="product-card__price-row">
-              <span class="product-card__price">{{ item.priceLabel }} {{ item.price }}</span>
-              <span class="product-card__cta">{{ item.ctaLabel }}</span>
+            <div class="product-card__body">
+              <h3 class="product-card__title">{{ item.title }}</h3>
+              <div class="product-card__rating">
+                <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <span>{{ item.rating }}</span>
+                <span class="product-card__muted">({{ item.reviewCount }})</span>
+              </div>
+              <div class="product-card__price-row">
+                <span class="product-card__price">{{ item.priceLabel }} {{ item.price }}</span>
+                <span class="product-card__cta">{{ item.ctaLabel }}</span>
+              </div>
             </div>
           </a>
         }
@@ -134,15 +136,17 @@
             <div class="product-card__image">
               <img [src]="item.image" [alt]="item.title" loading="lazy" />
             </div>
-            <h3 class="product-card__title">{{ item.title }}</h3>
-            <div class="product-card__rating">
-              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span>{{ item.rating }}</span>
-              <span class="product-card__muted">({{ item.reviewCount }})</span>
-            </div>
-            <div class="product-card__price-row">
-              <span class="product-card__price">{{ item.price }}</span>
-              <span class="product-card__cta">{{ item.ctaLabel }}</span>
+            <div class="product-card__body">
+              <h3 class="product-card__title">{{ item.title }}</h3>
+              <div class="product-card__rating">
+                <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <span>{{ item.rating }}</span>
+                <span class="product-card__muted">({{ item.reviewCount }})</span>
+              </div>
+              <div class="product-card__price-row">
+                <span class="product-card__price">{{ item.price }}</span>
+                <span class="product-card__cta">{{ item.ctaLabel }}</span>
+              </div>
             </div>
           </a>
         }
@@ -157,10 +161,10 @@
       <p class="section-subtitle">We make custom packaging simple, fast and seriously good-looking.</p>
       <div class="why-grid">
         @for (item of whyUs; track item.title) {
-          <div class="why-item">
-            <span class="why-item__number">{{ item.number }}</span>
-            <h3 class="why-item__title">{{ item.title }}</h3>
-            <p class="why-item__desc">{{ item.description }}</p>
+          <div class="why-card">
+            <span class="why-card__number">{{ item.number }}</span>
+            <h3 class="why-card__title">{{ item.title }}</h3>
+            <p class="why-card__desc">{{ item.description }}</p>
           </div>
         }
       </div>
@@ -181,18 +185,20 @@
                 <span class="product-card__badge product-card__badge--bestseller">{{ item.badge }}</span>
               }
             </div>
-            <h3 class="product-card__title">{{ item.title }}</h3>
-            @if (item.description) {
-              <p class="product-card__desc">{{ item.description }}</p>
-            }
-            <div class="product-card__rating">
-              <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              <span>{{ item.rating }}</span>
-              <span class="product-card__muted">({{ item.reviewCount }})</span>
-            </div>
-            <div class="product-card__price-row">
-              <span class="product-card__price">{{ item.priceLabel }} {{ item.price }}</span>
-              <span class="product-card__cta">{{ item.ctaLabel }}</span>
+            <div class="product-card__body">
+              <h3 class="product-card__title">{{ item.title }}</h3>
+              @if (item.description) {
+                <p class="product-card__desc">{{ item.description }}</p>
+              }
+              <div class="product-card__rating">
+                <span class="product-card__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                <span>{{ item.rating }}</span>
+                <span class="product-card__muted">({{ item.reviewCount }})</span>
+              </div>
+              <div class="product-card__price-row">
+                <span class="product-card__price">{{ item.priceLabel }} {{ item.price }}</span>
+                <span class="product-card__cta">{{ item.ctaLabel }}</span>
+              </div>
             </div>
           </a>
         }
@@ -211,8 +217,10 @@
             <div class="accessory-card__image">
               <img [src]="item.image" [alt]="item.title" loading="lazy" />
             </div>
-            <h3 class="accessory-card__title">{{ item.title }}</h3>
-            <p class="accessory-card__desc">{{ item.description }}</p>
+            <div class="accessory-card__body">
+              <h3 class="accessory-card__title">{{ item.title }}</h3>
+              <p class="accessory-card__desc">{{ item.description }}</p>
+            </div>
           </a>
         }
       </div>
@@ -223,20 +231,22 @@
   </section>
 
   <!-- Design services -->
-  <section class="design-services">
-    <div class="design-services__image">
-      <img [src]="designServicesImage" alt="Design services" />
-    </div>
-    <div class="design-services__content">
-      <span class="design-services__eyebrow">Design Support</span>
-      <h2 class="design-services__title">Your vision, our expertise</h2>
-      <p class="design-services__desc">
-        Need help bringing your packaging to life? Get professional design support and print-ready artwork from our
-        creative experts.
-      </p>
-      <div class="design-services__actions">
-        <button type="button" class="btn btn--primary">Get Started</button>
-        <a href="#">Explore Design Services</a>
+  <section class="section design-services">
+    <div class="section__inner design-services__inner">
+      <div class="design-services__image">
+        <img [src]="designServicesImage" alt="Design services" />
+      </div>
+      <div class="design-services__content">
+        <span class="design-services__eyebrow">Design Support</span>
+        <h2 class="design-services__title">Your vision, our expertise</h2>
+        <p class="design-services__desc">
+          Need help bringing your packaging to life? Get professional design support and print-ready artwork from our
+          creative experts.
+        </p>
+        <div class="design-services__actions">
+          <button type="button" class="btn btn--primary">Explore Design Services</button>
+          <a href="#">Get Started</a>
+        </div>
       </div>
     </div>
   </section>
@@ -249,8 +259,15 @@
       <div class="explore-grid">
         @for (tile of exploreCategories; track tile.path) {
           <a [routerLink]="tile.path" class="explore-tile">
-            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
-            <span class="explore-tile__label">{{ tile.label }}</span>
+            <div class="explore-tile__image">
+              <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            </div>
+            <span class="explore-tile__label-row">
+              <span class="explore-tile__label">{{ tile.label }}</span>
+              <svg class="explore-tile__arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="M4 2.5L8 6l-4 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
           </a>
         }
       </div>
@@ -282,7 +299,7 @@
       <p class="final-cta__desc">Create custom packaging that turns every delivery into a branded experience worth remembering.</p>
       <div class="final-cta__actions">
         <button type="button" class="btn btn--primary">Start Designing</button>
-        <button type="button" class="btn btn--outline">Browse Packaging</button>
+        <button type="button" class="btn btn--outline-white">Browse Packaging</button>
       </div>
     </div>
   </section>

@@ -246,15 +246,13 @@
 .icon-category {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 8px;
+  gap: 16px;
 }
 
 .icon-category__image {
   width: 100%;
   aspect-ratio: 1;
-  border-radius: 50%;
+  border-radius: 12px;
   overflow: hidden;
   background: #ffffff;
 
@@ -264,9 +262,15 @@
 }
 
 .icon-category__label {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: v.$color-promo-text;
+}
+
+/* Gifts and giveaways row uses taller rectangular images, not square */
+.icon-category-row--8 .icon-category__image {
+  aspect-ratio: 310 / 207;
+  border-radius: 10px;
 }
 
 /* Simple card grid (bestsellers) */
@@ -279,19 +283,27 @@
 .simple-card {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  background: #ffffff;
+  border: 1px solid v.$color-border;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .simple-card__image {
   aspect-ratio: 310 / 220;
   background: v.$color-promo-bg-subtle;
-  border-radius: 8px;
   overflow: hidden;
-  margin-bottom: 8px;
 
   img {
     @include m.cover-image;
   }
+}
+
+.simple-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
 }
 
 .simple-card__title {
@@ -389,9 +401,16 @@
   margin-bottom: 24px;
 }
 
+.why-item {
+  background: #ffffff;
+  border: 1px solid v.$color-border;
+  border-radius: 12px;
+  padding: 32px;
+}
+
 .why-item__icon {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: v.$color-promo-accent;
   display: flex;
@@ -445,10 +464,16 @@
   gap: 24px;
 }
 
+.collection-card {
+  display: block;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .collection-card__image {
-  aspect-ratio: 411 / 240;
+  aspect-ratio: 421 / 263;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 10px;
 
@@ -485,10 +510,15 @@
 }
 
 .explore-tile {
-  position: relative;
-  display: block;
-  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
   border-radius: 12px;
+  overflow: hidden;
+}
+
+.explore-tile__image {
+  aspect-ratio: 310 / 233;
   overflow: hidden;
 
   img {
@@ -496,14 +526,16 @@
   }
 }
 
+.explore-tile__title-area {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
 .explore-tile__label {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  color: #ffffff;
-  font-size: 16px;
+  color: v.$color-promo-text;
+  font-size: 15px;
   font-weight: 700;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* SEO section */
@@ -528,8 +560,8 @@
 /* Social gallery */
 .social-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
 .social-tile {
@@ -558,6 +590,7 @@
 .final-cta {
   padding: 64px 0;
   text-align: center;
+  background: #042d7c;
 }
 
 .final-cta__inner {
@@ -571,12 +604,12 @@
 .final-cta__title {
   font-size: 32px;
   font-weight: 800;
-  color: v.$color-promo-text;
+  color: #ffffff;
 }
 
 .final-cta__desc {
   font-size: 16px;
-  color: v.$color-promo-text-secondary;
+  color: #ffffff;
   max-width: 520px;
 }
 
@@ -585,6 +618,12 @@
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
+
+  .btn--outline {
+    background: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+  }
 }
 
 /* Responsive */

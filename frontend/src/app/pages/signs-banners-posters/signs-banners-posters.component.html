@@ -13,6 +13,7 @@
             @for (link of col.links; track link) {
               <li><a href="#">{{ link }}</a></li>
             }
+            <li><a href="#" class="browse-nav__shop-all">{{ col.shopAllLabel }}</a></li>
           </ul>
         </div>
       }
@@ -37,18 +38,30 @@
     </div>
   </section>
 
-  <!-- Icon category carousel -->
+  <!-- Category cards carousel -->
   <section class="section">
     <div class="section__inner">
-      <div class="icon-category-row">
-        @for (cat of iconCategories; track cat.label) {
-          <a href="#" class="icon-category">
-            <div class="icon-category__image">
-              <img [src]="cat.image" [alt]="cat.label" loading="lazy" />
-            </div>
-            <span class="icon-category__label">{{ cat.label }}</span>
-          </a>
-        }
+      <div class="carousel-wrapper">
+        <button type="button" class="carousel-arrow carousel-arrow--left" aria-label="Previous categories">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <div class="icon-category-row">
+          @for (cat of iconCategories; track cat.label) {
+            <a href="#" class="icon-category">
+              <div class="icon-category__image">
+                <img [src]="cat.image" [alt]="cat.label" loading="lazy" />
+              </div>
+              <span class="icon-category__label">{{ cat.label }}</span>
+            </a>
+          }
+        </div>
+        <button type="button" class="carousel-arrow carousel-arrow--right" aria-label="Next categories">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -57,20 +70,32 @@
   <section class="section section--subtle">
     <div class="section__inner">
       <app-section-header title="Bestsellers" subtitle="Check out the custom signs flying off our virtual shelves." />
-      <div class="carousel-row">
-        @for (item of bestsellers; track item.title) {
-          <app-product-card
-            class="carousel-row__item"
-            [image]="item.image"
-            [title]="item.title"
-            [eyebrow]="item.badge"
-            [description]="item.description"
-            [rating]="item.rating"
-            [reviewCount]="item.reviewCount"
-            [startingPrice]="item.price"
-            [ctaLabel]="item.ctaLabel"
-          />
-        }
+      <div class="carousel-wrapper">
+        <button type="button" class="carousel-arrow carousel-arrow--left" aria-label="Previous bestsellers">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+        <div class="carousel-row">
+          @for (item of bestsellers; track item.title) {
+            <app-product-card
+              class="carousel-row__item"
+              [image]="item.image"
+              [title]="item.title"
+              [eyebrow]="item.badge"
+              [description]="item.description"
+              [rating]="item.rating"
+              [reviewCount]="item.reviewCount"
+              [startingPrice]="item.price"
+              [ctaLabel]="item.ctaLabel"
+            />
+          }
+        </div>
+        <button type="button" class="carousel-arrow carousel-arrow--right" aria-label="Next bestsellers">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -139,8 +164,8 @@
               <p class="fast-ship-card__desc">{{ item.description }}</p>
               <hr class="fast-ship-card__divider" />
               <div class="fast-ship-card__tags">
-                <span class="fast-ship-tag">Ready in 48h</span>
-                <span class="fast-ship-tag">Fast Shipping</span>
+                <span class="fast-ship-tag fast-ship-tag--muted">Ready in 48h</span>
+                <span class="fast-ship-tag fast-ship-tag--accent">Fast Shipping</span>
               </div>
             </div>
           </div>
@@ -202,7 +227,9 @@
       <div class="explore-grid">
         @for (tile of exploreCategories; track tile.path) {
           <a [routerLink]="tile.path" class="explore-tile">
-            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            <div class="explore-tile__image">
+              <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            </div>
             <span class="explore-tile__label">{{ tile.label }}</span>
           </a>
         }

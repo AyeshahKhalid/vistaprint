@@ -174,7 +174,7 @@
 }
 
 .category-tile__image {
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 3;
   background: v.$color-wedding-bg-subtle;
   border-radius: 8px;
   overflow: hidden;
@@ -218,7 +218,7 @@
 
 .product-card__image {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 2;
   background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
@@ -328,7 +328,7 @@
 .design-help {
   display: flex;
   align-items: stretch;
-  min-height: 420px;
+  min-height: 450px;
 }
 
 .design-help__image {
@@ -398,8 +398,8 @@
   display: grid;
   gap: 20px;
 
-  &--6 {
-    grid-template-columns: repeat(6, 1fr);
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -414,7 +414,7 @@
 
 .simple-product-card__image {
   position: relative;
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 3;
   background: v.$color-wedding-bg-subtle;
   border-radius: 8px;
   overflow: hidden;
@@ -452,7 +452,7 @@
 .finishing-touches {
   display: flex;
   align-items: stretch;
-  min-height: 400px;
+  min-height: 440px;
 }
 
 .finishing-touches__image {
@@ -497,13 +497,11 @@
   margin-bottom: 24px;
 }
 
-.benefit-item {
-  padding-bottom: 20px;
-  border-bottom: 1px solid v.$color-wedding-border;
-
-  &:last-child {
-    border-bottom: none;
-  }
+.benefit-card {
+  background: #ffffff;
+  border: 1px solid v.$color-wedding-border;
+  border-radius: 12px;
+  padding: 24px;
 }
 
 .benefit-item__title {
@@ -667,7 +665,7 @@
 /* Responsive */
 @include m.tablet {
   .category-grid,
-  .product-grid--6,
+  .product-grid--3,
   .theme-grid,
   .extras-grid,
   .article-grid {
@@ -690,7 +688,7 @@
   }
 
   .category-grid,
-  .product-grid--6,
+  .product-grid--3,
   .theme-grid,
   .extras-grid,
   .article-grid {

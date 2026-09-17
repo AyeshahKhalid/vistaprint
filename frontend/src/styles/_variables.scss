@@ -51,6 +51,13 @@ $color-packaging-bestseller-text: #ff7a00; // packaging-specific bestseller badg
 $color-packaging-text: $color-modern-text;
 $color-packaging-accent: $color-modern-accent;
 
+// Design Services page — verified against its own Figma data 2026-09-17: this page's
+// accent is the more saturated #064fe0 (same hex as $color-link), NOT the shared
+// modern-accent (#2563eb) used by Packaging/Invitations. Its logo-feature banner uses
+// the existing $color-navy-deep (#042d7c).
+$color-design-services-accent: $color-link;
+$color-design-services-banner-bg: $color-navy-deep;
+
 // Product detail pages (PDP) — e.g. business card variant pages
 $color-pdp-success: #10b981; // fastest delivery / in-stock badges
 $color-pdp-star: #fbbf24;

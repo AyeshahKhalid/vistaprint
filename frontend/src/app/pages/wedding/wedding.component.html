@@ -167,7 +167,7 @@
     <div class="section__inner">
       <h2 class="section-title">Fresh arrivals, fabulous prices</h2>
       <p class="section-subtitle">From stationery extras to ceremony essentials, discover our latest items to love.</p>
-      <div class="product-grid product-grid--6">
+      <div class="product-grid product-grid--3">
         @for (item of newProducts; track item.title) {
           <a href="#" class="simple-product-card">
             <div class="simple-product-card__image">
@@ -203,7 +203,7 @@
       <h2 class="section-title">Why PrintGraphi?</h2>
       <div class="benefit-list">
         @for (item of benefits; track item.title) {
-          <div class="benefit-item">
+          <div class="benefit-card">
             <h3 class="benefit-item__title">{{ item.title }}</h3>
             <p class="benefit-item__desc">{{ item.description }}</p>
           </div>

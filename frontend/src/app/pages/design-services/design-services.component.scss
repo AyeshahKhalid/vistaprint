@@ -41,7 +41,7 @@
   font-family: inherit;
 
   &--dark {
-    background: v.$color-modern-text;
+    background: v.$color-design-services-accent;
     color: #ffffff;
   }
 
@@ -53,14 +53,19 @@
 
   &--outline-accent {
     background: #ffffff;
-    color: v.$color-modern-accent;
-    border-color: v.$color-modern-accent;
+    color: v.$color-design-services-accent;
+    border-color: v.$color-design-services-accent;
+  }
+
+  &--white-on-banner {
+    background: #ffffff;
+    color: v.$color-design-services-banner-bg;
   }
 }
 
 /* Hero */
 .hero {
-  background: #eef2ff;
+  background: #ffffff;
 }
 
 .hero__inner {
@@ -97,7 +102,7 @@
   gap: 8px;
   font-size: 15px;
   font-weight: 700;
-  color: v.$color-modern-accent;
+  color: v.$color-design-services-accent;
 }
 
 .hero__actions {
@@ -146,7 +151,7 @@
   white-space: nowrap;
 
   &--active {
-    color: v.$color-modern-accent;
+    color: v.$color-design-services-accent;
     position: relative;
 
     &::after {
@@ -156,7 +161,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: v.$color-modern-accent;
+      background: v.$color-design-services-accent;
     }
   }
 }
@@ -186,8 +191,8 @@
   white-space: nowrap;
 
   &--active {
-    background: v.$color-modern-text;
-    border-color: v.$color-modern-text;
+    background: v.$color-design-services-accent;
+    border-color: v.$color-design-services-accent;
     color: #ffffff;
   }
 }
@@ -201,21 +206,22 @@
 
 .service-card {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
   border: 1px solid v.$color-border-card;
   border-radius: 12px;
-  padding: 12px;
+  background: #ffffff;
+  overflow: hidden;
 
   &--cta {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: 10px;
+    gap: 16px;
     grid-row: span 3;
-    background: v.$color-bg-subtle;
-    border-style: dashed;
+    background: #ffffff;
+    border-width: 2px;
+    padding: 24px;
   }
 }
 
@@ -223,23 +229,23 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #eef2ff;
-  color: v.$color-modern-accent;
+  color: v.$color-design-services-accent;
 }
 
 .service-card--cta .service-card__title {
   color: v.$color-text-body;
   font-size: 15px;
+  font-weight: 600;
 }
 
 .service-card__image {
   flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 310 / 233;
   overflow: hidden;
   background: v.$color-bg-subtle;
 
@@ -253,23 +259,25 @@
   flex-direction: column;
   gap: 4px;
   min-width: 0;
+  padding: 16px;
 }
 
 .service-card__title {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   color: v.$color-modern-text;
 }
 
 .service-card__price {
-  font-size: 13px;
-  color: v.$color-text-secondary;
+  font-size: 16px;
+  font-weight: 700;
+  color: v.$color-design-services-accent;
 }
 
 .service-card__link {
-  font-size: 13px;
-  font-weight: 700;
-  color: v.$color-modern-accent;
+  font-size: 14px;
+  font-weight: 600;
+  color: v.$color-design-services-accent;
 }
 
 /* Why us grid */
@@ -279,15 +287,25 @@
   gap: 32px;
 }
 
+.why-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #ffffff;
+  border: 1px solid v.$color-border-card;
+  border-radius: 12px;
+  padding: 24px;
+}
+
 .why-item__icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: #eef2ff;
-  color: v.$color-modern-accent;
+  color: v.$color-design-services-accent;
   margin-bottom: 14px;
 }
 
@@ -316,13 +334,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   background: #eef2ff;
-  color: v.$color-modern-accent;
-  font-size: 15px;
-  font-weight: 800;
+  color: v.$color-design-services-accent;
+  font-size: 24px;
+  font-weight: 700;
   margin-bottom: 14px;
 }
 
@@ -365,7 +383,7 @@
   justify-content: center;
   gap: 16px;
   padding: 48px;
-  background: v.$color-modern-text;
+  background: v.$color-design-services-banner-bg;
   color: #ffffff;
 }
 
@@ -389,6 +407,7 @@
 
 .review-card {
   background: #ffffff;
+  border: 1px solid v.$color-border-card;
   border-radius: 12px;
   padding: 24px;
 }

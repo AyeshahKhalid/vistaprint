@@ -13,7 +13,12 @@
 .page-title {
   font-size: 32px;
   font-weight: 800;
-  color: v.$color-text;
+  color: v.$color-primary-dark;
+}
+
+.page-title-bar {
+  border-bottom: 1px solid v.$color-border-card;
+  padding-bottom: 24px;
 }
 
 .browse-nav {
@@ -48,6 +53,11 @@
       color: v.$color-primary;
     }
   }
+}
+
+.browse-nav__shop-all {
+  color: v.$color-eyebrow !important;
+  font-weight: 600;
 }
 
 .section {
@@ -134,7 +144,7 @@
 .hero__title {
   font-size: 44px;
   font-weight: 800;
-  color: v.$color-text;
+  color: v.$color-primary-dark;
   line-height: 1.1;
 }
 
@@ -153,34 +163,67 @@
 .hero__right {
   flex: 0 0 592px;
   max-width: 45%;
+  align-self: stretch;
 
   img {
     width: 100%;
-    height: 380px;
+    height: 100%;
+    min-height: 380px;
     object-fit: cover;
-    border-radius: 16px;
+  }
+}
+
+/* Carousel wrapper (shared: category cards + bestsellers) */
+.carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.carousel-arrow {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid v.$color-border-card;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: v.$color-text-dark;
+  cursor: pointer;
+
+  &:hover {
+    border-color: v.$color-text-dark;
   }
 }
 
 /* Icon category row */
 .icon-category-row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 173px;
   gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex: 1;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .icon-category {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
+  gap: 12px;
 }
 
 .icon-category__image {
   width: 100%;
-  aspect-ratio: 1;
-  border-radius: 50%;
+  aspect-ratio: 173 / 217;
+  border-radius: 12px;
+  border: 1px solid v.$color-border-card;
   overflow: hidden;
   background: v.$color-bg-subtle;
 
@@ -190,8 +233,8 @@
 }
 
 .icon-category__label {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   color: v.$color-text;
 }
 
@@ -202,6 +245,7 @@
   overflow-x: auto;
   padding-bottom: 8px;
   scrollbar-width: none;
+  flex: 1;
 
   &::-webkit-scrollbar {
     display: none;
@@ -276,14 +320,11 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   color: v.$color-eyebrow;
-  background: v.$color-bg-accent;
-  border-radius: 12px;
-  padding: 4px 12px;
   margin-bottom: 8px;
 }
 
@@ -341,12 +382,17 @@
 }
 
 .fast-ship-tag {
-  font-size: 11px;
-  font-weight: 700;
-  color: v.$color-success;
-  background: rgba(0, 182, 122, 0.1);
-  border-radius: 10px;
-  padding: 3px 10px;
+  font-size: 13px;
+  font-weight: 600;
+
+  &--muted {
+    color: v.$color-text-secondary;
+  }
+
+  &--accent {
+    color: v.$color-eyebrow;
+    font-weight: 700;
+  }
 }
 
 /* Product grid */
@@ -412,10 +458,15 @@
 }
 
 .explore-tile {
-  position: relative;
-  display: block;
-  aspect-ratio: 411 / 287;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.explore-tile__image {
+  aspect-ratio: 197 / 246;
   border-radius: 12px;
+  border: 1px solid v.$color-border-card;
   overflow: hidden;
 
   img {
@@ -424,13 +475,9 @@
 }
 
 .explore-tile__label {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  color: #ffffff;
-  font-size: 18px;
+  color: v.$color-text;
+  font-size: 15px;
   font-weight: 700;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* SEO section */
@@ -495,10 +542,6 @@
 
 /* Responsive */
 @include m.tablet {
-  .icon-category-row {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
   .fast-ship-grid,
   .product-grid--4 {
     grid-template-columns: repeat(2, 1fr);
@@ -529,8 +572,16 @@
     flex-basis: 260px;
   }
 
+  .carousel-wrapper {
+    gap: 8px;
+  }
+
+  .carousel-arrow {
+    display: none;
+  }
+
   .icon-category-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-auto-columns: 130px;
   }
 
   .fast-ship-grid,

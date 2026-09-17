@@ -413,9 +413,9 @@
 }
 
 .collection-card__image {
-  aspect-ratio: 1;
+  aspect-ratio: 302 / 190;
   background: v.$color-bg;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 10px;
 
@@ -452,10 +452,14 @@
 }
 
 .explore-tile {
-  position: relative;
-  display: block;
-  aspect-ratio: 411 / 287;
-  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.explore-tile__image {
+  aspect-ratio: 410 / 328;
+  border-radius: 10px;
   overflow: hidden;
 
   img {
@@ -464,13 +468,9 @@
 }
 
 .explore-tile__label {
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
-  color: #ffffff;
-  font-size: 18px;
+  color: v.$color-text;
+  font-size: 15px;
   font-weight: 700;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 /* SEO section */

@@ -51,13 +51,13 @@
   <!-- Roll labels promo -->
   <section class="section section--subtle">
     <div class="section__inner">
-      <div class="promo-banner">
-        <div class="promo-banner__image">
+      <div class="promo-split">
+        <div class="promo-split__image">
           <img [src]="rollLabelsPromoImage" alt="Custom roll labels" />
         </div>
-        <div class="promo-banner__content">
-          <h2 class="promo-banner__title">Custom roll labels. Made for your business.</h2>
-          <p class="promo-banner__desc">
+        <div class="promo-split__content">
+          <h2 class="promo-split__title">Custom roll labels. Made for your business.</h2>
+          <p class="promo-split__desc">
             Choose from single or multi-column roll labels to create product packaging that looks stunning and
             highly professional from every angle.
           </p>
@@ -135,35 +135,33 @@
     </div>
   </section>
 
-  <!-- Car signage promo -->
-  <section class="section section--subtle">
-    <div class="section__inner">
-      <div class="promo-banner promo-banner--reverse promo-banner--dark">
-        <div class="promo-banner__content">
-          <h2 class="promo-banner__title">Get seen around town</h2>
-          <p class="promo-banner__desc">
-            Turn your vehicle into a moving brand ambassador with custom decals, magnets, and signage.
-          </p>
-          <button type="button" class="btn btn--outline">Shop car signage</button>
-        </div>
-        <div class="promo-banner__image">
-          <img [src]="carSignageImage" alt="Car signage" />
-        </div>
+  <!-- Car signage promo (full-bleed, edge-to-edge) -->
+  <section class="car-signage-promo">
+    <div class="car-signage-promo__image">
+      <img [src]="carSignageImage" alt="Car signage" />
+    </div>
+    <div class="car-signage-promo__content">
+      <div class="car-signage-promo__text">
+        <h2 class="promo-split__title">Get seen around town</h2>
+        <p class="promo-split__desc">
+          Turn your vehicle into a moving brand ambassador with custom decals, magnets, and signage.
+        </p>
       </div>
+      <button type="button" class="btn btn--outline">Shop car signage</button>
     </div>
   </section>
 
   <!-- Wall & window decals promo -->
   <section class="section">
     <div class="section__inner">
-      <div class="promo-banner">
-        <div class="promo-banner__image">
-          <img [src]="wallDecalsImage" alt="Wall and window decals" />
-        </div>
-        <div class="promo-banner__content">
-          <h2 class="promo-banner__title">Turn every surface into brand real estate</h2>
-          <p class="promo-banner__desc">Add your logo, messaging, and creative graphics to walls, windows, and floors.</p>
+      <div class="promo-split">
+        <div class="promo-split__content">
+          <h2 class="promo-split__title">Turn every surface into brand real estate</h2>
+          <p class="promo-split__desc">Add your logo, messaging, and creative graphics to walls, windows, and floors.</p>
           <button type="button" class="btn btn--link">Shop decals</button>
+        </div>
+        <div class="promo-split__image">
+          <img [src]="wallDecalsImage" alt="Wall and window decals" />
         </div>
       </div>
     </div>
@@ -176,8 +174,12 @@
       <div class="explore-grid">
         @for (tile of exploreCategories; track tile.path) {
           <a [routerLink]="tile.path" class="explore-tile">
-            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
-            <span class="explore-tile__label">{{ tile.label }}</span>
+            <div class="explore-tile__image">
+              <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            </div>
+            <div class="explore-tile__content">
+              <span class="explore-tile__label">{{ tile.label }}</span>
+            </div>
           </a>
         }
       </div>
@@ -215,7 +217,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section faq-section">
+  <section class="section section--subtle faq-section">
     <div class="section__inner faq-section__inner">
       <h2 class="faq-section__title">Frequently asked questions</h2>
       <app-faq-accordion [items]="faqs" />

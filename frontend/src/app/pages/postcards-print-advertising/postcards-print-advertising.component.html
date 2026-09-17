@@ -1,6 +1,9 @@
 <app-site-shell>
   <div class="breadcrumb-bar">
     <app-breadcrumbs [items]="breadcrumbs" />
+    <div class="title-wrapper">
+      <h2 class="title-wrapper__title">Postcards &amp; Print Advertising</h2>
+    </div>
   </div>
 
   <!-- Hero -->
@@ -33,7 +36,12 @@
             <div class="category-card__body">
               <h3 class="category-card__title">{{ card.title }}</h3>
               <p class="category-card__desc">{{ card.description }}</p>
-              <a href="#" class="category-card__cta">{{ card.ctaLabel }}</a>
+              <a href="#" class="category-card__cta">
+                <span>{{ card.ctaLabel }}</span>
+                <svg class="category-card__chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4.5 2.5L8 6L4.5 9.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
             </div>
           </div>
         }
@@ -44,11 +52,25 @@
   <!-- Bestsellers -->
   <section class="section section--subtle">
     <div class="section__inner">
-      <app-section-header
-        title="Bestsellers"
-        subtitle="Check out the advertising and office products flying off our virtual shelves."
-      />
-      <div class="carousel-row">
+      <div class="carousel-header">
+        <app-section-header
+          title="Bestsellers"
+          subtitle="Check out the advertising and office products flying off our virtual shelves."
+        />
+        <div class="carousel-controls">
+          <button type="button" class="carousel-arrow" aria-label="Scroll left" (click)="scrollBestsellers(-1)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button type="button" class="carousel-arrow" aria-label="Scroll right" (click)="scrollBestsellers(1)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 3L11 8L6 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="carousel-row" #bestsellersTrack>
         @for (item of bestsellers; track item.title) {
           <app-product-card
             [image]="item.image"
@@ -67,11 +89,11 @@
   <!-- EDDM promo banner -->
   <section class="section">
     <div class="section__inner">
-      <div class="promo-banner promo-banner--dark">
+      <div class="promo-banner">
         <div class="promo-banner__image">
           <img [src]="eddmImage" alt="EDDM postcards" />
         </div>
-        <div class="promo-banner__content">
+        <div class="promo-banner__content promo-banner__content--dark">
           <h2 class="promo-banner__title">EDDM&reg; Postcards</h2>
           <p class="promo-banner__desc">
             Printed, prepped and ready to drop off at your local USPS. Maximize your neighborhood outreach easily.
@@ -86,7 +108,7 @@
   <section class="section">
     <div class="section__inner">
       <div class="promo-banner promo-banner--reverse">
-        <div class="promo-banner__content">
+        <div class="promo-banner__content promo-banner__content--pale">
           <h2 class="promo-banner__title">Postcard Mailing Services</h2>
           <p class="promo-banner__desc">
             Designed by you, delivered by us! Upload your address list, select your preferred postage strategy, and
@@ -130,8 +152,10 @@
       <div class="explore-grid">
         @for (tile of exploreCategories; track tile.path) {
           <a [routerLink]="tile.path" class="explore-tile">
-            <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
-            <span class="explore-tile__label">{{ tile.label }}</span>
+            <span class="explore-tile__image">
+              <img [src]="tile.image" [alt]="tile.label" loading="lazy" />
+            </span>
+            <span class="explore-tile__label" [class.explore-tile__label--active]="tile.path === '/postcards-print-advertising'">{{ tile.label }}</span>
           </a>
         }
       </div>

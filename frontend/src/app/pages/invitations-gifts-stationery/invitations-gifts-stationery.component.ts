@@ -44,12 +44,12 @@ interface StationeryItem {
 })
 export class InvitationsGiftsStationeryComponent {
   readonly heroImage = `${IMG}/hero-right-hero-image-18_1390.png`;
-  readonly heroPills = ['Invitations and Cards', 'HomeComponent and Gifts', 'Personal Stationery'];
+  readonly heroPills = ['Invitations and Cards', 'Home and Gifts', 'Personal Stationery'];
   readonly anchorNav = ['Bestsellers', 'Celebrations', 'Shop by Category', 'Invites and Announcements', 'New Arrivals', 'Personal Stationery'];
 
   readonly shopAllCategories: CategoryCard[] = [
     { label: 'Invitations and Announcements', image: `${IMG}/category-card-0-card-image-18_1404.png` },
-    { label: 'HomeComponent and Gifts', image: `${IMG}/category-card-1-card-image-18_1410.png` },
+    { label: 'Home and Gifts', image: `${IMG}/category-card-1-card-image-18_1410.png` },
     { label: 'Personal Stationery', image: `${IMG}/category-card-2-card-image-18_1416.png` },
     { label: 'Wall Art', image: `${IMG}/category-card-3-card-image-18_1422.png` },
     { label: 'Note Cards and Thank You Cards', image: `${IMG}/category-card-4-card-image-18_1428.png` },
@@ -59,7 +59,7 @@ export class InvitationsGiftsStationeryComponent {
   ];
 
   readonly bestsellers: ProductItem[] = [
-    { title: 'WeddingComponent Invitations', rating: 4.8, reviewCount: 2340, price: '$0.60 each', image: `${IMG}/image-container-product-image-18_1462.png` },
+    { title: 'Wedding Invitations', rating: 4.8, reviewCount: 2340, price: '$0.60 each', image: `${IMG}/image-container-product-image-18_1462.png` },
     { title: 'Wall Calendars', rating: 4.7, reviewCount: 1890, price: '$24.99', salePrice: '$34.99', saleBadge: true, image: `${IMG}/image-container-product-image-18_1483.png` },
     { title: 'Photo Books', rating: 4.9, reviewCount: 3120, price: '$19.99', image: `${IMG}/image-container-product-image-18_1507.png` },
     { title: 'Custom Mugs', rating: 4.6, reviewCount: 4521, price: '$8.99', image: `${IMG}/image-container-product-image-18_1528.png` },
@@ -80,7 +80,7 @@ export class InvitationsGiftsStationeryComponent {
   ];
 
   readonly inviteOccasions: InviteCard[] = [
-    { title: 'WeddingComponent Invites', image: `${IMG}/invite-card-0-card-image-18_1727.png` },
+    { title: 'Wedding Invites', image: `${IMG}/invite-card-0-card-image-18_1727.png` },
     { title: 'Graduation Invites', image: `${IMG}/invite-card-1-card-image-18_1731.png` },
     { title: 'Save the Dates', image: `${IMG}/invite-card-2-card-image-18_1735.png` },
     { title: 'Baby Shower Invites', image: `${IMG}/invite-card-3-card-image-18_1739.png` },
@@ -119,6 +119,10 @@ export class InvitationsGiftsStationeryComponent {
     'Looking to brighten your space? Explore our home and gifts collection, including custom canvas prints, framed photos, tabletop decor, blankets, and drinkware that make thoughtful gifts or beautiful additions to any room.',
     'Every product is expertly printed on premium materials with a satisfaction guarantee. Start designing today and create something you will love.',
   ];
+
+  ratingRoundedDown(rating: number): number {
+    return Math.floor(rating);
+  }
 
   readonly faqs: FaqItem[] = [
     {

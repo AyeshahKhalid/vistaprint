@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
 import { BreadcrumbsComponent } from '../../shared/breadcrumbs/breadcrumbs.component';
@@ -46,6 +46,15 @@ interface ExploreCategoryTile {
   styleUrl: './postcards-print-advertising.component.scss',
 })
 export class PostcardsPrintAdvertisingComponent {
+  @ViewChild('bestsellersTrack') bestsellersTrack?: ElementRef<HTMLElement>;
+
+  scrollBestsellers(direction: -1 | 1): void {
+    const track = this.bestsellersTrack?.nativeElement;
+    if (!track) return;
+    const amount = track.clientWidth * 0.8;
+    track.scrollBy({ left: direction * amount, behavior: 'smooth' });
+  }
+
   readonly breadcrumbs = [
     { label: 'Home', path: '/' },
     { label: 'Print Advertising & Office' },
