@@ -1,29 +1,76 @@
-import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { BusinessCardsComponent } from './pages/business-cards/business-cards.component';
-import { PostcardsPrintAdvertisingComponent } from './pages/postcards-print-advertising/postcards-print-advertising.component';
-import { SignsBannersPostersComponent } from './pages/signs-banners-posters/signs-banners-posters.component';
-import { LabelsStickersComponent } from './pages/labels-stickers/labels-stickers.component';
-import { ClothingBagsComponent } from './pages/clothing-bags/clothing-bags.component';
-import { PromotionalProductsComponent } from './pages/promotional-products/promotional-products.component';
-import { PackagingComponent } from './pages/packaging/packaging.component';
-import { InvitationsGiftsStationeryComponent } from './pages/invitations-gifts-stationery/invitations-gifts-stationery.component';
-import { WeddingComponent } from './pages/wedding/wedding.component';
-import { DesignServicesComponent } from './pages/design-services/design-services.component';
-import { MatteBusinessCardsComponent } from './pages/business-cards/variants/matte-business-cards.component';
+import { Route, Routes } from '@angular/router';
+import { productVariantResolver } from './shared/product-detail/product-variant.resolver';
+
+type LoadComponent = NonNullable<Route['loadComponent']>;
+
+/**
+ * Every route is lazy (`loadComponent`) so the initial bundle carries only the
+ * shell and whichever page was requested. Variant pages share one component and
+ * resolve their product from the category catalogue before rendering.
+ */
+
+const home = () => import('./pages/home/home.component').then((m) => m.HomeComponent);
+const variantPage = () =>
+  import('./shared/product-detail/product-variant-page.component').then((m) => m.ProductVariantPageComponent);
+
+/** Landing page + catalogue-driven `:slug` pages for one category. */
+function category(path: string, title: string, loadComponent: LoadComponent, hasCatalog = false): Routes {
+  const landing = { path, title, loadComponent };
+  if (!hasCatalog) return [landing];
+  return [
+    landing,
+    {
+      path: `${path}/:slug`,
+      loadComponent: variantPage,
+      resolve: { product: productVariantResolver },
+      data: { category: path },
+    },
+  ];
+}
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'deals', component: HomeComponent },
-  { path: 'business-cards', component: BusinessCardsComponent },
-  { path: 'business-cards/matte', component: MatteBusinessCardsComponent },
-  { path: 'postcards-print-advertising', component: PostcardsPrintAdvertisingComponent },
-  { path: 'signs-banners-posters', component: SignsBannersPostersComponent },
-  { path: 'labels-stickers', component: LabelsStickersComponent },
-  { path: 'clothing-bags', component: ClothingBagsComponent },
-  { path: 'promotional-products', component: PromotionalProductsComponent },
-  { path: 'packaging', component: PackagingComponent },
-  { path: 'invitations-gifts-stationery', component: InvitationsGiftsStationeryComponent },
-  { path: 'wedding', component: WeddingComponent },
-  { path: 'design-services', component: DesignServicesComponent },
+  { path: '', title: 'Custom Printing for Small Business', loadComponent: home },
+  { path: 'deals', title: 'Deals', loadComponent: home },
+
+  ...category('business-cards', 'Business Cards', () =>
+    import('./pages/business-cards/business-cards.component').then((m) => m.BusinessCardsComponent), true),
+  ...category('postcards-print-advertising', 'Postcards & Print Advertising', () =>
+    import('./pages/postcards-print-advertising/postcards-print-advertising.component').then(
+      (m) => m.PostcardsPrintAdvertisingComponent,
+    ), true),
+  ...category('signs-banners-posters', 'Signs, Banners & Posters', () =>
+    import('./pages/signs-banners-posters/signs-banners-posters.component').then((m) => m.SignsBannersPostersComponent)),
+  ...category('labels-stickers', 'Labels & Stickers', () =>
+    import('./pages/labels-stickers/labels-stickers.component').then((m) => m.LabelsStickersComponent)),
+  ...category('clothing-bags', 'Clothing & Bags', () =>
+    import('./pages/clothing-bags/clothing-bags.component').then((m) => m.ClothingBagsComponent)),
+  ...category('promotional-products', 'Promotional Products', () =>
+    import('./pages/promotional-products/promotional-products.component').then((m) => m.PromotionalProductsComponent)),
+  ...category('packaging', 'Retail, Food & Shipping Packaging', () =>
+    import('./pages/packaging/packaging.component').then((m) => m.PackagingComponent)),
+  ...category('invitations-gifts-stationery', 'Invitations, Gifts & Stationery', () =>
+    import('./pages/invitations-gifts-stationery/invitations-gifts-stationery.component').then(
+      (m) => m.InvitationsGiftsStationeryComponent,
+    )),
+  ...category('wedding', 'Wedding', () => import('./pages/wedding/wedding.component').then((m) => m.WeddingComponent)),
+  ...category('design-services', 'Design Services', () =>
+    import('./pages/design-services/design-services.component').then((m) => m.DesignServicesComponent)),
+
+  // Purchase flow (client-side until the backend lands).
+  {
+    path: 'design-studio/:category/:slug',
+    loadComponent: () => import('./pages/design-studio/design-studio.component').then((m) => m.DesignStudioComponent),
+    resolve: { product: productVariantResolver },
+  },
+  {
+    path: 'cart',
+    title: 'Your Cart',
+    loadComponent: () => import('./pages/cart/cart.component').then((m) => m.CartComponent),
+  },
+
+  {
+    path: '**',
+    title: 'Page Not Found',
+    loadComponent: () => import('./pages/not-found/not-found.component').then((m) => m.NotFoundComponent),
+  },
 ];

@@ -7,9 +7,11 @@ import { ProductCardComponent } from '../../shared/product-card/product-card.com
 import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
 
 const IMG = '/images/postcards-print-advertising';
+const PCA = '/postcards-print-advertising';
 
 interface CategoryCard {
   title: string;
+  path: string;
   description: string;
   ctaLabel: string;
   image: string;
@@ -17,6 +19,7 @@ interface CategoryCard {
 
 interface BestsellerCard {
   badge?: string;
+  path: string;
   title: string;
   description: string;
   rating: number;
@@ -26,6 +29,7 @@ interface BestsellerCard {
 
 interface NewProductCard {
   badge: string;
+  path: string;
   title: string;
   description: string;
   rating?: number;
@@ -62,28 +66,36 @@ export class PostcardsPrintAdvertisingComponent {
   ];
 
   readonly heroImage = `${IMG}/hero-right-column-hero-product-image-9_1295.png`;
-  readonly heroLinks = ['Postcards', 'Flyers', 'Self-Inking Stamps'];
+  readonly heroLinks = [
+    { label: 'Postcards', path: `${PCA}/postcards` },
+    { label: 'Flyers', path: `${PCA}/flyers` },
+    { label: 'Self-Inking Stamps', path: `${PCA}/stamps-ink` },
+  ];
 
   readonly categoryCards: CategoryCard[] = [
     {
+      path: `${PCA}/postcards`,
       title: 'Postcards',
       description: 'Sharp details, quality paper, even mailing services – get the very best for less.',
       ctaLabel: 'Shop postcards',
       image: `${IMG}/category-card-0-card-image-9_1299.png`,
     },
     {
+      path: `${PCA}/marketing-materials`,
       title: 'Marketing Materials',
       description: 'Flyers, folders, brochures and more to connect and impress, fast.',
       ctaLabel: 'Shop marketing materials',
       image: `${IMG}/category-card-1-card-image-9_1308.png`,
     },
     {
+      path: `${PCA}/booklets-catalogs-magazines`,
       title: 'Booklets, Catalogs & Magazines',
       description: 'Polished and professional page-turners to engage your customers.',
       ctaLabel: 'Shop booklets, catalogs & magazines',
       image: `${IMG}/category-card-2-card-image-9_1317.png`,
     },
     {
+      path: `${PCA}/business-stationery`,
       title: 'Business Stationery',
       description: 'Branded notepads, stamps and stationery that show you mean business.',
       ctaLabel: 'Shop business stationery',
@@ -95,6 +107,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New options',
       title: 'Postcards',
+      path: `${PCA}/postcards`,
       description: 'Sale? Event? Saying thanks? Share it in style with these small biz faves!',
       rating: 4.8,
       reviewCount: 29124,
@@ -103,6 +116,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New options',
       title: 'Flyers',
+      path: `${PCA}/flyers`,
       description: 'Engage customers on the go with scannable, one-sheet advertising.',
       rating: 4.7,
       reviewCount: 13011,
@@ -111,6 +125,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New low price',
       title: 'Presentation Folders',
+      path: `${PCA}/folders`,
       description: 'Level up at events and presentations with custom-printed info packets.',
       rating: 4.5,
       reviewCount: 1486,
@@ -119,6 +134,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New options',
       title: 'Self-Inking Stamps',
+      path: `${PCA}/stamps-ink`,
       description: 'Breeze through busy work and give documents a personal touch.',
       rating: 4.3,
       reviewCount: 8267,
@@ -127,6 +143,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New low price',
       title: 'Notebooks',
+      path: `${PCA}/notebooks-pads-journals`,
       description: 'Add a custom logo, message or name to this workspace must-have.',
       rating: 4.7,
       reviewCount: 4344,
@@ -135,6 +152,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New low price',
       title: 'Notepads',
+      path: `${PCA}/notebooks-pads-journals`,
       description: 'Personalize messages and reminders with this budget-friendly option.',
       rating: 4.7,
       reviewCount: 3459,
@@ -142,6 +160,7 @@ export class PostcardsPrintAdvertisingComponent {
     },
     {
       title: 'Wallet Checks',
+      path: `${PCA}/checks`,
       description: 'Give your payments more personality with your choice of design.',
       rating: 4.8,
       reviewCount: 1770,
@@ -150,6 +169,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New options',
       title: 'Fridge Magnets',
+      path: `${PCA}/magnets`,
       description: 'Make your logo stick with custom multi-use magnets.',
       rating: 4.6,
       reviewCount: 2035,
@@ -164,12 +184,14 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New',
       title: 'Gift Certificate Holders',
+      path: `${PCA}/gift-certificate-holders`,
       description: 'Give your certificates a finishing touch that adds a special unboxing moment.',
       image: `${IMG}/image-wrapper-rectangle-9_1563.png`,
     },
     {
       badge: 'New options',
       title: 'Saddle-Stitch Booklets',
+      path: `${PCA}/saddle-stitch`,
       description: 'Share projects, services and more in a professional, multi-page format.',
       rating: 4.7,
       reviewCount: 873,
@@ -178,6 +200,7 @@ export class PostcardsPrintAdvertisingComponent {
     {
       badge: 'New options',
       title: 'Wire-Bound Booklets',
+      path: `${PCA}/wire-bound`,
       description: 'Transform everyday notes, guides, and planners into flexible booklets.',
       rating: 4.8,
       reviewCount: 12,

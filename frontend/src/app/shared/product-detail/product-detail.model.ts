@@ -36,6 +36,8 @@ export interface RelatedProduct {
   title: string;
   price: string;
   image: string;
+  /** Route to the product. Omit when the target page does not exist yet. */
+  path?: string;
 }
 
 export interface ReviewCard {
@@ -56,6 +58,10 @@ export interface PdpFaqItem {
 }
 
 export interface ProductDetailData {
+  /** URL slug within the category, e.g. 'matte'. Stamped by the catalogue builder. */
+  slug?: string;
+  /** Category landing route, e.g. '/business-cards'. Stamped by the catalogue builder. */
+  categoryPath?: string;
   breadcrumb: string;
   productTitle: string;
   rating: number;

@@ -1,0 +1,147 @@
+<app-site-shell>
+  <div class="studio">
+    <div class="studio__inner">
+      <app-breadcrumbs [items]="breadcrumbs()" />
+
+      <header class="studio__header">
+        <span class="eyebrow">Design Studio</span>
+        <h1 class="studio__title">Design your {{ product().productTitle }}</h1>
+        <p class="studio__subtitle">
+          Start from a template or upload a finished design. You can change everything before you order.
+        </p>
+      </header>
+
+      <div class="studio__layout">
+        <!-- Product summary -->
+        <aside class="summary-card">
+          <div class="summary-card__image">
+            <img [src]="product().mainImage" [alt]="product().productTitle" />
+          </div>
+          <h2 class="summary-card__title">{{ product().productTitle }}</h2>
+          <dl class="summary-card__specs">
+            <div class="summary-card__spec">
+              <dt>Quantity</dt>
+              <dd>{{ selectedQuantity().quantity }}</dd>
+            </div>
+            @for (entry of optionEntries(); track entry[0]) {
+              <div class="summary-card__spec">
+                <dt>{{ entry[0] }}</dt>
+                <dd>{{ entry[1] }}</dd>
+              </div>
+            }
+          </dl>
+          <div class="summary-card__price">
+            <span class="summary-card__price-value">{{ selectedQuantity().price }}</span>
+            <span class="summary-card__price-detail">{{ selectedQuantity().perUnit }}</span>
+          </div>
+          <a [routerLink]="productPath()" class="summary-card__edit">Change options</a>
+        </aside>
+
+        <!-- Workspace -->
+        <section class="workspace">
+          <div class="mode-tabs" role="tablist" aria-label="How would you like to design?">
+            <button
+              type="button"
+              role="tab"
+              class="mode-tab"
+              [class.mode-tab--active]="activeMode() === 'templates'"
+              [attr.aria-selected]="activeMode() === 'templates'"
+              (click)="setMode('templates')"
+            >
+              Browse templates
+            </button>
+            <button
+              type="button"
+              role="tab"
+              class="mode-tab"
+              [class.mode-tab--active]="activeMode() === 'upload'"
+              [attr.aria-selected]="activeMode() === 'upload'"
+              (click)="setMode('upload')"
+            >
+              Upload your design
+            </button>
+          </div>
+
+          @if (activeMode() === 'templates') {
+            <p class="workspace__hint">Pick a starting point. Every template is fully editable.</p>
+            <div class="template-grid">
+              @for (tpl of product().templates; track tpl.brand) {
+                <button
+                  type="button"
+                  class="template-tile"
+                  [class.template-tile--selected]="selectedTemplate() === tpl.brand"
+                  [attr.aria-pressed]="selectedTemplate() === tpl.brand"
+                  (click)="pickTemplate(tpl.brand)"
+                >
+                  <span class="template-tile__image">
+                    <img [src]="tpl.image" [alt]="tpl.brand" loading="lazy" />
+                    <span class="template-tile__tag">{{ tpl.tag }}</span>
+                  </span>
+                  <span class="template-tile__category">{{ tpl.category }}</span>
+                  <span class="template-tile__brand">{{ tpl.brand }}</span>
+                  <span class="template-tile__desc">{{ tpl.description }}</span>
+                </button>
+              }
+            </div>
+          } @else {
+            <div
+              class="dropzone"
+              [class.dropzone--active]="dragging()"
+              [class.dropzone--filled]="uploadedFile() !== null"
+              (dragover)="onDragOver($event)"
+              (dragleave)="onDragLeave()"
+              (drop)="onDrop($event)"
+            >
+              @if (uploadedFile(); as file) {
+                <div class="dropzone__file">
+                  @if (file.previewUrl) {
+                    <img [src]="file.previewUrl" alt="" class="dropzone__preview" />
+                  } @else {
+                    <span class="dropzone__file-icon" aria-hidden="true">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <path d="M14 2v6h6" />
+                      </svg>
+                    </span>
+                  }
+                  <span class="dropzone__name">{{ file.name }}</span>
+                  <span class="dropzone__size">{{ formatSize(file.size) }}</span>
+                  <button type="button" class="dropzone__remove" (click)="clearFile()">Remove file</button>
+                </div>
+              } @else {
+                <span class="dropzone__icon" aria-hidden="true">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <path d="M17 8l-5-5-5 5" />
+                    <path d="M12 3v12" />
+                  </svg>
+                </span>
+                <p class="dropzone__title">Drag and drop your design here</p>
+                <p class="dropzone__hint">PDF, PNG, JPG, SVG or AI &middot; up to 50 MB</p>
+                <label class="btn btn--outline">
+                  Choose a file
+                  <input type="file" [accept]="acceptedTypes" (change)="onFileInput($event)" hidden />
+                </label>
+              }
+            </div>
+            @if (uploadError(); as error) {
+              <p class="workspace__error" role="alert">{{ error }}</p>
+            }
+            <ul class="upload-tips">
+              <li>Include 0.125" bleed on every edge and keep text 0.125" inside the trim line.</li>
+              <li>Export at 300 dpi in CMYK for the closest match to the printed result.</li>
+              <li>We check every upload for resolution issues before it goes to print.</li>
+            </ul>
+          }
+
+          <footer class="workspace__actions">
+            <a [routerLink]="productPath()" class="btn btn--outline">Back to product</a>
+            <button type="button" class="btn btn--dark" [disabled]="!canContinue()" (click)="addToCart()">
+              Add to cart
+            </button>
+          </footer>
+        </section>
+      </div>
+    </div>
+  </div>
+</app-site-shell>

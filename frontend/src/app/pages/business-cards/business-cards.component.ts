@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
 import { BreadcrumbsComponent } from '../../shared/breadcrumbs/breadcrumbs.component';
 import { SectionHeaderComponent } from '../../shared/section-header/section-header.component';
@@ -6,6 +7,7 @@ import { ProductCardComponent } from '../../shared/product-card/product-card.com
 import { FaqAccordionComponent, FaqItem } from '../../shared/faq-accordion/faq-accordion.component';
 
 const IMG = '/images/business-cards';
+const BC = '/business-cards';
 
 interface PricingOption {
   tier: string;
@@ -14,6 +16,7 @@ interface PricingOption {
   priceDetail: string;
   ctaLabel: string;
   image: string;
+  path: string;
 }
 
 interface ShapeOption {
@@ -21,11 +24,17 @@ interface ShapeOption {
   reviewCount: string;
   price: string;
   image: string;
+  path: string;
 }
 
 interface Swatch {
   label: string;
   color: string;
+  path: string;
+  price: string;
+  priceDetail: string;
+  reviewCount: string;
+  highlights: string[];
 }
 
 interface Template {
@@ -43,6 +52,7 @@ interface UseCase {
   priceDetail: string;
   ctaLabel: string;
   image: string;
+  path: string;
 }
 
 interface HolderOption {
@@ -54,6 +64,7 @@ interface HolderOption {
   price: string;
   ctaLabel: string;
   image: string;
+  path: string;
 }
 
 interface WhyUsItem {
@@ -69,7 +80,7 @@ interface GalleryPost {
 
 @Component({
   selector: 'app-business-cards',
-  imports: [SiteShellComponent, BreadcrumbsComponent, SectionHeaderComponent, ProductCardComponent, FaqAccordionComponent],
+  imports: [SiteShellComponent, RouterLink, BreadcrumbsComponent, SectionHeaderComponent, ProductCardComponent, FaqAccordionComponent],
   templateUrl: './business-cards.component.html',
   styleUrl: './business-cards.component.scss',
 })
@@ -77,6 +88,13 @@ export class BusinessCardsComponent {
   readonly breadcrumbs = [{ label: 'Home', path: '/' }, { label: 'Business Cards' }];
 
   readonly heroImage = `${IMG}/hero-right-column-hero-product-image-8_95.png`;
+
+  /** Design-studio entry for a product path, e.g. '/business-cards/matte'. */
+  studioLink(path: string): string[] {
+    return ['/design-studio', ...path.split('/').filter(Boolean)];
+  }
+
+  readonly standardStudio = this.studioLink(`${BC}/standard`);
 
   readonly pricingOptions: PricingOption[] = [
     {
@@ -86,6 +104,7 @@ export class BusinessCardsComponent {
       priceDetail: '$0.20 each / 50 units',
       ctaLabel: 'Shop standard',
       image: `${IMG}/option-card-0-card-image-8_102.png`,
+      path: `${BC}/standard`,
     },
     {
       tier: 'Premium',
@@ -94,6 +113,7 @@ export class BusinessCardsComponent {
       priceDetail: '$0.19 each / 100 units',
       ctaLabel: 'Shop premium',
       image: `${IMG}/option-card-1-card-image-8_116.png`,
+      path: `${BC}/premium`,
     },
     {
       tier: 'Deluxe',
@@ -102,38 +122,75 @@ export class BusinessCardsComponent {
       priceDetail: '$0.28 each / 100 units',
       ctaLabel: 'Shop deluxe',
       image: `${IMG}/option-card-2-card-image-8_130.png`,
+      path: `${BC}/deluxe`,
     },
   ];
 
   readonly shapes: ShapeOption[] = [
-    { label: 'Rounded Corners', reviewCount: '(2.4k)', price: 'From $11.49', image: `${IMG}/square-image-wrap-shape-image-8_150.png` },
-    { label: 'Square', reviewCount: '(1.1k)', price: 'From $12.99', image: `${IMG}/square-image-wrap-shape-image-8_164.png` },
-    { label: 'Circle', reviewCount: '(890)', price: 'From $19.99', image: `${IMG}/square-image-wrap-shape-image-8_178.png` },
-    { label: 'Oval', reviewCount: '(420)', price: 'From $18.49', image: `${IMG}/square-image-wrap-shape-image-8_192.png` },
-    { label: 'Leaf', reviewCount: '(310)', price: 'From $21.99', image: `${IMG}/square-image-wrap-shape-image-8_206.png` },
+    { label: 'Rounded Corners', reviewCount: '(2.4k)', price: 'From $11.49', image: `${IMG}/square-image-wrap-shape-image-8_150.png`, path: `${BC}/rounded-corner` },
+    { label: 'Square', reviewCount: '(1.1k)', price: 'From $12.99', image: `${IMG}/square-image-wrap-shape-image-8_164.png`, path: `${BC}/square` },
+    { label: 'Circle', reviewCount: '(890)', price: 'From $19.99', image: `${IMG}/square-image-wrap-shape-image-8_178.png`, path: `${BC}/circle` },
+    { label: 'Oval', reviewCount: '(420)', price: 'From $18.49', image: `${IMG}/square-image-wrap-shape-image-8_192.png`, path: `${BC}/oval` },
+    { label: 'Leaf', reviewCount: '(310)', price: 'From $21.99', image: `${IMG}/square-image-wrap-shape-image-8_206.png`, path: `${BC}/leaf` },
   ];
 
+  // "Compare papers & finishes": the detail panel follows the selected swatch,
+  // as on vistaprint.com. Only the Matte panel image exists in Figma so far.
   readonly swatches: Swatch[] = [
-    { label: 'Matte', color: '#c9c9c9' },
-    { label: 'Glossy', color: '#8fb8e8' },
-    { label: 'Embossed Gloss', color: '#d8c39a' },
-    { label: 'Uncoated', color: '#e8dfc8' },
-    { label: 'White Plastic', color: '#f2f2f2' },
-    { label: 'Soft Touch', color: '#b8a89a' },
-    { label: 'Foil Accent', color: '#d4af37' },
-    { label: 'Painted Edge', color: '#e2725b' },
-    { label: 'Ultra Thick', color: '#4b5563' },
-    { label: 'Clear Plastic', color: '#cfe8f0' },
-    { label: 'Pearl', color: '#f0e6e6' },
-    { label: 'Natural Textured', color: '#c2b280' },
+    {
+      label: 'Matte', color: '#c9c9c9', path: `${BC}/matte`, price: '$14.99', priceDetail: '$0.15 each / 100 units', reviewCount: '18,354',
+      highlights: ['Coated and classic, with a smooth, shine-free finish', 'Feel: Silky smooth front and back', 'Thickness: 14pt standard, 16pt premium or 18pt premium plus'],
+    },
+    {
+      label: 'Glossy', color: '#8fb8e8', path: `${BC}/glossy`, price: '$15.99', priceDetail: '$0.16 each / 100 units', reviewCount: '15,208',
+      highlights: ['Bright, reflective coating that deepens colour and contrast', 'Feel: Smooth and slick front and back', 'Thickness: 14pt standard, 16pt premium or 18pt premium plus'],
+    },
+    {
+      label: 'Embossed Gloss', color: '#d8c39a', path: `${BC}/embossed-gloss`, price: '$39.99', priceDetail: '$0.40 each / 100 units', reviewCount: '6,044',
+      highlights: ['Raised, high-shine varnish over the elements you choose', 'Feel: Tactile relief you can trace with a fingertip', 'Thickness: 16pt premium or 18pt premium plus'],
+    },
+    {
+      label: 'Uncoated', color: '#e8dfc8', path: `${BC}/uncoated`, price: '$14.99', priceDetail: '$0.15 each / 100 units', reviewCount: '9,874',
+      highlights: ['No coating at all: natural paper with a soft, writable surface', 'Feel: Lightly textured, takes pen instantly', 'Thickness: 14pt standard, 16pt premium or 18pt premium plus'],
+    },
+    {
+      label: 'White Plastic', color: '#f2f2f2', path: `${BC}/plastic`, price: '$59.99', priceDetail: '$0.60 each / 100 units', reviewCount: '3,915',
+      highlights: ['Durable, waterproof plastic in solid white', 'Feel: Smooth, rigid and tear-resistant', 'Thickness: 20pt plastic'],
+    },
+    {
+      label: 'Soft Touch', color: '#b8a89a', path: `${BC}/soft-touch`, price: '$29.99', priceDetail: '$0.30 each / 100 units', reviewCount: '14,290',
+      highlights: ['Velvety matte laminate that resists fingerprints', 'Feel: Suede-like, unlike any paper finish', 'Thickness: 16pt premium'],
+    },
+    {
+      label: 'Foil Accent', color: '#d4af37', path: `${BC}/foil-accent`, price: '$44.99', priceDetail: '$0.45 each / 100 units', reviewCount: '8,117',
+      highlights: ['Genuine metallic foil pressed into your design', 'Feel: Smooth, with a subtle foil relief', 'Thickness: 16pt premium or 18pt premium plus'],
+    },
+    {
+      label: 'Painted Edge', color: '#e2725b', path: `${BC}/painted-edge`, price: '$49.99', priceDetail: '$0.50 each / 100 units', reviewCount: '4,270',
+      highlights: ['A band of colour painted along every edge of the card', 'Feel: Substantial, with a visible coloured edge', 'Thickness: 32pt ultra thick'],
+    },
+    {
+      label: 'Ultra Thick', color: '#4b5563', path: `${BC}/ultra-thick`, price: '$54.99', priceDetail: '$0.55 each / 100 units', reviewCount: '5,602',
+      highlights: ['Multi-layer board about twice the thickness of a standard card', 'Feel: Rigid and weighty in the hand', 'Thickness: 32pt'],
+    },
+    {
+      label: 'Clear Plastic', color: '#cfe8f0', path: `${BC}/plastic`, price: '$59.99', priceDetail: '$0.60 each / 100 units', reviewCount: '3,915',
+      highlights: ['Transparent plastic with frosted or fully clear areas', 'Feel: Smooth, rigid and waterproof', 'Thickness: 20pt plastic'],
+    },
+    {
+      label: 'Pearl', color: '#f0e6e6', path: `${BC}/premium`, price: '$24.99', priceDetail: '$0.25 each / 100 units', reviewCount: '21,766',
+      highlights: ['Shimmering pearlescent sheen across the whole surface', 'Feel: Silky, with a soft iridescent glow', 'Thickness: 16pt premium'],
+    },
+    {
+      label: 'Natural Textured', color: '#c2b280', path: `${BC}/natural-textured`, price: '$25.99', priceDetail: '$0.26 each / 100 units', reviewCount: '8,402',
+      highlights: ['Lightly grained, responsibly sourced stock', 'Feel: Visible, tactile natural grain', 'Thickness: 16pt premium'],
+    },
   ];
+
+  readonly activeSwatchIndex = signal(0);
+  readonly activeSwatch = computed(() => this.swatches[this.activeSwatchIndex()]);
 
   readonly matteFinishImage = `${IMG}/detail-panel-left-matte-finish-image-8_261.png`;
-  readonly matteHighlights = [
-    'Coated and classic, with a smooth, shine-free finish',
-    'Feel: Silky smooth front and back',
-    'Thickness: 14pt standard, 16pt premium or 18pt premium plus',
-  ];
 
   readonly templates: Template[] = [
     { category: 'Elegant Minimalist', image: `${IMG}/template-card-0-template-mockup-9_488.png` },
@@ -153,6 +210,8 @@ export class BusinessCardsComponent {
     'Travel & Accommodation',
   ];
 
+  readonly activeFilterIndex = signal(0);
+
   readonly fastDeliveryImage = `${IMG}/banner-right-banner-image-9_523.png`;
 
   readonly useCases: UseCase[] = [
@@ -166,6 +225,7 @@ export class BusinessCardsComponent {
       priceDetail: '$0.16 each / 100 units',
       ctaLabel: 'Shop loyalty',
       image: `${IMG}/product-card-card-image-9_530.png`,
+      path: `${BC}/loyalty-cards`,
     },
     {
       eyebrow: 'QR Code Cards',
@@ -177,6 +237,7 @@ export class BusinessCardsComponent {
       priceDetail: '$0.20 each / 50 units',
       ctaLabel: 'Shop QR code',
       image: `${IMG}/product-card-card-image-9_559.png`,
+      path: `${BC}/qr-code`,
     },
     {
       eyebrow: 'Appointment Cards',
@@ -188,6 +249,7 @@ export class BusinessCardsComponent {
       priceDetail: '$0.19 each / 100 units',
       ctaLabel: 'Shop appointment',
       image: `${IMG}/product-card-card-image-9_588.png`,
+      path: `${BC}/appointment-cards`,
     },
     {
       eyebrow: 'Magnetic Cards',
@@ -199,6 +261,7 @@ export class BusinessCardsComponent {
       priceDetail: '$0.72 each / 25 units',
       ctaLabel: 'Shop magnetic',
       image: `${IMG}/product-card-card-image-9_617.png`,
+      path: `${BC}/magnetic`,
     },
   ];
 
@@ -212,6 +275,7 @@ export class BusinessCardsComponent {
       price: '$8.99',
       ctaLabel: 'Shop black acrylic',
       image: `${IMG}/product-card-card-image-9_651.png`,
+      path: `${BC}/holders`,
     },
     {
       eyebrow: 'Clear Holder',
@@ -222,6 +286,7 @@ export class BusinessCardsComponent {
       price: '$8.99',
       ctaLabel: 'Shop clear acrylic',
       image: `${IMG}/product-card-card-image-9_679.png`,
+      path: `${BC}/holders`,
     },
     {
       eyebrow: 'Desk Stand',
@@ -232,6 +297,7 @@ export class BusinessCardsComponent {
       price: '$11.99',
       ctaLabel: 'Shop steel desk',
       image: `${IMG}/product-card-card-image-9_707.png`,
+      path: `${BC}/holders`,
     },
     {
       eyebrow: 'Leather Wallet',
@@ -242,6 +308,7 @@ export class BusinessCardsComponent {
       price: '$16.99',
       ctaLabel: 'Shop black leather',
       image: `${IMG}/product-card-card-image-9_735.png`,
+      path: `${BC}/holders`,
     },
   ];
 

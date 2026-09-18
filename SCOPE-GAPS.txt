@@ -1,0 +1,278 @@
+PRINTGRAPHI — SCOPE GAPS AND OPEN QUESTIONS
+Prepared: 18 September 2026
+For: project manager / client review
+
+
+SUMMARY
+================================================================================
+The Figma design file covers the BROWSING part of the site only — homepage,
+category pages, and product pages.
+
+The real vistaprint.com site, which we were told to follow for functionality and
+flow, is a full e-commerce store. Its complete path is:
+
+    browse -> configure -> DESIGN -> cart -> checkout -> account
+
+Everything from "design" onward has no Figma design and is not described in the
+sitemap document. This is roughly half of what makes the site work as a store.
+
+We need decisions on the items below before we can give a reliable delivery
+estimate.
+
+
+--------------------------------------------------------------------------------
+PART 1 — WHAT IS BUILT TODAY
+--------------------------------------------------------------------------------
+
+Complete and verified against Figma:
+
+  - Home page
+  - 10 category landing pages (Business Cards, Postcards & Print Advertising,
+    Signs/Banners/Posters, Labels & Stickers, Clothing & Bags, Promotional
+    Products, Packaging, Invitations/Gifts/Stationery, Wedding, Design Services)
+  - Deals page (currently reuses the Home page — see Question 4)
+  - Site header, mega-menu navigation, and footer
+  - ONE product detail page as a proof of pattern: Business Cards > Matte
+
+Total working pages: 13
+
+
+--------------------------------------------------------------------------------
+PART 2 — THE IMMEDIATE PROBLEM: 290 BROKEN LINKS
+--------------------------------------------------------------------------------
+
+The navigation menus were built out with the full set of links. The pages behind
+them do not exist yet.
+
+    Links in the navigation menu ......... 302
+    Pages that actually exist ............  12
+    Links that lead to a 404 error ....... 290
+
+Broken links by category:
+
+    Promotional Products .................. 41
+    Wedding ............................... 39
+    Clothing & Bags ....................... 33
+    Labels & Stickers ..................... 30
+    Invitations, Gifts & Stationery ....... 30
+    Packaging ............................. 27
+    Postcards & Print Advertising ......... 26
+    Design Services ....................... 23
+    Business Cards ........................ 21
+    Signs, Banners & Posters .............. 19
+    Holiday ................................ 1
+
+Right now a visitor who opens any menu and clicks almost anything gets an error
+page. This should be fixed first, regardless of the decisions below.
+
+
+--------------------------------------------------------------------------------
+PART 3 — SITEMAP IS MUCH LARGER THAN OUR CURRENT PLAN
+--------------------------------------------------------------------------------
+
+The sitemap document lists approximately 370 pages:
+
+    Signs, Banners & Posters .............. ~55
+    Promotional Products .................. ~55
+    Invitations, Gifts & Stationery ....... ~50
+    Postcards & Print Advertising ......... ~48
+    Clothing & Bags ....................... ~48
+    Wedding ............................... ~45
+    Retail/Food/Shipping Packaging ........ ~44
+    Labels & Stickers ..................... ~42
+    Business Cards ........................ ~37
+    Deals ................................... 8
+    Header/Footer utility pages ........... ~13
+
+Our internal notes previously described the remaining work as "35 Business Cards
+product pages." The sitemap shows Business Cards is one of eleven such trees.
+The actual remaining browse-layer work is roughly ten times larger than planned.
+
+Also note: the Figma file only contains designs for an estimated 170 of these
+~370 pages. The rest have no design reference at all.
+
+
+--------------------------------------------------------------------------------
+PART 4 — MISSING: THE DESIGN STUDIO (BIGGEST ITEM)
+--------------------------------------------------------------------------------
+
+On vistaprint.com, every product page offers three ways forward:
+
+    1. "Browse our templates"  -> template gallery, then an editor
+    2. "Upload your design"    -> file upload, then an editor
+    3. "Get a quote"           -> for very large orders (50,000+)
+
+The editor ("design studio") lets customers add and edit text, logos and images,
+preview the design on different paper stocks, see upgrade pricing, and it checks
+image quality (blur / low resolution) before allowing checkout.
+
+Status: NOT in Figma. NOT in the sitemap. Not built.
+
+This is the core of the Vistaprint product. It is a full design application, not
+a web page. If it is in scope it needs its own design work and its own estimate.
+
+
+--------------------------------------------------------------------------------
+PART 5 — MISSING: TEMPLATE GALLERY AND PRODUCT FILTERING
+--------------------------------------------------------------------------------
+
+The real site has filterable, paginated product and template listings. Example:
+the Deals listing shows 74 results with a sidebar containing roughly 20 filter
+groups (category, colour, customer rating, brand, decoration method, capacity,
+size, material, express shipping, in-stock only) plus sorting by recommended,
+popularity, and price.
+
+Status: NOT in Figma. Not built.
+
+The sitemap mentions "Browse Designs" as a single line item under Business Cards,
+but on the real site this is a large browsing system that every product category
+needs.
+
+
+--------------------------------------------------------------------------------
+PART 6 — MISSING: SIGN IN, ACCOUNTS AND ORDER HISTORY
+--------------------------------------------------------------------------------
+
+The real site has a complete account system:
+
+  Sign in        - email and password, OR social sign-in with Google, Facebook
+                   or Apple. Hosted on a separate login domain.
+  Create account - email or the same three social providers.
+  My Account     - payment methods, saved delivery addresses, order history,
+                   saved design projects, communication preferences, and a
+                   security section for changing passwords.
+  My Projects    - where designs from the design studio are saved.
+  My Favorites   - saved products per customer.
+  Guest checkout - customers can order with no account, then create one from the
+                   order confirmation page, or later link the order by entering
+                   the order number under "Order History & Reorder".
+
+Status: NOT in Figma. Not built. The backend currently has no login system.
+
+Important knock-on effect: the sitemap marks "Reorder Business Cards" as an
+expected page. Reordering is impossible without accounts and order history, so
+that page depends entirely on this missing layer.
+
+
+--------------------------------------------------------------------------------
+PART 7 — MISSING: CART AND CHECKOUT
+--------------------------------------------------------------------------------
+
+There is no shopping cart, no checkout, no payment step, and no order
+confirmation page in the Figma file or the sitemap.
+
+The real site supports card payments, PayPal, Apple Pay and Venmo, plus a
+shipping step, an order review step, and confirmation emails.
+
+Status: NOT in Figma. Not built.
+
+
+--------------------------------------------------------------------------------
+PART 8 — SMALLER DISCREPANCIES
+--------------------------------------------------------------------------------
+
+a) Deals page is the wrong type of page.
+   Figma shows the Deals page as identical to the homepage, so we built it that
+   way. The real vistaprint.com Deals page is a filtered product listing with
+   sidebar filters and pagination. The sitemap's 8 Deals entries (All Deals,
+   Business Card Deals, Military Discount, etc.) look like filtered views of
+   that listing, not separate pages.
+
+b) A whole category is missing from the sitemap.
+   vistaprint.com's main navigation includes "Logo, Websites & Social". It does
+   not appear in the sitemap document.
+
+c) No search.
+   The real site has a search box in the header with a search results page.
+   Not in Figma, not in the sitemap.
+
+d) Help Centre and legal pages.
+   Listed in the sitemap as pending, with no designs.
+
+e) Unclear status marks.
+   The sitemap uses green ticks and hourglass symbols. We assumed the tick means
+   "this page is in scope" rather than "this page is already built", because
+   items like Glossy and Uncoated are ticked but have not been built. Please
+   confirm which meaning is intended, as it changes how we read the document.
+
+
+--------------------------------------------------------------------------------
+PART 8b — ADMIN FLOW (NEW, 18 SEPTEMBER)
+--------------------------------------------------------------------------------
+
+A second Figma file has been shared covering the ADMIN side of the site
+(admin login and admin screens):
+
+    https://www.figma.com/design/hPioZIeyB5A7mfbnBPD8Kr/Printgraphi
+
+This is a separate application from the customer-facing store: it needs its
+own login, its own navigation, and it only makes sense once there is a backend
+holding products, orders and customers for an admin to manage. It has not been
+reviewed yet because the Figma connection dropped; it will be assessed as soon
+as access is restored. Expect it to add: admin authentication, a product /
+order / customer management interface, and the backend APIs those screens
+depend on.
+
+--------------------------------------------------------------------------------
+PART 9 — ACCESS PROBLEM
+--------------------------------------------------------------------------------
+
+We currently cannot read the Figma file through our tooling. The error is:
+
+    "Looks like you don't have edit access to this file. The file owner can
+     share it with you and make you an editor."
+
+The account ayeshakhalid289@gmail.com needs EDITOR access to the Figma file in
+order to pull designs, text and images directly. Please request this from
+whoever owns the file.
+
+
+--------------------------------------------------------------------------------
+QUESTIONS FOR THE CLIENT
+--------------------------------------------------------------------------------
+
+1. Is the DESIGN STUDIO (the customise/editor tool) in scope?
+   If yes, it needs designs and a separate estimate — it is the single largest
+   piece of work.
+   If no, what should the "Browse templates" and "Upload your design" buttons
+   on each product page actually do?
+
+2. Are SIGN IN and MY ACCOUNT in scope?
+   If yes: do we need real, working logins (including Google, Facebook and Apple
+   sign-in, email verification and password reset), or a demonstration version
+   that looks right but does not truly authenticate?
+
+3. Are CART and CHECKOUT in scope, including guest checkout and real payment
+   processing?
+
+4. Should the DEALS page be the filtered product listing that the real site has,
+   or stay as the homepage-style page shown in Figma?
+
+5. Do all ~370 sitemap pages need to be individual designed pages, or can the
+   deeper items (for example "Bulk Yard Signs", "2-Day Posters") be filtered
+   views of a shared listing page, as they largely are on the real site?
+
+6. Roughly 200 of the sitemap pages have no Figma design. Should we design them
+   ourselves following the existing style, or will more Figma designs be
+   supplied?
+
+7. Is "Logo, Websites & Social" in scope? It is a main navigation category on
+   the real site but is absent from the sitemap.
+
+8. Is site SEARCH in scope?
+
+9. "Reorder Business Cards" is marked as expected but requires accounts and
+   order history. Should it be built, or deferred until accounts are decided?
+
+
+--------------------------------------------------------------------------------
+WHAT WE RECOMMEND DOING NEXT
+--------------------------------------------------------------------------------
+
+While the questions above are being answered, the most useful work that does not
+depend on any of them is fixing the 290 broken navigation links. We would do this
+by building a shared sub-category page template driven by data, so every menu
+link opens a real page instead of an error.
+
+Individually designed pages can then replace those generic ones as Figma designs
+become available.

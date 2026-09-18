@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { SiteShellComponent } from '../../shared/site-shell/site-shell.component';
 
 const IMG = '/images/home';
@@ -35,7 +36,7 @@ interface UgcPost {
 
 @Component({
   selector: 'app-home',
-  imports: [SiteShellComponent],
+  imports: [SiteShellComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

@@ -13,8 +13,8 @@
           Shop invites and RSVPs along with accessories like stickers and envelopes.
         </p>
         <div class="hero__ctas">
-          <a href="/invitations-gifts-stationery" class="btn btn--primary">Find your dream suite</a>
-          <a href="/deals" class="hero__secondary-link">Shop all eligible products</a>
+          <a routerLink="/invitations-gifts-stationery" class="btn btn--primary">Find your dream suite</a>
+          <a routerLink="/deals" class="hero__secondary-link">Shop all eligible products</a>
         </div>
       </div>
       <div class="hero__graphic">
@@ -43,7 +43,7 @@
       </div>
       <div class="categories-track" #categoriesTrack>
         @for (cat of categories; track cat.path) {
-          <a [href]="cat.path" class="category-tile">
+          <a [routerLink]="cat.path" class="category-tile">
             <div class="category-tile__icon">
               <img [src]="cat.image" [alt]="cat.label" />
             </div>
@@ -61,11 +61,11 @@
     <div class="section__inner">
       <div class="section__header-row">
         <h2 class="section__title">Shop by collection</h2>
-        <a href="/collections" class="section__view-all">View all collections &rarr;</a>
+        <a routerLink="/collections" class="section__view-all">View all collections &rarr;</a>
       </div>
       <div class="collections-grid">
         @for (col of collections; track col.path) {
-          <a [href]="col.path" class="collection-card">
+          <a [routerLink]="col.path" class="collection-card">
             <div class="collection-card__image">
               <img [src]="col.image" [alt]="col.title" />
             </div>
@@ -86,7 +86,7 @@
       <h2 class="section__title">Ready for your next idea</h2>
       <div class="ideas-row">
         @for (idea of ideas; track idea.path) {
-          <a [href]="idea.path" class="idea-card">
+          <a [routerLink]="idea.path" class="idea-card">
             <div class="idea-card__image">
               <img [src]="idea.image" [alt]="idea.label" />
             </div>
@@ -109,7 +109,7 @@
           Skip the holiday rush and shop personalized corporate or family gifts early for everyone on your list. Make
           this season memorable with premium photo prints and custom keepsakes.
         </p>
-        <a href="/deals" class="btn btn--primary">Start shopping</a>
+        <a routerLink="/deals" class="btn btn--primary">Start shopping</a>
       </div>
       <div class="promo-banner__image-container">
         <img [src]="promoBannerImage" alt="Holiday gifts and keepsakes" />
@@ -145,7 +145,7 @@
     <div class="section__inner">
       <div class="section__header-row">
         <h2 class="section__title">PRINTGRAPHI Ambassador Spotlight: happy tears</h2>
-        <a href="/ambassador-program" class="section__view-all">Read More</a>
+        <a routerLink="/ambassador-program" class="section__view-all">Read More</a>
       </div>
       <div class="ambassador-carousel">
         @for (card of ambassadorCards; track card.title) {
@@ -168,7 +168,7 @@
     <div class="section__inner">
       <div class="section__header-row">
         <h2 class="section__title">Tools, services and expert support to build your business</h2>
-        <a href="/design-services" class="section__view-all">See all services &rarr;</a>
+        <a routerLink="/design-services" class="section__view-all">See all services &rarr;</a>
       </div>
       <div class="services-grid">
         <div class="service-card service-card--all">

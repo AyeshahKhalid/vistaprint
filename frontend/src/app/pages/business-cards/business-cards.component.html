@@ -17,9 +17,9 @@
         </p>
         <div class="hero__value-banner">Try 50 standard business cards for just $10.</div>
         <div class="hero__actions">
-          <button type="button" class="btn btn--dark">Upload design</button>
-          <button type="button" class="btn btn--outline">Browse templates</button>
-          <a href="#" class="hero__reorder">Reorder &rsaquo;</a>
+          <a [routerLink]="standardStudio" [queryParams]="{ mode: 'upload' }" class="btn btn--dark">Upload design</a>
+          <a [routerLink]="standardStudio" [queryParams]="{ mode: 'templates' }" class="btn btn--outline">Browse templates</a>
+          <a routerLink="/business-cards/reorder" class="hero__reorder">Reorder &rsaquo;</a>
         </div>
       </div>
       <div class="hero__right">
@@ -49,7 +49,7 @@
                 <span class="pricing-card__price">{{ opt.price }}</span>
                 <span class="pricing-card__price-detail">{{ opt.priceDetail }}</span>
               </div>
-              <button type="button" class="btn btn--outline btn--full">{{ opt.ctaLabel }}</button>
+              <a [routerLink]="opt.path" class="btn btn--outline btn--full">{{ opt.ctaLabel }}</a>
             </div>
           </div>
         }
@@ -66,7 +66,7 @@
       />
       <div class="shape-grid">
         @for (shape of shapes; track shape.label) {
-          <a href="#" class="shape-card">
+          <a [routerLink]="shape.path" class="shape-card">
             <div class="shape-card__image">
               <img [src]="shape.image" [alt]="shape.label" loading="lazy" />
             </div>
@@ -90,7 +90,7 @@
       <app-section-header title="Compare papers & finishes" subtitle="Find your business's unique style in just a few clicks." />
       <div class="swatch-row">
         @for (swatch of swatches; track swatch.label; let i = $index) {
-          <button type="button" class="swatch-thumb" [class.swatch-thumb--active]="i === 0">
+          <button type="button" class="swatch-thumb" [class.swatch-thumb--active]="activeSwatchIndex() === i" (click)="activeSwatchIndex.set(i)">
             <span class="swatch-thumb__dot" [style.background]="swatch.color"></span>
             {{ swatch.label }}
           </button>
@@ -102,24 +102,24 @@
         </div>
         <div class="finish-detail__content">
           <div class="finish-detail__title-row">
-            <h3 class="finish-detail__title">Matte Finish</h3>
-            <span class="finish-detail__rating">&#9733;&#9733;&#9733;&#9733;&#9733; (18,354)</span>
+            <h3 class="finish-detail__title">{{ activeSwatch().label }} Finish</h3>
+            <span class="finish-detail__rating">&#9733;&#9733;&#9733;&#9733;&#9733; ({{ activeSwatch().reviewCount }})</span>
           </div>
           <ul class="finish-detail__highlights">
-            @for (highlight of matteHighlights; track highlight) {
+            @for (highlight of activeSwatch().highlights; track highlight) {
               <li>{{ highlight }}</li>
             }
           </ul>
-          <a href="#" class="finish-detail__link">View full details &rsaquo;</a>
+          <a [routerLink]="activeSwatch().path" class="finish-detail__link">View full details &rsaquo;</a>
           <div class="finish-detail__bottom">
             <div class="finish-detail__pricing">
               <span class="finish-detail__price-label">Starting from</span>
-              <span class="finish-detail__price">$14.99</span>
-              <span class="finish-detail__price-detail">$0.15 each / 100 units</span>
+              <span class="finish-detail__price">{{ activeSwatch().price }}</span>
+              <span class="finish-detail__price-detail">{{ activeSwatch().priceDetail }}</span>
             </div>
             <div class="finish-detail__actions">
-              <button type="button" class="btn btn--outline">Browse designs</button>
-              <button type="button" class="btn btn--dark">Upload your design</button>
+              <a [routerLink]="studioLink(activeSwatch().path)" [queryParams]="{ mode: 'templates' }" class="btn btn--outline">Browse designs</a>
+              <a [routerLink]="studioLink(activeSwatch().path)" [queryParams]="{ mode: 'upload' }" class="btn btn--dark">Upload your design</a>
             </div>
           </div>
         </div>
@@ -136,12 +136,12 @@
       />
       <div class="template-filters">
         @for (filter of templateFilters; track filter; let i = $index) {
-          <button type="button" class="template-filter" [class.template-filter--active]="i === 0">{{ filter }}</button>
+          <button type="button" class="template-filter" [class.template-filter--active]="activeFilterIndex() === i" (click)="activeFilterIndex.set(i)">{{ filter }}</button>
         }
       </div>
       <div class="template-grid">
         @for (tpl of templates; track tpl.category) {
-          <a href="#" class="template-card">
+          <a [routerLink]="standardStudio" [queryParams]="{ mode: 'templates', template: tpl.category }" class="template-card">
             <div class="template-card__image">
               <img [src]="tpl.image" [alt]="tpl.category" loading="lazy" />
             </div>
@@ -151,7 +151,7 @@
         }
       </div>
       <div class="template-browse-all">
-        <a href="#" class="hero__reorder">Browse all templates &rarr;</a>
+        <a [routerLink]="standardStudio" [queryParams]="{ mode: 'templates' }" class="hero__reorder">Browse all templates &rarr;</a>
       </div>
     </div>
   </section>
@@ -163,9 +163,9 @@
         <h2 class="fast-delivery__title">Next-Day &amp; 2-Day Business Cards</h2>
         <p class="fast-delivery__desc">No time? No problem. Get high-quality business cards on the fly.</p>
         <div class="fast-delivery__actions">
-          <button type="button" class="btn btn--dark">Shop next-day delivery</button>
-          <button type="button" class="btn btn--outline">Shop 2-day delivery</button>
-          <a href="#" class="hero__reorder">Shop all</a>
+          <a routerLink="/business-cards/next-day" class="btn btn--dark">Shop next-day delivery</a>
+          <a routerLink="/business-cards/2-day" class="btn btn--outline">Shop 2-day delivery</a>
+          <a routerLink="/business-cards/fast-delivery" class="hero__reorder">Shop all</a>
         </div>
       </div>
       <div class="fast-delivery__right">
@@ -193,6 +193,7 @@
             [startingPrice]="use.price"
             [priceDetail]="use.priceDetail"
             [ctaLabel]="use.ctaLabel"
+            [path]="use.path"
           />
         }
       </div>
@@ -214,6 +215,7 @@
             [reviewCount]="holder.reviewCount"
             [startingPrice]="holder.price"
             [ctaLabel]="holder.ctaLabel"
+            [path]="holder.path"
           />
         }
       </div>
@@ -230,7 +232,7 @@
         <div class="sample-kit__content">
           <h2 class="sample-kit__title">Free Business Card Sample Kit</h2>
           <p class="sample-kit__desc">Touch, test and be inspired before you buy &ndash; no commitment, just confidence.</p>
-          <button type="button" class="btn btn--dark">Order a free sample kit</button>
+          <a routerLink="/business-cards/free-sample-kit" class="btn btn--dark">Order a free sample kit</a>
         </div>
       </div>
     </div>

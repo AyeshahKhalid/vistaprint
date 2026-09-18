@@ -259,9 +259,27 @@
   font-size: 13px;
   color: v.$color-text-secondary;
 
-  a {
+  a,
+  .config__zip-edit {
     color: v.$color-link;
     font-weight: 600;
+  }
+
+  .config__zip-edit {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .config__zip-input {
+    width: 72px;
+    border: 1px solid v.$color-border;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font: inherit;
+    color: v.$color-text;
   }
 }
 
@@ -330,10 +348,19 @@
   font-weight: 600;
   margin-bottom: 10px;
 
-  a {
+  a,
+  button {
     font-size: 13px;
     font-weight: 600;
     color: v.$color-link;
+  }
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    cursor: pointer;
   }
 }
 

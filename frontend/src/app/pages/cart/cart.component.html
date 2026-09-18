@@ -1,0 +1,85 @@
+<app-site-shell>
+  <div class="cart">
+    <div class="cart__inner">
+      <app-breadcrumbs [items]="breadcrumbs" />
+      <h1 class="cart__title">Your cart</h1>
+
+      @if (cart.items().length) {
+        <div class="cart__layout">
+          <ul class="cart-list">
+            @for (item of cart.items(); track item.id) {
+              <li class="cart-item">
+                <a [routerLink]="productPath(item)" class="cart-item__image">
+                  <img [src]="item.image" [alt]="item.title" />
+                </a>
+                <div class="cart-item__body">
+                  <a [routerLink]="productPath(item)" class="cart-item__title">{{ item.title }}</a>
+                  <dl class="cart-item__specs">
+                    <div class="cart-item__spec">
+                      <dt>Quantity</dt>
+                      <dd>{{ item.quantityLabel }}</dd>
+                    </div>
+                    @for (entry of optionEntries(item); track entry[0]) {
+                      <div class="cart-item__spec">
+                        <dt>{{ entry[0] }}</dt>
+                        <dd>{{ entry[1] }}</dd>
+                      </div>
+                    }
+                    <div class="cart-item__spec">
+                      <dt>Design</dt>
+                      <dd>{{ designLabel(item) }}</dd>
+                    </div>
+                  </dl>
+                  <div class="cart-item__actions">
+                    <a [routerLink]="studioLink(item)" [queryParams]="studioParams(item)">Edit design</a>
+                    <button type="button" (click)="cart.remove(item.id)">Remove</button>
+                  </div>
+                </div>
+                <div class="cart-item__price">
+                  <span class="cart-item__price-value">{{ item.price }}</span>
+                  <span class="cart-item__price-detail">{{ item.perUnit }}</span>
+                </div>
+              </li>
+            }
+          </ul>
+
+          <aside class="cart-summary">
+            <h2 class="cart-summary__title">Order summary</h2>
+            <div class="cart-summary__row">
+              <span>Subtotal ({{ cart.count() }} {{ cart.count() === 1 ? 'item' : 'items' }})</span>
+              <span>{{ cart.subtotal() | currency: 'USD' : 'symbol' : '1.2-2' }}</span>
+            </div>
+            <div class="cart-summary__row">
+              <span>Shipping</span>
+              <span>Calculated at checkout</span>
+            </div>
+            <div class="cart-summary__row cart-summary__row--total">
+              <span>Estimated total</span>
+              <span>{{ cart.subtotal() | currency: 'USD' : 'symbol' : '1.2-2' }}</span>
+            </div>
+            <button type="button" class="btn btn--dark btn--full" disabled>Checkout</button>
+            <p class="cart-summary__note">Checkout opens once sign-in and payment are connected.</p>
+            <p class="cart-summary__shipping">Free economy shipping on orders over $100.</p>
+            <a routerLink="/" class="cart-summary__continue">Continue shopping</a>
+          </aside>
+        </div>
+      } @else {
+        <div class="cart-empty">
+          <span class="cart-empty__icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </span>
+          <h2 class="cart-empty__title">Your cart is empty</h2>
+          <p class="cart-empty__body">Pick a product, design it your way, and it will show up here.</p>
+          <div class="cart-empty__actions">
+            <a routerLink="/business-cards" class="btn btn--dark">Start with business cards</a>
+            <a routerLink="/deals" class="btn btn--outline">See today's deals</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</app-site-shell>
