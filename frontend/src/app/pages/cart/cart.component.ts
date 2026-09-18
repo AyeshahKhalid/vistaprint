@@ -26,12 +26,12 @@ export class CartComponent {
   }
 
   studioLink(item: CartItem): string[] {
-    return ['/design-studio', item.category, item.slug];
+    return ['/studio', item.category, item.slug];
   }
 
   studioParams(item: CartItem): Record<string, string> {
     return {
-      mode: item.design.type === 'template' ? 'templates' : 'upload',
+      mode: item.design.type === 'template' ? 'templates' : item.design.type === 'upload' ? 'upload' : 'edit',
       qty: item.quantityLabel,
       ...item.options,
       ...(item.design.type === 'template' ? { template: item.design.name } : {}),
@@ -39,9 +39,14 @@ export class CartComponent {
   }
 
   designLabel(item: CartItem): string {
-    return item.design.type === 'template'
-      ? `Template · ${item.design.name}`
-      : `Uploaded · ${item.design.fileName}`;
+    switch (item.design.type) {
+      case 'template':
+        return `Template · ${item.design.name}`;
+      case 'upload':
+        return `Uploaded · ${item.design.fileName}`;
+      case 'studio':
+        return `Custom design · ${item.design.elements} ${item.design.elements === 1 ? 'element' : 'elements'}`;
+    }
   }
 
   optionEntries(item: CartItem): [string, string][] {

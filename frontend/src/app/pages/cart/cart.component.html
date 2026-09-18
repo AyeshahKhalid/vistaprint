@@ -10,7 +10,7 @@
             @for (item of cart.items(); track item.id) {
               <li class="cart-item">
                 <a [routerLink]="productPath(item)" class="cart-item__image">
-                  <img [src]="item.image" [alt]="item.title" />
+                  <img [src]="item.preview ?? item.image" [alt]="item.title" />
                 </a>
                 <div class="cart-item__body">
                   <a [routerLink]="productPath(item)" class="cart-item__title">{{ item.title }}</a>

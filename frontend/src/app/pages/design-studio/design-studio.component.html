@@ -1,147 +1,293 @@
-<app-site-shell>
-  <div class="studio">
-    <div class="studio__inner">
-      <app-breadcrumbs [items]="breadcrumbs()" />
+<div class="studio">
+  <!-- Top bar -->
+  <header class="topbar">
+    <a routerLink="/" class="topbar__logo">PRINTGRAPHI</a>
+    <div class="topbar__divider"></div>
+    <a [routerLink]="productPath()" class="topbar__product" title="Back to product">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span>{{ product().productTitle }}</span>
+    </a>
+    <div class="topbar__divider"></div>
+    <div class="topbar__tools">
+      <button type="button" class="icon-btn" title="Save" aria-label="Save" (click)="save()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      </button>
+      <button type="button" class="icon-btn" title="Undo (Ctrl+Z)" aria-label="Undo" [disabled]="!canUndo()" (click)="undo()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>
+      </button>
+      <button type="button" class="icon-btn" title="Redo (Ctrl+Y)" aria-label="Redo" [disabled]="!canRedo()" (click)="redo()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 14 20 9 15 4"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+      </button>
+      @if (savedAt(); as saved) {
+        <span class="topbar__saved">Saved {{ saved.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) }}</span>
+      }
+    </div>
+    <div class="topbar__right">
+      <button type="button" class="topbar__link" (click)="openPreview()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        Preview
+      </button>
+      <span class="topbar__price">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+        {{ selectedQuantity().price }}
+      </span>
+      <button type="button" class="btn btn--dark" [disabled]="isEmpty()" (click)="addToCart()">Next</button>
+    </div>
+  </header>
 
-      <header class="studio__header">
-        <span class="eyebrow">Design Studio</span>
-        <h1 class="studio__title">Design your {{ product().productTitle }}</h1>
-        <p class="studio__subtitle">
-          Start from a template or upload a finished design. You can change everything before you order.
-        </p>
-      </header>
+  <div class="studio__body">
+    <!-- Tool rail -->
+    <nav class="rail" aria-label="Design tools">
+      <button type="button" class="rail__tab" [class.rail__tab--active]="activeTool() === 'options'" (click)="selectTool('options')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+        <span>Product options</span>
+      </button>
+      <button type="button" class="rail__tab" [class.rail__tab--active]="activeTool() === 'text'" (click)="selectTool('text')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+        <span>Text</span>
+      </button>
+      <button type="button" class="rail__tab" [class.rail__tab--active]="activeTool() === 'uploads'" (click)="selectTool('uploads')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <span>Uploads</span>
+      </button>
+      <button type="button" class="rail__tab" [class.rail__tab--active]="activeTool() === 'graphics'" (click)="selectTool('graphics')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="6" r="3"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17 14l4 7h-8z"/></svg>
+        <span>Graphics</span>
+      </button>
+      <button type="button" class="rail__tab" [class.rail__tab--active]="activeTool() === 'background'" (click)="selectTool('background')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 15l6-6 12 12"/><path d="M3 9l3-3"/></svg>
+        <span>Background</span>
+      </button>
+      <button type="button" class="rail__tab" [class.rail__tab--active]="activeTool() === 'template'" (click)="selectTool('template')">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        <span>Template</span>
+      </button>
+      <button type="button" class="rail__tab rail__tab--soon" disabled title="Coming in a later stage">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="5" r="1.5"/><circle cx="12" cy="5" r="1.5"/><circle cx="19" cy="5" r="1.5"/><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="19" r="1.5"/><circle cx="12" cy="19" r="1.5"/><circle cx="19" cy="19" r="1.5"/></svg>
+        <span>Pattern</span>
+      </button>
+    </nav>
 
-      <div class="studio__layout">
-        <!-- Product summary -->
-        <aside class="summary-card">
-          <div class="summary-card__image">
-            <img [src]="product().mainImage" [alt]="product().productTitle" />
-          </div>
-          <h2 class="summary-card__title">{{ product().productTitle }}</h2>
-          <dl class="summary-card__specs">
-            <div class="summary-card__spec">
-              <dt>Quantity</dt>
-              <dd>{{ selectedQuantity().quantity }}</dd>
-            </div>
+    <!-- Tool panel -->
+    <aside class="panel">
+      @switch (activeTool()) {
+        @case ('options') {
+          <h2 class="panel__title">Product options</h2>
+          <dl class="specs">
+            <div class="specs__row"><dt>Product</dt><dd>{{ product().productTitle }}</dd></div>
+            <div class="specs__row"><dt>Size</dt><dd>{{ trim().w }}" × {{ trim().h }}"</dd></div>
+            <div class="specs__row"><dt>Quantity</dt><dd>{{ selectedQuantity().quantity }}</dd></div>
             @for (entry of optionEntries(); track entry[0]) {
-              <div class="summary-card__spec">
-                <dt>{{ entry[0] }}</dt>
-                <dd>{{ entry[1] }}</dd>
-              </div>
+              <div class="specs__row"><dt>{{ entry[0] }}</dt><dd>{{ entry[1] }}</dd></div>
             }
+            <div class="specs__row specs__row--price"><dt>Price</dt><dd>{{ selectedQuantity().price }}<small>{{ selectedQuantity().perUnit }}</small></dd></div>
           </dl>
-          <div class="summary-card__price">
-            <span class="summary-card__price-value">{{ selectedQuantity().price }}</span>
-            <span class="summary-card__price-detail">{{ selectedQuantity().perUnit }}</span>
-          </div>
-          <a [routerLink]="productPath()" class="summary-card__edit">Change options</a>
-        </aside>
+          <a [routerLink]="productPath()" class="panel__link">Change options</a>
+        }
 
-        <!-- Workspace -->
-        <section class="workspace">
-          <div class="mode-tabs" role="tablist" aria-label="How would you like to design?">
-            <button
-              type="button"
-              role="tab"
-              class="mode-tab"
-              [class.mode-tab--active]="activeMode() === 'templates'"
-              [attr.aria-selected]="activeMode() === 'templates'"
-              (click)="setMode('templates')"
-            >
-              Browse templates
-            </button>
-            <button
-              type="button"
-              role="tab"
-              class="mode-tab"
-              [class.mode-tab--active]="activeMode() === 'upload'"
-              [attr.aria-selected]="activeMode() === 'upload'"
-              (click)="setMode('upload')"
-            >
-              Upload your design
-            </button>
-          </div>
+        @case ('text') {
+          <h2 class="panel__title">Text</h2>
+          <button type="button" class="btn btn--accent btn--full" (click)="addText()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add text
+          </button>
+          @if (textProps(); as text) {
+            <div class="props">
+              <label class="props__field">
+                <span>Font</span>
+                <select [value]="text.fontFamily" (change)="onFontChange($event)">
+                  @for (font of fonts; track font) {
+                    <option [value]="font" [style.fontFamily]="font">{{ font }}</option>
+                  }
+                </select>
+              </label>
+              <div class="props__grid">
+                <label class="props__field">
+                  <span>Size</span>
+                  <input type="number" min="6" max="200" [value]="text.fontSize" (change)="onSizeChange($event)" />
+                </label>
+                <label class="props__field">
+                  <span>Colour</span>
+                  <input type="color" [value]="text.fill" (input)="onColorChange($event)" />
+                </label>
+              </div>
+              <div class="props__toggles">
+                <button type="button" class="toggle" [class.toggle--on]="text.bold" (click)="updateText({ bold: !text.bold })"><b>B</b></button>
+                <button type="button" class="toggle" [class.toggle--on]="text.italic" (click)="updateText({ italic: !text.italic })"><i>I</i></button>
+                <span class="props__spacer"></span>
+                <button type="button" class="toggle" [class.toggle--on]="text.align === 'left'" (click)="updateText({ align: 'left' })" aria-label="Align left">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="17" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+                </button>
+                <button type="button" class="toggle" [class.toggle--on]="text.align === 'center'" (click)="updateText({ align: 'center' })" aria-label="Align centre">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="10" x2="6" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="18" y1="18" x2="6" y2="18"/></svg>
+                </button>
+                <button type="button" class="toggle" [class.toggle--on]="text.align === 'right'" (click)="updateText({ align: 'right' })" aria-label="Align right">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="10" x2="7" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="7" y2="18"/></svg>
+                </button>
+              </div>
+              <div class="props__swatches">
+                @for (color of swatches; track color) {
+                  <button type="button" class="swatch" [style.background]="color" [class.swatch--on]="text.fill === color" (click)="updateText({ fill: color })" [attr.aria-label]="color"></button>
+                }
+              </div>
+              <button type="button" class="panel__danger" (click)="deleteActive()">Delete text</button>
+            </div>
+          } @else {
+            <p class="panel__hint">Add a text box, then click it on the canvas to edit. Double-click to change the words.</p>
+          }
+        }
 
-          @if (activeMode() === 'templates') {
-            <p class="workspace__hint">Pick a starting point. Every template is fully editable.</p>
-            <div class="template-grid">
-              @for (tpl of product().templates; track tpl.brand) {
-                <button
-                  type="button"
-                  class="template-tile"
-                  [class.template-tile--selected]="selectedTemplate() === tpl.brand"
-                  [attr.aria-pressed]="selectedTemplate() === tpl.brand"
-                  (click)="pickTemplate(tpl.brand)"
-                >
-                  <span class="template-tile__image">
-                    <img [src]="tpl.image" [alt]="tpl.brand" loading="lazy" />
-                    <span class="template-tile__tag">{{ tpl.tag }}</span>
-                  </span>
-                  <span class="template-tile__category">{{ tpl.category }}</span>
-                  <span class="template-tile__brand">{{ tpl.brand }}</span>
-                  <span class="template-tile__desc">{{ tpl.description }}</span>
+        @case ('uploads') {
+          <h2 class="panel__title">Uploads</h2>
+          <label class="btn btn--accent btn--full">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            Upload from this device
+            <input type="file" [accept]="acceptedTypes" (change)="onFileInput($event)" hidden />
+          </label>
+          <p class="panel__hint">PNG, JPG, SVG or WebP · up to 50 MB. Or drag a file onto the canvas.</p>
+          @if (uploadError(); as error) {
+            <p class="panel__error" role="alert">{{ error }}</p>
+          }
+          @if (uploads().length) {
+            <h3 class="panel__subtitle">Recently uploaded</h3>
+            <div class="uploads-grid">
+              @for (upload of uploads(); track upload.url) {
+                <button type="button" class="upload-tile" [title]="'Add ' + upload.name" (click)="placeImage(upload.url)">
+                  <img [src]="upload.url" [alt]="upload.name" />
                 </button>
               }
             </div>
-          } @else {
-            <div
-              class="dropzone"
-              [class.dropzone--active]="dragging()"
-              [class.dropzone--filled]="uploadedFile() !== null"
-              (dragover)="onDragOver($event)"
-              (dragleave)="onDragLeave()"
-              (drop)="onDrop($event)"
-            >
-              @if (uploadedFile(); as file) {
-                <div class="dropzone__file">
-                  @if (file.previewUrl) {
-                    <img [src]="file.previewUrl" alt="" class="dropzone__preview" />
-                  } @else {
-                    <span class="dropzone__file-icon" aria-hidden="true">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                        <path d="M14 2v6h6" />
-                      </svg>
-                    </span>
-                  }
-                  <span class="dropzone__name">{{ file.name }}</span>
-                  <span class="dropzone__size">{{ formatSize(file.size) }}</span>
-                  <button type="button" class="dropzone__remove" (click)="clearFile()">Remove file</button>
-                </div>
-              } @else {
-                <span class="dropzone__icon" aria-hidden="true">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <path d="M17 8l-5-5-5 5" />
-                    <path d="M12 3v12" />
-                  </svg>
-                </span>
-                <p class="dropzone__title">Drag and drop your design here</p>
-                <p class="dropzone__hint">PDF, PNG, JPG, SVG or AI &middot; up to 50 MB</p>
-                <label class="btn btn--outline">
-                  Choose a file
+          }
+          @if (activeKind() === 'image') {
+            <div class="props">
+              <div class="props__row">
+                <button type="button" class="btn btn--outline" (click)="bringForward()">Bring forward</button>
+                <button type="button" class="btn btn--outline" (click)="sendBackward()">Send back</button>
+              </div>
+              <button type="button" class="panel__danger" (click)="deleteActive()">Delete image</button>
+            </div>
+          }
+        }
+
+        @case ('graphics') {
+          <h2 class="panel__title">Graphics</h2>
+          <p class="panel__hint">Basic shapes for now — the full graphics library is a later stage.</p>
+          <div class="shapes">
+            <button type="button" class="shape-tile" (click)="addShape('rectangle')"><span class="shape-tile__rect"></span>Rectangle</button>
+            <button type="button" class="shape-tile" (click)="addShape('circle')"><span class="shape-tile__circle"></span>Circle</button>
+            <button type="button" class="shape-tile" (click)="addShape('triangle')"><span class="shape-tile__triangle"></span>Triangle</button>
+            <button type="button" class="shape-tile" (click)="addShape('line')"><span class="shape-tile__line"></span>Line</button>
+          </div>
+          @if (activeKind() === 'shape') {
+            <div class="props">
+              <div class="props__row">
+                <button type="button" class="btn btn--outline" (click)="bringForward()">Bring forward</button>
+                <button type="button" class="btn btn--outline" (click)="sendBackward()">Send back</button>
+              </div>
+              <button type="button" class="panel__danger" (click)="deleteActive()">Delete shape</button>
+            </div>
+          }
+        }
+
+        @case ('background') {
+          <h2 class="panel__title">Background</h2>
+          <div class="props__swatches props__swatches--large">
+            @for (color of swatches; track color) {
+              <button type="button" class="swatch swatch--large" [style.background]="color" (click)="setBackground(color)" [attr.aria-label]="color"></button>
+            }
+          </div>
+          <label class="props__field">
+            <span>Custom colour</span>
+            <input type="color" value="#ffffff" (input)="onBackgroundInput($event)" />
+          </label>
+          @if (hasBackgroundImage()) {
+            <button type="button" class="panel__danger" (click)="removeTemplate()">Remove background image</button>
+          }
+        }
+
+        @case ('template') {
+          <h2 class="panel__title">Templates</h2>
+          <p class="panel__hint">Start from a design and add your own text and logo on top.</p>
+          <div class="template-grid">
+            @for (tpl of product().templates; track tpl.brand) {
+              <button type="button" class="template-tile" [title]="tpl.brand" (click)="applyTemplate(tpl.image)">
+                <img [src]="tpl.image" [alt]="tpl.brand" loading="lazy" />
+                <span>{{ tpl.brand }}</span>
+              </button>
+            }
+          </div>
+          @if (hasBackgroundImage()) {
+            <button type="button" class="panel__danger" (click)="removeTemplate()">Remove template</button>
+          }
+        }
+      }
+    </aside>
+
+    <!-- Workspace -->
+    <section
+      #workspaceEl
+      class="workspace"
+      [class.workspace--dragging]="dragging()"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave()"
+      (drop)="onDrop($event)"
+    >
+      <div class="workspace__legend">
+        <button type="button" class="legend" [class.legend--off]="!showSafety()" (click)="toggleSafety()"><span class="legend__dot legend__dot--safety"></span>Safety Area</button>
+        <button type="button" class="legend" [class.legend--off]="!showBleed()" (click)="toggleBleed()"><span class="legend__dot legend__dot--bleed"></span>Bleed</button>
+      </div>
+
+      <div class="stage">
+        <div class="ruler ruler--v" [style.height.px]="basePx().h * zoom()">
+          <span class="ruler__label">{{ full().h.toFixed(2) }}in</span>
+        </div>
+        <div class="stage__canvas-wrap">
+          <div class="stage__canvas">
+            <canvas #canvasEl></canvas>
+            @if (isEmpty()) {
+              <div class="empty">
+                <label class="btn btn--outline empty__btn">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Upload design
                   <input type="file" [accept]="acceptedTypes" (change)="onFileInput($event)" hidden />
                 </label>
-              }
-            </div>
-            @if (uploadError(); as error) {
-              <p class="workspace__error" role="alert">{{ error }}</p>
+                <span class="empty__hint">or drag and drop here</span>
+              </div>
             }
-            <ul class="upload-tips">
-              <li>Include 0.125" bleed on every edge and keep text 0.125" inside the trim line.</li>
-              <li>Export at 300 dpi in CMYK for the closest match to the printed result.</li>
-              <li>We check every upload for resolution issues before it goes to print.</li>
-            </ul>
-          }
-
-          <footer class="workspace__actions">
-            <a [routerLink]="productPath()" class="btn btn--outline">Back to product</a>
-            <button type="button" class="btn btn--dark" [disabled]="!canContinue()" (click)="addToCart()">
-              Add to cart
-            </button>
-          </footer>
-        </section>
+          </div>
+          <div class="ruler ruler--h" [style.width.px]="basePx().w * zoom()">
+            <span class="ruler__label">{{ full().w.toFixed(2) }}in</span>
+          </div>
+        </div>
       </div>
-    </div>
+
+      <div class="zoombar">
+        <button type="button" class="zoombar__btn" aria-label="Zoom out" (click)="zoomOut()">−</button>
+        <span class="zoombar__value">{{ zoomPercent() }}%</span>
+        <button type="button" class="zoombar__btn" aria-label="Zoom in" (click)="zoomIn()">+</button>
+        <span class="zoombar__sep"></span>
+        <button type="button" class="zoombar__btn zoombar__btn--text" (click)="setZoom(1)">100%</button>
+      </div>
+    </section>
   </div>
-</app-site-shell>
+
+  @if (previewUrl(); as url) {
+    <div class="modal-backdrop" (click)="closePreview()"></div>
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Preview">
+      <header class="modal__header">
+        <h2>Preview</h2>
+        <button type="button" class="icon-btn" aria-label="Close" (click)="closePreview()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </header>
+      <div class="modal__body">
+        <img [src]="url" alt="Design preview" class="modal__image" />
+        <p class="modal__caption">{{ product().productTitle }} · {{ trim().w }}" × {{ trim().h }}" · {{ selectedQuantity().quantity }}</p>
+      </div>
+      <footer class="modal__footer">
+        <button type="button" class="btn btn--outline" (click)="closePreview()">Keep editing</button>
+        <button type="button" class="btn btn--dark" [disabled]="isEmpty()" (click)="addToCart()">Next</button>
+      </footer>
+    </div>
+  }
+</div>

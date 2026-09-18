@@ -10,7 +10,7 @@
         <h3 class="site-footer__col-title">Let Us Help</h3>
         <ul class="site-footer__link-list">
           @for (link of helpLinks; track link.path) {
-            <li><a [href]="link.path" class="site-footer__link">{{ link.label }}</a></li>
+            <li><a [routerLink]="link.path" class="site-footer__link">{{ link.label }}</a></li>
           }
         </ul>
       </div>
@@ -19,7 +19,7 @@
         <h3 class="site-footer__col-title">Our Company</h3>
         <ul class="site-footer__link-list">
           @for (link of companyLinks; track link.path) {
-            <li><a [href]="link.path" class="site-footer__link">{{ link.label }}</a></li>
+            <li><a [routerLink]="link.path" class="site-footer__link">{{ link.label }}</a></li>
           }
         </ul>
       </div>

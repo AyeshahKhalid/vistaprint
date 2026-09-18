@@ -91,7 +91,7 @@ export class BusinessCardsComponent {
 
   /** Design-studio entry for a product path, e.g. '/business-cards/matte'. */
   studioLink(path: string): string[] {
-    return ['/design-studio', ...path.split('/').filter(Boolean)];
+    return ['/studio', ...path.split('/').filter(Boolean)];
   }
 
   readonly standardStudio = this.studioLink(`${BC}/standard`);

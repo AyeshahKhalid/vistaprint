@@ -5,7 +5,8 @@ import { ProductDetailData } from './product-detail.model';
 
 /**
  * Route target for every catalogue-driven product page. `product` is bound from
- * the route's resolved data via `withComponentInputBinding()`.
+ * the route's resolved data and `design` from the query string via
+ * `withComponentInputBinding()`.
  */
 @Component({
   selector: 'app-product-variant-page',
@@ -13,10 +14,11 @@ import { ProductDetailData } from './product-detail.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <app-site-shell>
-      <app-product-detail [data]="product()" />
+      <app-product-detail [data]="product()" [openDesign]="design()" />
     </app-site-shell>
   `,
 })
 export class ProductVariantPageComponent {
   readonly product = input.required<ProductDetailData>();
+  readonly design = input<string>();
 }

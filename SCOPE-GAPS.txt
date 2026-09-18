@@ -106,10 +106,16 @@ The editor ("design studio") lets customers add and edit text, logos and images,
 preview the design on different paper stocks, see upgrade pricing, and it checks
 image quality (blur / low resolution) before allowing checkout.
 
-Status: NOT in Figma. NOT in the sitemap. Not built.
+Status: NOT in Figma. NOT in the sitemap.
+UPDATE 18 Sept: a first working version of the editor is now built in the
+browser (canvas at real print size with bleed/safety guides, text, image
+upload, shapes, background colour, templates, undo/redo, zoom, preview, save,
+then "Next" into the cart). Still to come: the graphics/pattern library,
+front-and-back sides, PDF/AI uploads, and templates whose text can be edited.
+It has no Figma design, so it follows vistaprint's layout and our colours.
 
 This is the core of the Vistaprint product. It is a full design application, not
-a web page. If it is in scope it needs its own design work and its own estimate.
+a web page. It needs a design pass and a decision on how far to take it.
 
 
 --------------------------------------------------------------------------------

@@ -119,7 +119,7 @@
 
       <div class="config__actions">
         <a [routerLink]="studioLink()" [queryParams]="templatesParams()" class="btn btn--outline">Browse our templates</a>
-        <a [routerLink]="studioLink()" [queryParams]="uploadParams()" class="btn btn--dark">Upload your design</a>
+        <button type="button" class="btn btn--dark" (click)="openUploadDrawer()">Upload your design</button>
       </div>
 
       <div class="design-upsell">
@@ -234,7 +234,7 @@
         <p class="split-block__body">{{ data().startDesigningBody }}</p>
         <div class="split-block__actions">
           <a [routerLink]="studioLink()" [queryParams]="templatesParams()" class="btn btn--dark">Start designing</a>
-          <a [routerLink]="studioLink()" [queryParams]="uploadParams()" class="btn btn--outline">Upload your design</a>
+          <button type="button" class="btn btn--outline" (click)="openUploadDrawer()">Upload your design</button>
         </div>
       </div>
       <div class="split-block__image">
@@ -352,3 +352,52 @@
     <app-faq-accordion [items]="data().faqs" />
   </div>
 </section>
+
+<!-- Options drawer: "Upload your design" confirms shape/options here, then Next opens the studio -->
+@if (drawerOpen()) {
+  <div class="drawer-backdrop" (click)="closeDrawer()"></div>
+  <aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <header class="drawer__header">
+      <div>
+        <h2 id="drawer-title" class="drawer__title">Choose your options</h2>
+        <p class="drawer__subtitle">{{ data().productTitle }}</p>
+      </div>
+      <button type="button" class="drawer__close" aria-label="Close" (click)="closeDrawer()" autofocus>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </header>
+
+    <div class="drawer__body">
+      @for (group of data().dropdowns; track group.label) {
+        <fieldset class="drawer__group">
+          <legend class="drawer__label">{{ group.label }}</legend>
+          <div class="drawer__options">
+            @for (opt of group.options; track opt) {
+              <button
+                type="button"
+                class="drawer__option"
+                [class.drawer__option--selected]="selections()[group.label] === opt"
+                [attr.aria-pressed]="selections()[group.label] === opt"
+                (click)="setSelection(group.label, opt)"
+              >
+                {{ opt }}
+              </button>
+            }
+          </div>
+        </fieldset>
+      }
+      <p class="drawer__note">You can still change these in the studio before you order.</p>
+    </div>
+
+    <footer class="drawer__footer">
+      <div class="drawer__price">
+        <span class="drawer__price-value">{{ displayPrice() }}</span>
+        <span class="drawer__price-detail">{{ displayPriceDetail() }}</span>
+      </div>
+      <button type="button" class="btn btn--dark" (click)="continueToStudio()">Next</button>
+    </footer>
+  </aside>
+}

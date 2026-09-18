@@ -1,0 +1,180 @@
+@use 'variables' as v;
+
+.auth {
+  padding: 48px 16px 80px;
+  background: v.$color-bg-subtle;
+}
+
+.auth__card {
+  max-width: 460px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid v.$color-border-card;
+  border-radius: 14px;
+  padding: 28px 32px 24px;
+}
+
+.auth__tabs {
+  display: flex;
+  border-bottom: 1px solid v.$color-border;
+  margin-bottom: 24px;
+}
+
+.auth__tab {
+  flex: 1;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 12px 8px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: v.$color-text-secondary;
+  cursor: pointer;
+
+  &--active {
+    color: v.$color-primary;
+    border-bottom-color: v.$color-primary;
+  }
+}
+
+.auth__title {
+  font-size: 26px;
+  font-weight: 800;
+  color: v.$color-text;
+  margin: 0 0 6px;
+}
+
+.auth__subtitle {
+  font-size: 14px;
+  color: v.$color-text-secondary;
+  margin: 0 0 20px;
+}
+
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: v.$color-text;
+
+  input {
+    border: 1px solid v.$color-border;
+    border-radius: 8px;
+    padding: 11px 12px;
+    font-family: inherit;
+    font-size: 15px;
+    color: v.$color-text;
+
+    &:focus {
+      outline: none;
+      border-color: v.$color-primary;
+      box-shadow: 0 0 0 3px v.$color-bg-accent;
+    }
+  }
+
+  small {
+    font-weight: 500;
+    color: v.$color-text-muted-alt;
+  }
+}
+
+.auth__forgot {
+  align-self: flex-start;
+  font-size: 13px;
+  font-weight: 600;
+  color: v.$color-link;
+}
+
+.auth__error {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b91c1c;
+}
+
+.auth__divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0 14px;
+  font-size: 12px;
+  color: v.$color-text-muted-alt;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid v.$color-border;
+  }
+}
+
+.auth__social {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.social {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 8px;
+  border: 1px solid v.$color-border;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: v.$color-text;
+  cursor: pointer;
+
+  &:hover {
+    background: v.$color-bg-subtle;
+  }
+}
+
+.auth__note {
+  margin: 20px 0 0;
+  font-size: 12px;
+  color: v.$color-text-muted-alt;
+  text-align: center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 20px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  cursor: pointer;
+
+  &--dark {
+    background: v.$color-text-dark;
+    color: #ffffff;
+  }
+
+  &--full {
+    width: 100%;
+    margin-top: 4px;
+  }
+}

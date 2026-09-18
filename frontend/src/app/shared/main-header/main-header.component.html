@@ -25,18 +25,43 @@
           <line x1="12" y1="17" x2="12.01" y2="17"></line>
         </svg>
       </button>
-      <button type="button" class="main-header__action" aria-label="Favorites">
+      <a routerLink="/my-account/favorites" class="main-header__action" aria-label="Favorites">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
         </svg>
-      </button>
-      <button type="button" class="main-header__action" aria-label="My Projects">
+      </a>
+      <a routerLink="/my-account/design/projects" class="main-header__action" aria-label="My Projects">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-          <circle cx="12" cy="7" r="4"></circle>
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
         </svg>
         <span class="main-header__action-label">My Projects</span>
-      </button>
+      </a>
+      <div class="account-menu" [class.account-menu--open]="accountOpen()">
+        <button type="button" class="main-header__action" [attr.aria-expanded]="accountOpen()" aria-haspopup="true" (click)="toggleAccount()">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="main-header__action-label">{{ auth.isSignedIn() ? 'My Account' : 'Sign in' }}</span>
+        </button>
+        <div class="account-menu__panel" role="menu">
+          @if (auth.isSignedIn()) {
+            <p class="account-menu__greeting">Hello, {{ auth.firstName() }}</p>
+            <nav class="account-menu__links">
+              @for (link of accountLinks; track link.path) {
+                <a [routerLink]="link.path" class="account-menu__link" role="menuitem" (click)="closeAccount()">{{ link.label }}</a>
+              }
+            </nav>
+            <div class="account-menu__footer">
+              <button type="button" class="account-menu__signout" (click)="signOut()">Sign out</button>
+            </div>
+          } @else {
+            <p class="account-menu__greeting">Sign in to see your projects, favorites and orders.</p>
+            <a routerLink="/sign-in" class="account-menu__signin" (click)="closeAccount()">Sign in</a>
+            <p class="account-menu__new">New here? <a routerLink="/sign-in" [queryParams]="{ tab: 'create' }" (click)="closeAccount()">Create an account</a></p>
+          }
+        </div>
+      </div>
       <a routerLink="/cart" class="main-header__action main-header__action--cart" aria-label="Cart">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="9" cy="21" r="1"></circle>

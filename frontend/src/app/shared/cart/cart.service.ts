@@ -1,6 +1,9 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
 
-export type CartDesign = { type: 'template'; name: string } | { type: 'upload'; fileName: string };
+export type CartDesign =
+  | { type: 'template'; name: string }
+  | { type: 'upload'; fileName: string }
+  | { type: 'studio'; elements: number };
 
 export interface CartItem {
   id: string;
@@ -8,6 +11,8 @@ export interface CartItem {
   slug: string;
   title: string;
   image: string;
+  /** PNG data URL rendered by the studio, shown instead of the product image. */
+  preview?: string;
   quantityLabel: string;
   price: string;
   perUnit: string;

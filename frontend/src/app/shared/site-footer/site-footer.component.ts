@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 interface FooterLink {
   label: string;
@@ -7,13 +8,13 @@ interface FooterLink {
 
 @Component({
   selector: 'app-site-footer',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './site-footer.component.html',
   styleUrl: './site-footer.component.scss',
 })
 export class SiteFooterComponent {
   readonly helpLinks: FooterLink[] = [
-    { label: 'My Account', path: '/account' },
+    { label: 'My Account', path: '/my-account' },
     { label: 'Shipping', path: '/shipping' },
     { label: 'Contact & Support', path: '/support' },
     { label: 'Ideas & Advice', path: '/ideas-advice' },

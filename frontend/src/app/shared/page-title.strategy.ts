@@ -17,7 +17,7 @@ export class PageTitleStrategy extends TitleStrategy {
   override updateTitle(snapshot: RouterStateSnapshot): void {
     const leaf = deepestChild(snapshot);
     const product = leaf.data['product'] as ProductDetailData | undefined;
-    const studio = leaf.routeConfig?.path?.startsWith('design-studio');
+    const studio = leaf.routeConfig?.path?.startsWith('studio');
     const pageTitle = product
       ? studio
         ? `Design your ${product.productTitle}`

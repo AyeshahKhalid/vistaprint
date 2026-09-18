@@ -1,5 +1,6 @@
 import { Route, Routes } from '@angular/router';
 import { productVariantResolver } from './shared/product-detail/product-variant.resolver';
+import { authGuard } from './shared/auth/auth.guard';
 
 type LoadComponent = NonNullable<Route['loadComponent']>;
 
@@ -58,7 +59,7 @@ export const routes: Routes = [
 
   // Purchase flow (client-side until the backend lands).
   {
-    path: 'design-studio/:category/:slug',
+    path: 'studio/:category/:slug',
     loadComponent: () => import('./pages/design-studio/design-studio.component').then((m) => m.DesignStudioComponent),
     resolve: { product: productVariantResolver },
   },
@@ -66,6 +67,19 @@ export const routes: Routes = [
     path: 'cart',
     title: 'Your Cart',
     loadComponent: () => import('./pages/cart/cart.component').then((m) => m.CartComponent),
+  },
+
+  // Account (session is client-side until the backend lands; see AuthService).
+  {
+    path: 'sign-in',
+    title: 'Sign In',
+    loadComponent: () => import('./pages/sign-in/sign-in.component').then((m) => m.SignInComponent),
+  },
+  {
+    path: 'my-account',
+    canActivate: [authGuard],
+    loadComponent: () => import('./pages/my-account/my-account-layout.component').then((m) => m.MyAccountLayoutComponent),
+    loadChildren: () => import('./pages/my-account/my-account.routes').then((m) => m.MY_ACCOUNT_ROUTES),
   },
 
   {

@@ -17,7 +17,7 @@
         </p>
         <div class="hero__value-banner">Try 50 standard business cards for just $10.</div>
         <div class="hero__actions">
-          <a [routerLink]="standardStudio" [queryParams]="{ mode: 'upload' }" class="btn btn--dark">Upload design</a>
+          <a routerLink="/business-cards/standard" [queryParams]="{ design: 'upload' }" class="btn btn--dark">Upload design</a>
           <a [routerLink]="standardStudio" [queryParams]="{ mode: 'templates' }" class="btn btn--outline">Browse templates</a>
           <a routerLink="/business-cards/reorder" class="hero__reorder">Reorder &rsaquo;</a>
         </div>
@@ -119,7 +119,7 @@
             </div>
             <div class="finish-detail__actions">
               <a [routerLink]="studioLink(activeSwatch().path)" [queryParams]="{ mode: 'templates' }" class="btn btn--outline">Browse designs</a>
-              <a [routerLink]="studioLink(activeSwatch().path)" [queryParams]="{ mode: 'upload' }" class="btn btn--dark">Upload your design</a>
+              <a [routerLink]="activeSwatch().path" [queryParams]="{ design: 'upload' }" class="btn btn--dark">Upload your design</a>
             </div>
           </div>
         </div>

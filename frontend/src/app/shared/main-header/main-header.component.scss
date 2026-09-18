@@ -127,3 +127,111 @@
   line-height: 18px;
   text-align: center;
 }
+
+/* Account dropdown */
+.account-menu {
+  position: relative;
+}
+
+.account-menu__panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 14px);
+  right: -12px;
+  width: 340px;
+  padding: 20px 0 16px;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(7, 26, 61, 0.16);
+  z-index: 120;
+  text-align: left;
+}
+
+.account-menu__panel::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  right: 34px;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-left: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
+  transform: rotate(45deg);
+}
+
+.account-menu:hover .account-menu__panel,
+.account-menu:focus-within .account-menu__panel,
+.account-menu--open .account-menu__panel {
+  display: block;
+}
+
+.account-menu__greeting {
+  margin: 0 24px 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.account-menu__links {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-menu__link {
+  padding: 9px 24px;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.account-menu__link:hover {
+  background: var(--color-bg-subtle);
+  color: var(--color-link);
+}
+
+.account-menu__footer {
+  margin: 12px 24px 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.account-menu__signout {
+  padding: 12px 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.account-menu__signout:hover {
+  background: var(--color-bg-subtle);
+}
+
+.account-menu__signin {
+  display: block;
+  margin: 0 24px 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #1f2937;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.account-menu__new {
+  margin: 0 24px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.account-menu__new a {
+  font-weight: 700;
+  color: var(--color-link);
+}
